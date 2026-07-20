@@ -4,6 +4,7 @@ const { messages } = getI18n(Astro.url);
 const r = messages.hiddenRules;
 const highlights = r.highlights ?? [];
 const panels = r.panels ?? [];
+import TrainTracker from './TrainTracker.astro';
 ---
 
 <section id="visit" class="section-padding" style="background: var(--bg-primary);">
@@ -48,5 +49,7 @@ const panels = r.panels ?? [];
         </details>
       ))}
     </div>
+    
+    <TrainTracker />
   </div>
 </section>

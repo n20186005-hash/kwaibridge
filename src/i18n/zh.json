@@ -44,11 +44,11 @@
     "faq": "常见问题"
   },
   "hero": {
-    "title": "桂河大桥",
-    "subtitle": "สะพานข้ามแม่น้ำแคว · 一座仍在使用中的铁路桥，也是泰国北碧府的纪念之地，作为二战死亡铁路的一部分而建。",
+    "title": "桂河大桥 · 跨越战火的记忆之地",
+    "subtitle": "The Bridge on the River Kwai — 探索泰缅“死亡铁路”沉淀的历史与和平启示。",
+    "badge": "非营利·全教育学术指南 | 免费入场 · 24小时开放",
     "rating": "4.6",
     "reviewCount": "14,465",
-    "hours": "全天 24 小时开放",
     "openMaps": "在 Google 地图上查看位置",
     "mapsUrl": "https://maps.app.goo.gl/tze9JQUAKaV3Mbm78",
     "legend": {
@@ -58,16 +58,8 @@
     "tags": ["死亡铁路", "二战历史", "战争纪念", "河景", "列车驶过"],
     "routeCta": { "label": "查看行程", "href": "#route" },
     "historyCta": { "label": "阅读故事", "href": "#history" },
-    "quickFacts": [
-      { "icon": "📍", "label": "坐标", "value": "14.0386° N, 99.5304° E" },
-      { "icon": "🕗", "label": "时间", "value": "全天 24 小时" },
-      { "icon": "💸", "label": "门票", "value": "步行免费" },
-      { "icon": "🌉", "label": "规模", "value": "约 300 米弯曲桥身" },
-      { "icon": "🌏", "label": "位置", "value": "桂河路 · 北碧" }
-    ],
     "navCta": { "label": "快速信息", "href": "#quick-facts" },
     "photoCta": { "label": "查看相册", "href": "#gallery" },
-    "factsSource": { "label": "时间与信息来自 TAT 公开资料", "url": "https://www.tourismthailand.org" },
     "liveInfo": { "weather": "实时天气", "sunset": "今日日落" },
     "sunsetPlanner": {
       "eyebrow": "参观的黄金时段",
@@ -119,6 +111,18 @@
         "items": ["从有遮荫的河畔开始", "河畔咖啡馆可小歇", "人群中看管好随身物"]
       }
     ]
+  },
+  "trainTracker": {
+    "title": "SRT 泰铁常态化时刻表 (占位符)",
+    "description": "列车驶过大桥是游客最期待的画面。以下是通常由曼谷/北碧开往 Nam Tok 方向列车预计过桥的时间参考。",
+    "colTrain": "车次",
+    "colRoute": "路线",
+    "colTime": "预计过桥时间",
+    "schedules": [
+      { "train": "257 次", "route": "曼谷 (Thon Buri) → Nam Tok", "time": "约 10:45 (占位)" },
+      { "train": "259 次", "route": "曼谷 (Thon Buri) → Nam Tok", "time": "约 16:20 (占位)" }
+    ],
+    "warning": "重要提醒：列车通常会有不同程度的晚点，建议提前 20 分钟在避车台妥善等待。时刻表可能变动，请以现场为准。"
   },
   "complianceGuide": {
     "title": "礼仪与安全提示",
@@ -177,9 +181,9 @@
     "alsoKnownAs": {
       "title": "亦被称为",
       "items": [
-        { "icon": "🌐", "text": "River Kwai Bridge（常见英文名）" },
-        { "icon": "🇹🇭", "text": "สะพานข้ามแม่น้ำแคว（泰文）" },
-        { "icon": "🗺️", "text": "死亡铁路第 277 号桥" }
+        { "icon": "🎬", "text": "The Bridge on the River Kwai" },
+        { "icon": "�", "text": "死亡铁路北碧段（Death Railway - Kanchanaburi Section）" },
+        { "icon": "🇹�", "text": "Saphan Khaam Maenam Khwae" }
       ]
     }
   },
@@ -194,9 +198,22 @@
       "从曼谷（Thon Buri / Wongwian Yai）乘火车前往北碧与 Nam Tok",
       "从曼谷南部长途汽车站（Sai Tai Mai）乘巴士或小巴",
       "沿 323 号公路向西自驾，桥附近有停车场",
-      "从曼谷或北碧参加一日游"
+      "从曼谷或北碧参加一日游",
+      "乘飞机至曼谷（素万那普 BKK / 廊曼 DMK）再转陆路，或直飞北碧机场（KDT）"
     ],
     "modes": [
+      {
+        "label": "飞机",
+        "icon": "✈️",
+        "title": "乘飞机抵达",
+        "description": "多数旅客飞抵曼谷两大机场，再转火车、巴士或自驾约 2–3 小时到北碧；北碧机场（KDT）亦有少量国内与包机航班。",
+        "details": ["素万那普（BKK）或廊曼（DMK）入境", "北碧机场（KDT）距桥约 45 分钟", "落地后转火车 / 巴士 / 自驾"],
+        "steps": [
+          { "n": "1", "t": "飞抵曼谷或北碧机场" },
+          { "n": "2", "t": "转乘陆路交通前往北碧" },
+          { "n": "3", "t": "打车或自驾到桥" }
+        ]
+      },
       {
         "label": "火车",
         "icon": "🚂",
@@ -277,49 +294,27 @@
     "title": "桂河大桥的历史与故事",
     "sections": [
       {
-        "id": "railway",
-        "title": "死亡铁路",
-        "content": "1942 年，日本帝国开始修建一条长 415 公里的铁路，连接泰国的 Ban Pong 与缅甸的 Thanbyuzayat，以规避海上航线风险运送部队。横跨北碧桂河（Khwae Yai）的这一段，成为整条线路中最著名的部分。",
-        "cards": [
-          { "title": "415 公里线路", "text": "为穿越泰缅边境的艰难地形而建。" },
-          { "title": "战略目标", "text": "为缅甸战役补给，避开脆弱的海上航线。" },
-          { "title": "北碧桥段", "text": "横跨桂河的这座桥，正是世界所熟知的那座。" }
-        ]
+        "id": "build",
+        "year": "1942 - 1943",
+        "title": "强迫建造",
+        "content": "日本帝国动用约6万名盟军战俘及数十万亚洲强制劳工（Romusha），在残酷条件下血泪筑成。"
       },
       {
-        "id": "builders",
-        "title": "由被囚禁与被强迫者所建",
-        "content": "铁路由约 60,000 名盟军战俘，以及估计 200,000–300,000 名亚洲强制劳工（romusha）修建。疾病、营养不良与残酷条件导致数万人丧生——这正是「死亡铁路」之名的由来。",
-        "cards": [
-          { "title": "盟军战俘", "text": "来自多国的约 60,000 名战俘。" },
-          { "title": "亚洲强制劳工", "text": "估计 200,000–300,000 名 romusha。" },
-          { "title": "惨重代价", "text": "数万人在修建铁路时丧生。" }
-        ]
+        "id": "bomb",
+        "year": "1944 - 1945",
+        "title": "盟军轰炸",
+        "content": "作为战略要道，大桥中段数次在盟军空袭中被精准炸毁。"
       },
       {
-        "id": "bridge",
-        "title": "大桥本身",
-        "content": "原桥使用了进口钢梁，部分来自爪哇。1943 年建成后通车，直到 1944–45 年部分桥体在盟军轰炸中被毁。战后得以重建并恢复运营。",
-        "cards": [
-          { "title": "进口钢材", "text": "原桥钢梁，部分来自爪哇。" },
-          { "title": "战时损毁", "text": "1944–45 年部分被炸毁。" },
-          { "title": "重建并通行", "text": "战后重建，至今仍在使用。" }
-        ]
-      },
-      {
-        "id": "today",
-        "title": "今日大桥：一处记忆之地",
-        "content": "今天，大桥是一座仍在使用的铁路桥，也是一处纪念之地。每年桂河大桥节都会举办声光秀与纪念活动，缅怀逝者。列车依旧驶过，来自多国的访客前来凭吊。",
-        "cards": [
-          { "title": "仍在运营", "text": "每日有列车驶过大桥。" },
-          { "title": "纪念之地", "text": "缅怀修建铁路的逝者。" },
-          { "title": "大桥节", "text": "年度声光秀与纪念活动。" }
-        ]
+        "id": "rebirth",
+        "year": "战后至今",
+        "title": "修复与重生",
+        "content": "战后由泰国政府全面修复，至今仍承载着每日通行的列车，并成为全球爱好和平人士的缅怀圣地。"
       }
     ],
     "didYouKnow": {
-      "title": "您知道吗？",
-      "text": "「桂河（Kwai）」之名，很大程度上是在 1957 年电影之后才附着于这条河的。大桥实际横跨桂河（Khwae Yai）——而真实铁路的故事，远比电影所演绎的沉重。"
+      "title": "影视虚构 vs 真实历史",
+      "text": "皮埃尔·布尔的同名小说和1957年奥斯卡获奖电影《桂河大桥》让它享誉全球，但电影里很多场景是在斯里兰卡拍摄的，且历史的真实惨烈程度远超艺术加工。真实的死亡铁路故事，比大银幕所展现的更加沉重。"
     }
   },
   "sitePlaques": {
@@ -395,7 +390,7 @@
       "映衬天空的大桥轮廓",
       "大桥与河流的广阔全景"
     ],
-    "viewAll": "查看全部",
+    "viewAll": "在谷歌地图查看更多照片",
     "showMore": "显示更多",
     "mapsUrl": "https://maps.app.goo.gl/tze9JQUAKaV3Mbm78"
   },
@@ -404,7 +399,7 @@
     "declaration": "以下评价为反映常见体验的整理示例，并非实时抓取，也不代表商业立场。",
     "featuredTitle": "访客原声",
     "featuredSubtitle": "不同旅行者的一句话印象。",
-    "moreReviews": "查看更多",
+    "moreReviews": "在谷歌地图查看更多评价",
     "mapsUrl": "https://maps.app.goo.gl/tze9JQUAKaV3Mbm78",
     "featured": [
       { "text": "站在桥上、列车驶过时让我心头一震——你能在这里感受到历史的重量。", "source": "—— 独立旅行者" },
@@ -443,8 +438,8 @@
       { "name": "北碧府", "url": "https://www.tourismthailand.org" },
       { "name": "泰国气象局（TMD）", "url": "https://www.tmd.go.th" }
     ],
-    "disclaimer": "本网站不与任何商家或铁路运营方关联；地图链接为公开 Google 地图位置，评价为示例性内容。",
-    "dataSource": "资料来源：泰国国家旅游局、北碧府公开信息及公开地图服务。",
+    "disclaimer": "本网站是一个独立的非营利游客信息项目。我们与任何政府机构或官方组织均无隶属关系。",
+    "dataSource": "数据源 · Data Source： 本站引用的景点信息，均对照考证自资料来源：泰国国家旅游局、北碧府公开信息及公开地图服务，不含任何商业性推荐。",
     "dataSourceLabel": "资料来源"
   },
   "privacy": {
@@ -527,6 +522,16 @@
   },
   "recommendations": {
     "title": "周边还有什么",
+    "route": {
+      "title": "北碧二战历史朝圣动线",
+      "desc": "一条完整的二战历史科普线，从桂河大桥出发，逐步深入死亡铁路的沉重记忆。",
+      "stops": [
+        { "icon": "🌉", "name": "桂河大桥" },
+        { "icon": "🏛️", "name": "泰缅铁路中心" },
+        { "icon": "🪦", "name": "北碧战争公墓" },
+        { "icon": "⛰️", "name": "地狱火通道" }
+      ]
+    },
     "attractionsTitle": "邻近景点",
     "toursTitle": "邻近体验",
     "attractions": [
@@ -643,10 +648,10 @@
     "tips": ["想要安静，选北岸或河畔住处", "带行李优先叫车", "确认早餐与接驳"]
   },
   "downloads": {
-    "title": "实用下载",
+    "title": "官方教育资源下载 (Self-Guided Kit)",
     "items": [
-      { "icon": "🗺️", "name": "大桥速查卡", "desc": "位置、时间、要点一卡速览。", "url": "#" },
-      { "icon": "🚂", "name": "列车与行程清单", "desc": "如何乘坐死亡铁路、规划半日游。", "url": "#" },
+      { "icon": "�", "name": "《桂河大桥历史步行指南.pdf》", "desc": "内含详尽的建造史、盟军轰炸点标注以及步行安全守则（非营利免费提供）。", "url": "#" },
+      { "icon": "🎧", "name": "在线收听《10分钟大桥声音博物馆》", "desc": "一段免费的历史音频导览，让游客一边走在铁轨上，一边用耳机聆听那段震撼的历史。", "url": "#" },
       { "icon": "📷", "name": "拍照机位地图", "desc": "大桥与河流周边的最佳角度。", "url": "#" }
     ]
   }

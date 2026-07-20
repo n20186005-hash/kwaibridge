@@ -8,6 +8,23 @@ const rec = messages.recommendations;
   <div class="max-w-6xl mx-auto px-4">
     <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-10 text-center" style="color: var(--text-primary);">{rec.title}</h2>
 
+    {rec.route && (
+      <div class="max-w-4xl mx-auto mb-12 rounded-3xl p-6 md:p-8 border relative overflow-hidden" style="background: color-mix(in srgb, var(--accent) 5%, var(--bg-tertiary)); border-color: var(--border-color);">
+        <h3 class="font-semibold text-xl mb-4" style="color: var(--text-primary);">{rec.route.title}</h3>
+        <p class="text-base leading-relaxed mb-6" style="color: var(--text-secondary);">{rec.route.desc}</p>
+        
+        <div class="flex flex-col md:flex-row gap-4 justify-between items-center relative">
+          <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-[var(--border-color)] -z-10 -translate-y-1/2"></div>
+          {rec.route.stops.map((stop, i) => (
+            <div class="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-xl p-4 w-full md:w-auto z-10 shadow-sm relative text-center">
+              <span class="text-xl mb-2 block">{stop.icon}</span>
+              <p class="font-semibold text-sm" style="color: var(--text-primary);">{stop.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
     <div class="grid md:grid-cols-2 gap-10">
       <div>
         <h3 class="font-semibold mb-5 flex items-center gap-2" style="color: var(--accent);">📌 {rec.attractionsTitle}</h3>
