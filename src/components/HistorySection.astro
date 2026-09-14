@@ -5,6 +5,8 @@ import AreaGuide from './AreaGuide.astro';
 import EngineeringNotes from './EngineeringNotes.astro';
 const { messages } = getI18n(Astro.url);
 const h = messages.historyIntro;
+const why = messages.whyItMatters;
+const whyPoints = why.points ?? [];
 ---
 
 <section id="history" class="section-padding" style="background: var(--bg-primary);">
@@ -16,6 +18,31 @@ const h = messages.historyIntro;
 
     <div class="max-w-5xl mx-auto space-y-14">
       <HistoryStory embedded />
+
+      {why && (
+        <div class="pt-6">
+          <div class="max-w-3xl mx-auto text-center mb-10">
+            <h3 class="font-display text-2xl sm:text-3xl font-semibold mb-3" style="color: var(--text-primary);">{why.title}</h3>
+            <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary);">{why.subtitle}</p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-6">
+            {whyPoints.map((p) => (
+              <div class="rounded-2xl p-6 border h-full" style="background: var(--bg-tertiary); border-color: var(--border-color);">
+                <h4 class="font-semibold text-lg mb-3" style="color: var(--accent);">{p.title}</h4>
+                <p class="text-base leading-relaxed" style="color: var(--text-secondary);">{p.text}</p>
+                {p.items && (
+                  <ul class="mt-4 space-y-2 text-sm" style="color: var(--text-secondary);">
+                    {p.items.map((item) => (
+                      <li class="flex gap-3"><span style="color: var(--accent);">•</span><span>{item}</span></li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <AreaGuide embedded />
       <EngineeringNotes embedded />
     </div>

@@ -134,10 +134,13 @@
     "title": "Etiquette & safety tips",
     "subtitle": "A few small rules so visitors and the memory of the place are both respected.",
     "rules": [
-      { "badge": "Memory", "title": "Remember its meaning", "text": "Tens of thousands died building the railway. Many visitors keep a quiet, reflective tone." },
-      { "badge": "Photos", "title": "Ask before posing", "text": "Photos are welcome, but avoid careless or jokey poses on a site of remembrance. Drones need permission." },
-      { "badge": "Safety", "title": "Mind the walkway", "text": "Keep bags in front in crowds, stay clear of the rails, and step aside for trains." },
-      { "badge": "Community", "title": "Support fairly", "text": "Riverside vendors and museums are part of the community; agree prices and tip modestly if happy." }
+      { "icon": "🕯️", "badge": "Memory", "title": "Remember its meaning", "text": "Tens of thousands died building the railway. Many visitors keep a quiet, reflective tone, and the memorial markers here are graves or commemorative sites — never move or lean on them." },
+      { "icon": "📷", "badge": "Photos", "title": "Ask before posing", "text": "Photos are welcome, but avoid careless or jokey poses on a site of remembrance. Drones need permission." },
+      { "icon": "🚧", "badge": "Safety", "title": "Mind the walkway, never stand on the tracks", "text": "Keep bags in front in crowds, stay clear of the rails, and step behind the refuge platforms when a train approaches — trains cross without warning and cannot stop quickly. Keep children within arm's reach at all times." },
+      { "icon": "🗑️", "badge": "Litter", "title": "Take everything back out", "text": "The bridge and riverbanks have limited waste collection. Carry out bottles, wrappers and food scraps — plastic in the river is the most visible damage visitors cause." },
+      { "icon": "🐒", "badge": "Wildlife", "title": "Do not feed the animals", "text": "Macaques, monitor lizards and river birds quickly become dependent on handouts, and fed animals can turn aggressive. Watch from a distance and never feed by hand." },
+      { "icon": "🛕", "badge": "Worship", "title": "Respect local places of worship", "text": "Nearby temples and shrines are working religious sites. Cover shoulders and knees, remove shoes where indicated, and ask before photographing people at prayer." },
+      { "icon": "🛍️", "badge": "Community", "title": "Support locally, and fairly", "text": "Riverside vendors, family-run shops and small museums are part of the community: agree prices, tip modestly if you are happy, and do not buy objects presented as wartime relics." }
     ]
   },
   "intro": {
@@ -269,33 +272,31 @@
     "subtitle": "The bridge: then and now — from a wartime strategic line to a symbol remembered around the world."
   },
   "historyStory": {
-    "title": "History & Significance of River Kwai Bridge",
-    "subtitle": "From a wartime supply line to a place of remembrance — the full story behind the bridge.",
     "intro": "The bridge is one link in a 415-kilometre railway built between Thailand and Burma under Japanese occupation. Why it was built, how fast it went up, and what it cost are the keys to reading everything you see here.",
     "sections": [
       {
         "id": "route",
         "year": "1942",
         "title": "Why a railway through the jungle",
-        "content": "Japan needed a secure land route to supply its forces in Burma once the sea lanes became dangerous. In June 1942 work began on a line linking Nong Pla Duk in Thailand with Thanbyuzayat in Burma — a route earlier surveyors had judged impractical."
+        "content": "Japan needed a secure land route to supply its forces in Burma once the sea lanes became dangerous. In June 1942 work began on a line linking Nong Pla Duk, in Ban Pong district, with Thanbyuzayat in Burma — a route earlier surveyors had judged impractical."
       },
       {
         "id": "build",
         "year": "1942 – 1943",
         "title": "Forced labour at impossible speed",
-        "content": "Around 60,000 Allied prisoners of war and some 200,000 Asian labourers were moved onto the line. The original estimate was five years; the railway was finished in roughly sixteen months, driven by pressure rather than machinery. About 12,000 Allied prisoners and an estimated 90,000 Asian labourers died."
+        "content": "Around 60,000 Allied prisoners of war — British, Dutch, Australian and American — and some 200,000 Asian labourers, most of them Burmese, Malayan, Tamil and Javanese men recruited or conscripted by the Japanese, were moved onto the line. The original estimate was five years; the railway was finished in roughly sixteen months, driven by pressure rather than machinery. About 12,000 Allied prisoners and an estimated 90,000 Asian labourers died."
       },
       {
         "id": "bridge",
         "year": "1943",
         "title": "Two bridges in one place",
-        "content": "A temporary wooden trestle bridge opened in February 1943, with a steel bridge alongside it in April 1943, carrying the railway across the Khwae Yai towards the Three Pagodas Pass. The steel spans arrived dismantled and were reassembled on site."
+        "content": "A temporary wooden trestle bridge opened in February 1943, with a steel bridge alongside it in April 1943, carrying the railway across the Khwae Yai towards the Three Pagodas Pass. The two stood side by side, the wooden one taking the first trains while the steel one carried the heavy loads. The steel spans were not designed for this site: they were dismantled from bridges in Java and shipped to Thailand, then reassembled by hand."
       },
       {
         "id": "bomb",
         "year": "1944 – 1945",
         "title": "Bombed, repaired, bombed again",
-        "content": "The bridge was a bottleneck for the whole line, so Allied aircraft attacked it repeatedly. Raids in 1945 dropped the central spans into the river. What you walk across today is the repaired structure, put back into service after the war."
+        "content": "The bridge was a bottleneck for the whole line, so Allied aircraft attacked it repeatedly, and two spans of the steel bridge were dropped into the river. After the war it was repaired and put back into service. What you walk across today is a mix of original wartime steel and post-war replacement spans — still carrying scheduled trains."
       },
       {
         "id": "film",
@@ -313,7 +314,7 @@
         "id": "rebirth",
         "year": "Today",
         "title": "Still a working railway, and a memorial",
-        "content": "Trains still cross the bridge as part of the Nam Tok line. Around it stand the Kanchanaburi War Cemetery, the Thailand–Burma Railway Centre and, deeper in the mountains, the Hellfire Pass Memorial — together the main places where the railway's dead are remembered and explained."
+        "content": "Trains still cross the bridge as part of the Nam Tok line. When the war ended in 1945 most of the railway was abandoned and lifted, and only sections like this one survived. Around the bridge stand the Kanchanaburi War Cemetery, the Thailand–Burma Railway Centre and, deeper in the mountains, the Hellfire Pass Memorial — together the main places where the railway's dead are remembered and explained."
       }
     ],
     "legendsTitle": "Stories, legends and common misconceptions",
@@ -454,51 +455,8 @@
     "eyebrow": "In depth",
     "navLabel": "In depth",
     "title": "The River Kwai Bridge in depth",
-    "subtitle": "The history behind the name, the detail of getting there from Bangkok, and what else is worth your time once you are in Kanchanaburi.",
+    "subtitle": "How to get here from Bangkok in detail, what else is worth your time nearby, and the practical details that make a visit easier.",
     "sections": [
-      {
-        "id": "history",
-        "icon": "📖",
-        "navLabel": "History",
-        "title": "History: what actually happened here",
-        "lead": "The bridge you walk across was bombed, rebuilt, and then renamed by a film — and the film's version is not the real story.",
-        "blocks": [
-          {
-            "type": "text",
-            "text": "Between 1942 and 1943 Imperial Japan built a railway to supply its army in Burma, linking Ban Pong in Thailand with Thanbyuzayat in Burma: roughly 415 km through jungle, river valleys and limestone hills. It was built by about 60,000 Allied prisoners of war — British, Dutch, Australian and American — together with an estimated 200,000 Asian labourers, most of them Burmese, Malayan, Tamil and Javanese men recruited or conscripted by the Japanese. Around 12,000 prisoners died on the project, and estimates for the Asian labourers run far higher. The line became known as the Death Railway, and the crossing at Kanchanaburi is its most photographed point."
-          },
-          {
-            "type": "text",
-            "text": "There were two bridges, not one. The first was a temporary wooden structure, finished in February 1943. A permanent steel bridge was completed about two months later, in April 1943, and the two stood side by side. The steel spans were not designed for this site: they were dismantled from bridges in Java and shipped to Thailand."
-          },
-          {
-            "type": "text",
-            "text": "From late 1944 into 1945, Allied aircraft bombed the crossing repeatedly, and two spans of the steel bridge were dropped into the river. After the war the bridge was repaired. What you walk across today is a mix of original wartime steel and post-war replacement spans, still carrying scheduled trains."
-          },
-          {
-            "type": "callout",
-            "title": "The film was not shot here — and its story is fiction",
-            "text": "David Lean's The Bridge on the River Kwai (1957) was filmed largely in what is now Sri Lanka, not in Thailand. Its plot — British officers helping their captors build the bridge and then destroying it — was invented for the screen. No bridge was blown up by the men who built it. This matters because many visitors arrive expecting the film's story to be the site's story. It is not."
-          },
-          {
-            "type": "text",
-            "text": "The name is a film artefact too. The river the bridge crosses is the Khwae Yai. Until the 1960s this stretch was generally called the Mae Klong, and “River Kwai” entered English usage through the film rather than from local naming. Thai signage reads สะพานข้ามแม่น้ำแคว. That is why both “River Kwai Bridge” and “River Khwae Bridge” appear on maps, and why neither is wrong in practice."
-          },
-          {
-            "type": "timeline",
-            "title": "Timeline",
-            "items": [
-              { "year": "1942", "text": "Japan begins the Burma–Thailand railway to supply its Burma campaign. Prisoners of war and Asian labourers are moved onto the line." },
-              { "year": "Feb 1943", "text": "The temporary wooden bridge over the Khwae Yai is completed and the line is joined through." },
-              { "year": "Apr 1943", "text": "A permanent steel bridge, built from spans brought from Java, opens alongside the wooden one." },
-              { "year": "1944–45", "text": "Allied aircraft bomb the bridge repeatedly; two steel spans collapse into the river." },
-              { "year": "1945", "text": "The war ends. Most of the railway is abandoned and lifted; the Kanchanaburi section survives." },
-              { "year": "1957", "text": "David Lean's film is released and fixes the name “River Kwai” in English." },
-              { "year": "Today", "text": "The Nam Tok line still crosses the bridge, and the riverbanks serve as a place of remembrance." }
-            ]
-          }
-        ]
-      },
       {
         "id": "getting-there",
         "icon": "🚂",
@@ -867,6 +825,7 @@
       "weather": "Weather",
       "water": "River & water",
       "wildlife": "Wildlife & greenery",
+      "crowds": "Crowds & timing",
       "verdict": "Best for"
     },
     "levels": { "best": "Prime", "good": "Good", "caution": "Demanding" },
@@ -879,6 +838,7 @@
         "weather": "The most comfortable stretch: roughly 20–32 °C, low humidity, clear skies and almost no rain. Mornings and evenings can feel genuinely cool.",
         "water": "The Khwae Yai runs low and clear, holding the deepest green water of the year — the best month for reflections and for seeing the pier structure.",
         "wildlife": "Birds are most active along the river and in the hotel gardens, and the hills stay lush green well into December after the rains.",
+        "crowds": "The busiest of the three seasons, and the densest for festivals — come early in the morning if you want the walkway mostly to yourself.",
         "verdict": "First-time visitors, photographers, walking the full bridge, combining with Erawan Falls or Hellfire Pass."
       },
       {
@@ -889,6 +849,7 @@
         "weather": "The hottest months: highs commonly 35–38 °C with strong midday sun and rising humidity. Occasional pre-monsoon storms arrive towards the end of the period.",
         "water": "Water levels are at their lowest and the river turns shallow and slow; some waterfalls further upstream run dry.",
         "wildlife": "Animals retreat into shade, so the best sightings are at dawn and dusk rather than midday. Dust and dry grass dominate the hills.",
+        "crowds": "Quieter than the cool season; the bridge is both coolest and least busy before 10:00 and after 16:00.",
         "verdict": "Early-morning visits, the war cemetery and indoor museums, hot springs or riverside hotel time."
       },
       {
@@ -899,6 +860,7 @@
         "weather": "Warm and humid with frequent heavy showers, usually arriving as intense afternoon bursts rather than all-day drizzle. September and October are the wettest.",
         "water": "The river swells, runs fast and turns turbid brown — dramatic to photograph, but not safe to swim in.",
         "wildlife": "Peak greenery, loudest birdsong and the most visible insects and lizards. Waterfalls and reservoirs are at their fullest.",
+        "crowds": "The quietest of the three — you will often share the walkway with only a handful of people, and riverside rooms are at their cheapest.",
         "verdict": "Green landscapes, dramatic river photography, low-season prices and thinner crowds."
       }
     ]
@@ -953,7 +915,7 @@
   "audiencePlans": {
     "navLabel": "Who it suits",
     "title": "Plans tailored to who you're travelling with",
-    "subtitle": "Three ready-made approaches — pick the one that matches your group and the pace you want.",
+    "subtitle": "Four quick profiles, then three ready-made plans — pick the one that matches your group and the pace you want.",
     "labels": {
       "duration": "Suggested time",
       "pace": "Pace",
@@ -961,6 +923,13 @@
       "tips": "Practical tips",
       "watchOut": "Good to know"
     },
+    "groupsLabel": "Good for",
+    "groups": [
+      { "icon": "📸", "group": "Photographers", "resonance": "Steel, trains and river light", "tip": "Tripod just before sunset; bank and bridge both shoot well." },
+      { "icon": "📖", "group": "History travellers", "resonance": "Death Railway & POW story", "tip": "Pair the bridge with the museums and cemetery." },
+      { "icon": "🍜", "group": "Food travellers", "resonance": "Riverside Thai eats", "tip": "Riverside cafés near the bridge serve with a view." },
+      { "icon": "👨‍👩‍👧", "group": "Families", "resonance": "Free, open, educational", "tip": "Avoid peaks, take breaks, watch the little ones." }
+    ],
     "items": [
       {
         "id": "family",
@@ -1049,9 +1018,9 @@
     ]
   },
   "bridgeInDetail": {
-    "navLabel": "Science & respect",
-    "title": "Reading the bridge — and visiting it with care",
-    "subtitle": "A short explainer for what you are actually looking at, plus the responsibilities that come with this place.",
+    "navLabel": "Reading the bridge",
+    "title": "Reading the bridge",
+    "subtitle": "A short explainer for what you are actually looking at: the curve, the rivets, and the reasons behind both.",
     "explainTitle": "How to read what you're looking at",
     "explainIntro": "The bridge is a working piece of 1940s engineering, and its shape tells you what it had to do: carry heavy trains across a wide river, on a deadline that left no time to build a proper foundation first.",
     "explainItems": [
@@ -1061,16 +1030,6 @@
       { "icon": "🌊", "title": "Why the water looks different every season", "text": "In the cool season the Khwae Yai runs low and clear, so the pier bases and the riverbed structure become visible. In the rainy season it carries sediment and rises fast — which is why the piers are set so deep and so wide." },
       { "icon": "🚂", "title": "It is still a live railway", "text": "This is not a museum piece: passenger trains still cross on a regular daytime schedule. That is why the walkway has refuge platforms — they exist so you have somewhere safe to stand when a train arrives." },
       { "icon": "🪨", "title": "Why trains crawl through here", "text": "The alignment through the mountains is tight and steep, so trains slow to walking pace across the bridge and through the cuttings. That slowness is a direct result of how quickly the line was built." }
-    ],
-    "responsibilityTitle": "Visiting with respect",
-    "responsibilityIntro": "Tens of thousands of people died building this railway, and the bridge is both an active railway and a memorial. A few simple habits keep it that way for everyone.",
-    "duties": [
-      { "icon": "🕯️", "title": "Treat it as a memorial first", "text": "The cemeteries, memorial plaques and the cutting at Hellfire Pass are graves and commemorative sites. Keep voices low, avoid playful posing on memorials, and never move or lean on markers." },
-      { "icon": "🚧", "title": "Never stand on the tracks", "text": "Trains cross without warning and cannot stop quickly. Stay behind the refuge points when a train approaches, and keep children within arm's reach at all times." },
-      { "icon": "🗑️", "title": "Take everything back out", "text": "The bridge and riverbanks have limited waste collection. Carry out bottles, wrappers and food scraps — plastic in the river is the most visible damage visitors cause." },
-      { "icon": "🐒", "title": "Do not feed the animals", "text": "Macaques, monitor lizards and river birds quickly become dependent on handouts, and fed animals can turn aggressive. Watch from a distance and never feed by hand." },
-      { "icon": "🛕", "title": "Respect local places of worship", "text": "Nearby temples and shrines are working religious sites. Cover shoulders and knees, remove shoes where indicated, and ask before photographing people at prayer." },
-      { "icon": "🛍️", "title": "Support locally, and fairly", "text": "Buying from small riverside stalls and family-run shops keeps the benefit in the community. Do not buy objects presented as wartime relics — that trade damages heritage sites." }
     ]
   },
   "sources": {
@@ -1178,30 +1137,6 @@
       { "title": "A story of reconciliation", "text": "Today it is visited by people from many nations, including those connected to the conflict.", "items": ["Visitors from many lands", "Memory and peace", "Shared history"] }
     ]
   },
-  "seasonGuide": {
-    "title": "Visit by season",
-    "subtitle": "Kanchanaburi has three clear seasons; the bridge feels different each.",
-    "seasonTitle": "Three seasons",
-    "seasonSubtitle": "Pick the season, visit easier.",
-    "seasons": [
-      { "icon": "❄️", "badge": "Cool", "name": "Cool (Nov–Feb)", "summary": "Most pleasant, cool mornings — top choice for the bridge walk.", "highlights": ["Most comfortable", "Also most crowded", "Festivals dense"] },
-      { "icon": "🔥", "badge": "Hot", "name": "Hot (Mar–May)", "summary": "Very warm — go after 16:00 and drink water.", "highlights": ["Warm midday", "Cooler at dusk", "Sun care & hydration"] },
-      { "icon": "🌧️", "badge": "Rainy", "name": "Rainy (Jun–Oct)", "summary": "Showers; an umbrella is enough, and the river is fullest.", "highlights": ["Mostly showers", "Greener hills", "Fewer crowds"] }
-    ]
-  },
-  "visitorTypes": {
-    "title": "Who will love it",
-    "subtitle": "Different travellers each find their rhythm here.",
-    "resonanceLabel": "Good for",
-    "routeLabel": "Suggested line",
-    "tipLabel": "Tip",
-    "items": [
-      { "icon": "📸", "group": "Photographers", "resonance": "Steel, trains and river light", "tip": "Tripod just before sunset; bank and bridge both shoot well." },
-      { "icon": "📖", "group": "History travellers", "resonance": "Death Railway & POW story", "tip": "Pair the bridge with the museums and cemetery." },
-      { "icon": "🍜", "group": "Food travellers", "resonance": "Riverside Thai eats", "tip": "Riverside cafés near the bridge serve with a view." },
-      { "icon": "👨‍👩‍👧", "group": "Families", "resonance": "Free, open, educational", "tip": "Avoid peaks, take breaks, watch the little ones." }
-    ]
-  },
   "lodging": {
     "title": "Where to stay for the bridge",
     "subtitle": "Want to wake up near the river? These spots are smoothest.",
@@ -1217,11 +1152,11 @@
     "tips": ["For quiet, pick north-bank or riverside stays", "With luggage, prefer ride-hailing", "Confirm breakfast and transfer"]
   },
   "downloads": {
-    "title": "Official Educational Resources (Self-Guided Kit)",
+    "title": "Self-guided visit kit",
     "items": [
-      { "icon": "📥", "name": "Bridge on the River Kwai Historical Walking Guide (PDF)", "desc": "Detailed construction history, Allied bombing points, and walking safety rules (Free non-profit resource).", "url": "#" },
-      { "icon": "🎧", "name": "10-Minute Bridge Sound Museum", "desc": "A free historical audio guide. Listen to the striking history through your headphones while walking on the tracks.", "url": "#" },
-      { "icon": "📷", "name": "Photo Spot Map", "desc": "The best angles for photographing the bridge and river.", "url": "#" }
+      { "icon": "📖", "name": "The full story, start to finish", "desc": "The wartime build, the bombing, the myths and how the bridge got its name — all in the history section above.", "url": "#history" },
+      { "icon": "🗺️", "name": "Half-day and full-day plans", "desc": "Step-by-step itineraries timed around train crossings and the coolest hours of the day.", "url": "#route" },
+      { "icon": "📷", "name": "Photo spot map", "desc": "The best angles on the bridge and the river, and the light to look for at each one.", "url": "#outdoor-museum" }
     ]
   }
 }

@@ -2,6 +2,7 @@
 import { getI18n } from '../i18n/ui';
 const { messages } = getI18n(Astro.url);
 const a = messages.audiencePlans;
+const groups = a.groups ?? [];
 const items = a.items ?? [];
 ---
 
@@ -11,6 +12,24 @@ const items = a.items ?? [];
       <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3" style="color: var(--text-primary);">{a.title}</h2>
       <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary);">{a.subtitle}</p>
     </div>
+
+    {groups.length > 0 && (
+      <div class="mb-12">
+        <p class="text-xs font-semibold uppercase tracking-[0.14em] text-center mb-4" style="color: var(--text-muted);">{a.groupsLabel}</p>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {groups.map((g) => (
+            <div class="rounded-2xl border p-4 h-full" style="background: var(--bg-tertiary); border-color: var(--border-color);">
+              <div class="flex items-center gap-2.5 mb-1.5">
+                <span class="text-xl leading-none" aria-hidden="true">{g.icon}</span>
+                <h3 class="font-semibold text-base" style="color: var(--text-primary);">{g.group}</h3>
+              </div>
+              <p class="text-sm leading-relaxed" style="color: var(--accent);">{g.resonance}</p>
+              <p class="text-xs leading-relaxed mt-2" style="color: var(--text-muted);">{g.tip}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
 
     <div class="grid gap-6 lg:grid-cols-3">
       {items.map((item) => (
