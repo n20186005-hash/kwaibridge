@@ -1,0 +1,60 @@
+---
+/**
+ * 首屏实时信息条（Server Component）
+ * 与天气板块共用同一份服务端数据与缓存，浏览器不直接访问任何第三方接口。
+ */
+import { getMessagesByLang } from '../i18n/ui';
+import { getWeather, CONDITION_ICON } from '../lib/weather';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const messages = getMessagesByLang(lang);
+const live = messages.hero?.liveInfo ?? {};
+const w = messages.weather;
+const data = await getWeather((Astro.locals as any)?.runtime);
+
+const pad = (value: number) => String(value).padStart(2, '0');
+
+/** 在 HH:mm 基础上平移分钟数 */
+const shift = (hhmm: string, minutes: number): string => {
+  const parts = /^(\d{1,2}):(\d{2})$/.exec(hhmm ?? '');
+  if (!parts) return '';
+  const total = (Number(parts[1]) * 60 + Number(parts[2]) + minutes + 1440) % 1440;
+  return `${pad(Math.floor(total / 60))}:${pad(total % 60)}`;
+};
+
+const sunset = data?.days?.[0]?.sunset ?? '';
+const arrive = sunset ? shift(sunset, -60) : '';
+const blueHourEnd = sunset ? shift(sunset, 30) : '';
+const condition = data ? (w.condition as any)?.[data.current.condition] ?? '' : '';
+
+const stripStyle = 'background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(8px);';
+---
+
+<div class="flex justify-center mb-6">
+  <div class="inline-flex items-center gap-4 px-5 py-2.5 rounded-full" style={stripStyle}>
+    <div class="flex items-center gap-2 text-sm text-white/90">
+      <span class="text-base" aria-hidden="true">{data ? CONDITION_ICON[data.current.condition] ?? '🌤️' : '🌤️'}</span>
+      <span>{live.weather}</span>
+      <span class="font-medium">
+        {data ? `${condition} ${Math.round(data.current.temperature)}°C` : '—'}
+      </span>
+    </div>
+    <div class="w-px h-4 bg-white/20" aria-hidden="true"></div>
+    <div class="flex items-center gap-2 text-sm text-white/90">
+      <span class="text-base" aria-hidden="true">🌅</span>
+      <span>{live.sunset}</span>
+      <span class="font-medium">{sunset || '—'}</span>
+    </div>
+  </div>
+  <span
+    id="hero-live-derived"
+    data-arrive={arrive}
+    data-blue-start={sunset}
+    data-blue-end={blueHourEnd}
+    hidden
+  ></span>
+</div>

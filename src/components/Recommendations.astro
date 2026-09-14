@@ -6,7 +6,10 @@ const rec = messages.recommendations;
 
 <section class="section-padding" style="background: var(--bg-primary);">
   <div class="max-w-6xl mx-auto px-4">
-    <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-10 text-center" style="color: var(--text-primary);">{rec.title}</h2>
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3 text-center" style="color: var(--text-primary);">{rec.title}</h2>
+    {rec.subtitle && (
+      <p class="text-center text-base sm:text-lg mb-10" style="color: var(--text-secondary);">{rec.subtitle}</p>
+    )}
 
     {rec.route && (
       <div class="max-w-4xl mx-auto mb-12 rounded-3xl p-6 md:p-8 border relative overflow-hidden" style="background: color-mix(in srgb, var(--accent) 5%, var(--bg-tertiary)); border-color: var(--border-color);">

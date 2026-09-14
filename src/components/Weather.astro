@@ -1,0 +1,29 @@
+---
+import { getI18n } from '../i18n/ui';
+import WeatherIsland from './WeatherIsland.astro';
+
+const { lang, messages } = getI18n(Astro.url);
+const w = messages.weather;
+---
+
+<section id="weather" class="section-padding" style="background: var(--bg-secondary);">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3 text-center" style="color: var(--text-primary);">
+      {w.title}
+    </h2>
+    <p class="text-center text-lg max-w-3xl mx-auto mb-10" style="color: var(--text-secondary);">
+      {w.subtitle}
+    </p>
+
+    <WeatherIsland lang={lang} server:defer>
+      <div
+        slot="fallback"
+        class="rounded-2xl border p-6 sm:p-8"
+        style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);"
+      >
+        <p class="font-display text-xl font-semibold mb-2" style="color: var(--text-primary);">{w.fallbackTitle}</p>
+        <p class="text-sm leading-relaxed max-w-3xl" style="color: var(--text-secondary);">{w.fallbackText}</p>
+      </div>
+    </WeatherIsland>
+  </div>
+</section>

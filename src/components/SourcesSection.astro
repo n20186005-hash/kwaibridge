@@ -1,0 +1,62 @@
+---
+import { getI18n } from '../i18n/ui';
+import { placeConfig } from '../config';
+const { messages } = getI18n(Astro.url);
+const s = messages.sources ?? {};
+const items = s.items ?? [];
+const landmarks = [placeConfig.nearbyLandmark1, placeConfig.nearbyLandmark2];
+---
+
+<section id="sources" class="section-padding" style="background: var(--bg-secondary);">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3 text-center" style="color: var(--text-primary);">{s.title}</h2>
+    {s.subtitle && (
+      <p class="text-center text-base sm:text-lg mb-4" style="color: var(--text-secondary);">{s.subtitle}</p>
+    )}
+    {s.intro && (
+      <p class="text-center text-sm leading-relaxed mb-10 max-w-3xl mx-auto" style="color: var(--text-muted);">{s.intro}</p>
+    )}
+
+    <ul class="grid sm:grid-cols-2 gap-4 list-none">
+      {items.map((item) => (
+        <li class="rounded-2xl p-5 border h-full" style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);">
+          <div class="flex items-start gap-3">
+            <span class="text-xl shrink-0" aria-hidden="true">{item.icon}</span>
+            <div class="min-w-0">
+              <h3 class="font-semibold text-sm mb-1" style="color: var(--text-primary);">{item.name}</h3>
+              <p class="text-xs leading-relaxed mb-3" style="color: var(--text-secondary);">{item.desc}</p>
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-xs font-medium underline underline-offset-2 break-words"
+                style="color: var(--accent);"
+              >
+                {s.referenceLabel}：{item.label} ↗
+              </a>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mt-8 rounded-2xl p-5 border text-sm leading-relaxed" style="background: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-secondary);">
+      <p>
+        {placeConfig.officialName} — {placeConfig.streetAddress}, {placeConfig.district}, {placeConfig.province} {placeConfig.postalCode}, {placeConfig.country} · Plus Code {placeConfig.plusCode}
+      </p>
+      <p class="mt-2">
+        {landmarks.join(' · ')}
+      </p>
+      <p class="mt-2">
+        {s.officialNote ?? ''}
+        <a href={placeConfig.govtTourismUrl} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2" style="color: var(--accent);">
+          {placeConfig.govtTourismName} ↗
+        </a>
+      </p>
+    </div>
+
+    {s.note && (
+      <p class="text-xs mt-6 leading-relaxed text-center" style="color: var(--text-muted);">{s.note}</p>
+    )}
+  </div>
+</section>

@@ -1,0 +1,29 @@
+---
+import { getI18n } from '../i18n/ui';
+const { messages } = getI18n(Astro.url);
+const t = messages.historyStory;
+const legends = t.legends ?? [];
+---
+
+{legends.length > 0 && (
+  <div class="mt-14">
+    <h3 class="font-display text-2xl font-semibold mb-2" style="color: var(--text-primary);">{t.legendsTitle}</h3>
+    <p class="text-sm sm:text-base leading-relaxed max-w-3xl mb-6" style="color: var(--text-secondary);">
+      {t.legendsIntro}
+    </p>
+    <div class="grid gap-4 sm:grid-cols-2">
+      {legends.map((item) => (
+        <article
+          class="rounded-2xl border p-5 flex gap-4"
+          style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);"
+        >
+          <span class="text-2xl leading-none shrink-0" aria-hidden="true">{item.icon}</span>
+          <div class="min-w-0">
+            <h4 class="font-semibold text-base mb-2" style="color: var(--text-primary);">{item.title}</h4>
+            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">{item.text}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+)}

@@ -1,0 +1,131 @@
+---
+import { getI18n } from '../i18n/ui';
+const { messages } = getI18n(Astro.url);
+const rt = messages.visitRoutes;
+const tabs = [
+  { id: 'half', label: rt.tabHalf, data: rt.routes.half },
+  { id: 'full', label: rt.tabFull, data: rt.routes.full },
+];
+---
+
+<section id="route" class="section-padding" style="background: var(--bg-secondary);">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center mb-8">
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3" style="color: var(--text-primary);">{rt.title}</h2>
+      <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary);">{rt.subtitle}</p>
+    </div>
+
+    <div class="flex justify-center gap-2 mb-8" role="tablist" data-route-tabs>
+      {tabs.map((tab, i) => (
+        <button
+          type="button"
+          role="tab"
+          id={`route-tab-${tab.id}`}
+          aria-controls={`route-panel-${tab.id}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          data-route-tab={tab.id}
+          class="px-5 py-2.5 rounded-full text-sm font-semibold border transition"
+          style={i === 0
+            ? 'background: var(--accent); border-color: var(--accent); color: #fff;'
+            : 'background: var(--card-bg); border-color: var(--border-color); color: var(--text-secondary);'}
+        >
+          {tab.label}
+        </button>
+      ))}
+    </div>
+
+    {tabs.map((tab, i) => (
+      <div
+        id={`route-panel-${tab.id}`}
+        role="tabpanel"
+        aria-labelledby={`route-tab-${tab.id}`}
+        data-route-panel={tab.id}
+        hidden={i !== 0}
+        class="max-w-4xl mx-auto"
+      >
+        <div
+          class="rounded-3xl p-6 md:p-8 border"
+          style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);"
+        >
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mb-6">
+            <h3 class="font-display text-2xl font-semibold" style="color: var(--text-primary);">{tab.data.name}</h3>
+            <span class="text-xs uppercase tracking-[0.18em]" style="color: var(--text-muted);">
+              {rt.labels.duration} {tab.data.duration}
+            </span>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4 mb-7">
+            <div
+              class="rounded-2xl p-4 border-l-4"
+              style="background: color-mix(in srgb, var(--accent) 9%, transparent); border-color: var(--accent);"
+            >
+              <p class="text-xs uppercase tracking-[0.16em] mb-1" style="color: var(--text-muted);">{rt.labels.bestStart}</p>
+              <p class="text-sm font-semibold" style="color: var(--text-primary);">{tab.data.bestStart}</p>
+            </div>
+            <div class="rounded-2xl p-4 border" style="background: var(--bg-tertiary); border-color: var(--border-color);">
+              <p class="text-xs uppercase tracking-[0.16em] mb-1" style="color: var(--text-muted);">{rt.labels.goodFor}</p>
+              <p class="text-sm font-semibold" style="color: var(--text-primary);">{tab.data.goodFor}</p>
+            </div>
+          </div>
+
+          <p class="text-base leading-relaxed mb-7 pb-6 border-b" style="color: var(--text-secondary); border-color: var(--border-color);">
+            <strong style="color: var(--text-primary);">{rt.labels.summary}</strong>
+            {' '}
+            {tab.data.summary}
+          </p>
+
+          <ol class="space-y-5">
+            {tab.data.steps.map((step, index) => (
+              <li class="flex gap-4 items-start">
+                <div
+                  class="shrink-0 w-16 rounded-2xl flex items-center justify-center py-2 text-xs font-semibold tabular-nums"
+                  style="background: var(--tag-bg); color: var(--tag-text);"
+                >
+                  {step.time}
+                </div>
+                <div class="min-w-0 pt-0.5">
+                  <p class="font-semibold text-lg leading-snug" style="color: var(--text-primary);">
+                    <span class="text-xs mr-2" style="color: var(--text-muted);">{String(index + 1).padStart(2, '0')}</span>
+                    {step.title}
+                  </p>
+                  <p class="text-base leading-relaxed mt-2" style="color: var(--text-secondary);">{step.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+    ))}
+
+    {rt.disclaimer && (
+      <p class="max-w-4xl mx-auto mt-6 text-xs leading-relaxed" style="color: var(--text-muted);">{rt.disclaimer}</p>
+    )}
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('[data-route-tab]'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('[data-route-panel]'));
+    if (tabs.length < 2) return;
+
+    function activate(id) {
+      tabs.forEach(function (tab) {
+        var on = tab.getAttribute('data-route-tab') === id;
+        tab.setAttribute('aria-selected', on ? 'true' : 'false');
+        tab.style.background = on ? 'var(--accent)' : 'var(--card-bg)';
+        tab.style.borderColor = on ? 'var(--accent)' : 'var(--border-color)';
+        tab.style.color = on ? '#fff' : 'var(--text-secondary)';
+      });
+      panels.forEach(function (panel) {
+        panel.hidden = panel.getAttribute('data-route-panel') !== id;
+      });
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        activate(tab.getAttribute('data-route-tab'));
+      });
+    });
+  })();
+</script>

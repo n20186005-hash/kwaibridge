@@ -1,8 +1,11 @@
 ---
 import { getI18n } from '../i18n/ui';
+import { placeConfig } from '../config';
 const { messages } = getI18n(Astro.url);
 const intro = messages.intro;
-const om = messages.officialManagement;
+const site = messages.siteNotes;
+const geoHierarchy: string[] = intro.geoHierarchy ?? [];
+const nearbySearch = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(placeConfig.nearbyLandmark1)}`;
 ---
 
 <section id="about" class="section-padding" style="background: var(--bg-secondary);">
@@ -10,12 +13,42 @@ const om = messages.officialManagement;
     <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-12 items-start">
       <div>
         <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-5" style="color: var(--text-primary);">{intro.title}</h2>
-        <p class="text-lg leading-relaxed mb-8" style="color: var(--text-secondary);">{intro.description}</p>
 
-        {om.title && (
+        {intro.equalStatement && (
+          <p class="text-base sm:text-lg leading-relaxed mb-5 px-5 py-4 rounded-2xl border-l-4" style="background: var(--bg-tertiary); border-color: var(--accent); color: var(--text-primary);">
+            {intro.equalStatement}
+          </p>
+        )}
+
+        {geoHierarchy.length > 0 && (
+          <nav class="mb-6" aria-label="Geographic hierarchy">
+            <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs sm:text-sm" style="color: var(--text-secondary);">
+              {geoHierarchy.map((step, i) => (
+                <>
+                  <li class="px-2 py-0.5 rounded-full" style="background: var(--bg-tertiary);">{step}</li>
+                  {i < geoHierarchy.length - 1 && <li aria-hidden="true" style="color: var(--accent);">→</li>}
+                </>
+              ))}
+            </ol>
+          </nav>
+        )}
+
+        <p class="text-lg leading-relaxed mb-6" style="color: var(--text-secondary);">{intro.description}</p>
+
+        {intro.nearbyStatement && (
+          <div class="mb-8">
+            <p class="text-base leading-relaxed" style="color: var(--text-secondary);">{intro.nearbyStatement}</p>
+            <p class="text-sm mt-3 flex flex-wrap gap-x-4 gap-y-1">
+              <a href="#recommendations" class="underline underline-offset-2" style="color: var(--accent);">{placeConfig.nearbyLandmark1}</a>
+              <a href={nearbySearch} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2" style="color: var(--accent);">{placeConfig.nearbyLandmark2} ↗</a>
+            </p>
+          </div>
+        )}
+
+        {site.title && (
           <div class="rounded-2xl p-6 border" style="background: var(--bg-tertiary); border-color: var(--border-color);">
-            <h3 class="font-semibold mb-3" style="color: var(--text-primary);">{om.title}</h3>
-            <p class="text-base leading-relaxed" style="color: var(--text-secondary);">{om.text}</p>
+            <h3 class="font-semibold mb-3" style="color: var(--text-primary);">{site.title}</h3>
+            <p class="text-base leading-relaxed" style="color: var(--text-secondary);">{site.text}</p>
           </div>
         )}
       </div>

@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kwaibridge",
+  "main": "dist/_worker.js/index.js",
+  "compatibility_date": "2025-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    // 兜底把 /en、/th、/zh 等无尾斜杠请求重定向到规范形式（配合 public/_redirects 的 301 规则）
+    "html_handling": "force-trailing-slash"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

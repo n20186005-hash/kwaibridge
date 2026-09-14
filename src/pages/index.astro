@@ -1,16 +1,31 @@
 ---
-const target = '/th';
+import { siteConfig, placeConfig, absoluteUrl } from '../config';
+const target = '/th/';
 ---
 
 <!doctype html>
 <html lang="th">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="refresh" content={`0; url=${target}`} />
-    <link rel="canonical" href="https://kwaibridge.org/th" />
-    <title>River Kwai Bridge · สะพานข้ามแม่น้ำแคว · 桂河大桥</title>
+    <link rel="canonical" href={absoluteUrl(target)} />
+    <link rel="alternate" hreflang="zh" href={absoluteUrl('/zh/')} />
+    <link rel="alternate" hreflang="en" href={absoluteUrl('/en/')} />
+    <link rel="alternate" hreflang="th" href={absoluteUrl('/th/')} />
+    <link rel="alternate" hreflang="x-default" href={absoluteUrl('/th/')} />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#c96a1d" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png" />
+    <title>{placeConfig.fullName} · {placeConfig.localName} · {placeConfig.zhName}</title>
+    <meta name="description" content={placeConfig.fullName + ' in ' + placeConfig.city + ', ' + placeConfig.province + ', ' + placeConfig.country} />
+    <link rel="preload" as="image" href={absoluteUrl(placeConfig.heroImage)} />
   </head>
   <body>
     <p>กำลังไปที่ <a href={target}>ไทย</a>…</p>
+    <p lang="zh-CN">正在前往 <a href="/zh/">中文</a>…</p>
+    <p lang="en">Redirecting to <a href="/en/">English</a>…</p>
   </body>
 </html>

@@ -1,32 +1,76 @@
 ---
 import { getI18n } from '../i18n/ui';
+import { placeConfig } from '../config';
 const { messages } = getI18n(Astro.url);
 const m = messages.mapSection;
-const embedUrl = 'https://www.google.com/maps?q=14.0386,99.5304&output=embed';
+
+const addressLines = {
+  address: `${placeConfig.streetAddress}, ${placeConfig.district}, ${placeConfig.province} ${placeConfig.postalCode}, ${placeConfig.country}`,
+  plusCode: placeConfig.plusCode,
+  coordinates: `${placeConfig.latitude}, ${placeConfig.longitude}`,
+};
+
+const details = [
+  { label: m.addressLabel, value: addressLines.address, href: m.mapsUrl },
+  { label: m.plusCodeLabel, value: addressLines.plusCode, href: m.mapsUrl },
+  { label: m.coordinatesLabel, value: addressLines.coordinates, href: m.mapsUrl },
+];
 ---
 
 <section id="map" class="section-padding" style="background: var(--bg-secondary);">
   <div class="max-w-4xl mx-auto px-4">
     <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3 text-center" style="color: var(--text-primary);">{m.title}</h2>
-    <p class="text-center text-base sm:text-lg mb-8" style="color: var(--text-secondary);">{m.subtitle}</p>
+    <p class="text-center text-base sm:text-lg mb-6" style="color: var(--text-secondary);">{m.subtitle}</p>
+
+    {m.answerText && (
+      <div
+        class="rounded-2xl border p-5 sm:p-6 mb-8 max-w-3xl mx-auto"
+        style="background: var(--card-bg); border-color: var(--border-color);"
+      >
+        <p class="text-xs uppercase tracking-[0.18em] mb-2" style="color: var(--accent);">{m.answerTitle}</p>
+        <p class="text-sm sm:text-base leading-relaxed" style="color: var(--text-primary);">{m.answerText}</p>
+      </div>
+    )}
 
     <div class="map-container overflow-hidden border" style="border-color: var(--map-border);">
       <iframe
-        src={embedUrl}
+        src={placeConfig.mapsEmbedSrc}
         class="w-full h-[320px] sm:h-[420px]"
         width="100%"
         height="420"
         style="border:0;"
+        allowfullscreen
         loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        title={m.title}
+        referrerpolicy="strict-origin-when-cross-origin"
+        title={m.mapTitle ?? m.title}
       ></iframe>
     </div>
+
+    {m.addressTitle && (
+      <div class="mt-8 grid sm:grid-cols-3 gap-4">
+        <h3 class="sr-only">{m.addressTitle}</h3>
+        {details.map((row) => (
+          <div class="rounded-2xl p-5 border" style="background: var(--card-bg); border-color: var(--border-color);">
+            <p class="text-xs uppercase tracking-[0.18em] mb-2" style="color: var(--text-secondary);">{row.label}</p>
+            <a href={row.href} target="_blank" rel="noopener noreferrer" class="text-sm leading-relaxed underline underline-offset-2" style="color: var(--text-primary);">{row.value}</a>
+          </div>
+        ))}
+      </div>
+    )}
 
     <div class="text-center mt-8 flex flex-wrap justify-center gap-3">
       <a href={m.mapsUrl} target="_blank" rel="noopener noreferrer" class="inline-flex w-full sm:w-auto justify-center px-8 py-3 rounded-full font-semibold text-white" style="background: var(--accent);">
         📍 {m.openMaps}
       </a>
     </div>
+
+    {m.officialNote && (
+      <p class="text-center text-sm mt-6 leading-relaxed" style="color: var(--text-secondary);">
+        {m.officialNote}{' '}
+        <a href={placeConfig.govtTourismUrl} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2" style="color: var(--accent);">
+          {m.officialLink ?? placeConfig.govtTourismName}
+        </a>.
+      </p>
+    )}
   </div>
 </section>

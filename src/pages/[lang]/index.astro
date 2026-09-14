@@ -4,22 +4,30 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import SectionNav from '../../components/SectionNav.astro';
 import Hero from '../../components/Hero.astro';
 import QuickFactsDashboard from '../../components/QuickFactsDashboard.astro';
-import ComplianceGuide from '../../components/ComplianceGuide.astro';
-import HigashiyamaRoute from '../../components/HigashiyamaRoute.astro';
+import Weather from '../../components/Weather.astro';
+import SeasonStrategy from '../../components/SeasonStrategy.astro';
+import AudiencePlans from '../../components/AudiencePlans.astro';
+import Facilities from '../../components/Facilities.astro';
+import BridgeInDetail from '../../components/BridgeInDetail.astro';
+import EtiquetteSafety from '../../components/EtiquetteSafety.astro';
+import HalfDayRoute from '../../components/HalfDayRoute.astro';
 import Intro from '../../components/Intro.astro';
 import Transport from '../../components/Transport.astro';
+import InDepthGuide from '../../components/InDepthGuide.astro';
 import Lodging from '../../components/Lodging.astro';
-import HumanitiesDossier from '../../components/HumanitiesDossier.astro';
-import OutdoorMuseum from '../../components/OutdoorMuseum.astro';
+import HistorySection from '../../components/HistorySection.astro';
+import PhotoSpots from '../../components/PhotoSpots.astro';
 import Gallery from '../../components/Gallery.astro';
 import FeaturedQuotes from '../../components/FeaturedQuotes.astro';
-import HiddenRules from '../../components/HiddenRules.astro';
+import InsiderTips from '../../components/InsiderTips.astro';
 import Reviews from '../../components/Reviews.astro';
 import MapEmbed from '../../components/MapEmbed.astro';
+import MobileMapBar from '../../components/MobileMapBar.astro';
 import DeepDive from '../../components/DeepDive.astro';
 import Downloads from '../../components/Downloads.astro';
 import FAQ from '../../components/FAQ.astro';
 import Recommendations from '../../components/Recommendations.astro';
+import SourcesSection from '../../components/SourcesSection.astro';
 import { getI18n, languagesList } from '../../i18n/ui';
 
 export function getStaticPaths() {
@@ -52,19 +60,27 @@ const faqLd = (() => {
   <Hero />
   <QuickFactsDashboard />
   <Intro />
-  <HumanitiesDossier />
+  <Weather />
+  <HistorySection />
   <DeepDive />
+  <SeasonStrategy />
   <Transport />
-  <HigashiyamaRoute />
-  <HiddenRules />
-  <ComplianceGuide />
+  <InDepthGuide />
+  <HalfDayRoute />
+  <AudiencePlans />
+  <InsiderTips />
+  <EtiquetteSafety />
+  <BridgeInDetail />
   <Lodging />
+  <Facilities />
   <MapEmbed />
   <Downloads />
   <FAQ />
-  <OutdoorMuseum />
+  <PhotoSpots />
   <Gallery />
   <FeaturedQuotes />
   <Reviews />
   <Recommendations />
+  <SourcesSection />
+  <MobileMapBar />
 </BaseLayout>

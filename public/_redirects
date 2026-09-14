@@ -1,1 +1,22 @@
+# 规范 URL：全站统一带尾斜杠（301 永久重定向）
+# 背景：Search Console 中 `/en`(18 曝光) 与 `/en/`(959 曝光) 被当作两个页面收录，
+# 权重被分散。此处对无尾斜杠形式做 301，配合 wrangler.jsonc 的
+# assets.html_handling = force-trailing-slash 兜底覆盖未来新增路由。
+/th      /th/      301
+/zh      /zh/      301
+/en      /en/      301
+
+/th/privacy-policy   /th/privacy-policy/   301
+/zh/privacy-policy   /zh/privacy-policy/   301
+/en/privacy-policy   /en/privacy-policy/   301
+
+/th/terms-of-service   /th/terms-of-service/   301
+/zh/terms-of-service   /zh/terms-of-service/   301
+/en/terms-of-service   /en/terms-of-service/   301
+
+/th/cookie-settings   /th/cookie-settings/   301
+/zh/cookie-settings   /zh/cookie-settings/   301
+/en/cookie-settings   /en/cookie-settings/   301
+
+# 根域名按访问语言跳转到默认语言（泰语）
 / /th/ 302

@@ -1,9 +1,10 @@
 ---
 import { getI18n } from '../i18n/ui';
+import { galleryConfig } from '../config';
 const { messages } = getI18n(Astro.url);
 const reviews = messages.reviews;
 const featured = reviews.featured ?? [];
-const bg = '/gallery/river-kwai-bridge-2.jpg';
+const bg = galleryConfig.file(2);
 ---
 
 {featured.length > 0 && (

@@ -6,18 +6,22 @@ const h = messages.header;
 const items = [
   { label: n.facts, href: '#quick-facts' },
   { label: h.history, href: '#history' },
+  { label: messages.weather.navLabel, href: '#weather' },
+  { label: messages.seasonStrategy.navLabel, href: '#seasons' },
   { label: n.transport, href: '#transport' },
+  { label: messages.deepGuide.navLabel, href: '#deep-guide' },
   { label: n.route, href: '#route' },
   { label: n.visit, href: '#visit' },
+  { label: messages.facilities.navLabel, href: '#facilities' },
   { label: n.faq, href: '#faq' },
 ];
 ---
 
 <div class="section-nav" id="section-nav" aria-label="Section navigation">
   <div class="max-w-6xl mx-auto px-4 flex items-center gap-1 overflow-x-auto">
-    <span class="shrink-0 text-sm font-semibold mr-1" style="color: var(--text-primary);" aria-hidden="true">🛕</span>
+    <span class="shrink-0 text-sm font-semibold mr-1" style="color: var(--text-primary);" aria-hidden="true">🚂</span>
     {items.map((it) => (
-      <a href={`/${lang}${it.href}`} class="section-nav-link">{it.label}</a>
+      <a href={`/${lang}/${it.href}`} class="section-nav-link">{it.label}</a>
     ))}
   </div>
 </div>

@@ -1,0 +1,136 @@
+---
+/**
+ * 移动端悬浮地图条
+ * ---------------------------------------------------------------
+ * Search Console 显示移动端平均排名 19.14（CTR 0.62%），明显优于桌面端的
+ * 33.41（CTR 0.12%），且移动用户多为「旅行中临时检索」。因此把两个最高频
+ * 动作固定到拇指可及的位置：打开 Google 地图、复制 Plus Code。
+ *
+ * 仅在移动端显示，并在滚过首屏后出现——首屏本身已有 Hero 内的地图入口，
+ * 避免重复占位。
+ */
+import { getI18n } from '../i18n/ui';
+import { placeConfig } from '../config';
+
+const { messages } = getI18n(Astro.url);
+const b = messages.mobileBar;
+---
+
+<div
+  id="mobile-map-bar"
+  class="md:hidden fixed bottom-0 inset-x-0 z-40 translate-y-full opacity-0 transition-all duration-300"
+  style="background: color-mix(in srgb, var(--bg-primary) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--border-color); padding-bottom: env(safe-area-inset-bottom);"
+  aria-label={b.ariaLabel}
+>
+  <div class="px-3 py-2.5 flex items-center gap-2">
+    <a
+      href={placeConfig.mapsShareUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-semibold text-white text-sm"
+      style="background: var(--accent);"
+    >
+      <span aria-hidden="true">📍</span>
+      <span>{b.mapsLabel}</span>
+    </a>
+    <button
+      type="button"
+      id="plus-code-copy"
+      data-plus-code={placeConfig.plusCode}
+      data-copied={b.copied}
+      data-failed={b.failed}
+      class="inline-flex items-center justify-center gap-2 px-3.5 py-3 rounded-xl font-semibold text-sm border whitespace-nowrap"
+      style="border-color: var(--border-color); color: var(--text-primary); background: var(--card-bg);"
+    >
+      <span aria-hidden="true">⧉</span>
+      <span data-copy-label>{b.copyLabel}</span>
+    </button>
+  </div>
+</div>
+
+<style is:global>
+  /* 为固定条预留空间，避免遮住页脚最后一行 */
+  @media (max-width: 767px) {
+    body {
+      padding-bottom: calc(4.75rem + env(safe-area-inset-bottom));
+    }
+  }
+
+  #mobile-map-bar.is-visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var bar = document.getElementById('mobile-map-bar');
+    var btn = document.getElementById('plus-code-copy');
+    if (!bar) return;
+
+    // 滚过首屏后再出现：首屏 Hero 内已有一个地图入口
+    var ticking = false;
+    function update() {
+      var show = window.scrollY > window.innerHeight * 0.6;
+      bar.classList.toggle('is-visible', show);
+      ticking = false;
+    }
+    window.addEventListener(
+      'scroll',
+      function () {
+        if (!ticking) {
+          ticking = true;
+          window.requestAnimationFrame(update);
+        }
+      },
+      { passive: true },
+    );
+    update();
+
+    if (btn) {
+      btn.addEventListener('click', function () {
+        var code = btn.getAttribute('data-plus-code') || '';
+        var label = btn.querySelector('[data-copy-label]');
+        if (!label) return;
+        var original = label.textContent;
+
+        function done(ok) {
+          label.textContent = ok ? btn.getAttribute('data-copied') : btn.getAttribute('data-failed');
+          window.setTimeout(function () {
+            label.textContent = original;
+          }, 2200);
+        }
+
+        function legacyCopy() {
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = code;
+            ta.setAttribute('readonly', '');
+            ta.style.position = 'fixed';
+            ta.style.top = '-1000px';
+            document.body.appendChild(ta);
+            ta.select();
+            var ok = document.execCommand('copy');
+            document.body.removeChild(ta);
+            done(ok);
+          } catch (e) {
+            done(false);
+          }
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(code).then(
+            function () {
+              done(true);
+            },
+            function () {
+              legacyCopy();
+            },
+          );
+        } else {
+          legacyCopy();
+        }
+      });
+    }
+  })();
+</script>

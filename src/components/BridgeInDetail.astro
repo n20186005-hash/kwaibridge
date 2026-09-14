@@ -1,0 +1,57 @@
+---
+import { getI18n } from '../i18n/ui';
+const { messages } = getI18n(Astro.url);
+const s = messages.bridgeInDetail;
+const explainItems = s.explainItems ?? [];
+const duties = s.duties ?? [];
+---
+
+<section id="science" class="section-padding" style="background: var(--bg-secondary);">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center mb-12">
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3" style="color: var(--text-primary);">{s.title}</h2>
+      <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary);">{s.subtitle}</p>
+    </div>
+
+    <div class="mb-14">
+      <h3 class="font-display text-2xl font-semibold mb-2" style="color: var(--text-primary);">{s.explainTitle}</h3>
+      <p class="text-sm sm:text-base leading-relaxed max-w-3xl mb-6" style="color: var(--text-secondary);">{s.explainIntro}</p>
+
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-6">
+        {explainItems.map((item) => (
+          <article
+            class="rounded-2xl border p-5"
+            style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);"
+          >
+            <p class="text-2xl leading-none mb-3" aria-hidden="true">{item.icon}</p>
+            <h4 class="font-semibold text-base mb-2" style="color: var(--text-primary);">{item.title}</h4>
+            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div
+      class="rounded-3xl border p-6 md:p-9"
+      style="background: var(--bg-tertiary); border-color: var(--border-color);"
+    >
+      <h3 class="font-display text-2xl font-semibold mb-2" style="color: var(--text-primary);">{s.responsibilityTitle}</h3>
+      <p class="text-sm sm:text-base leading-relaxed max-w-3xl mb-7" style="color: var(--text-secondary);">
+        {s.responsibilityIntro}
+      </p>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {duties.map((duty) => (
+          <div
+            class="rounded-2xl border p-5 h-full"
+            style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);"
+          >
+            <p class="text-2xl leading-none mb-3" aria-hidden="true">{duty.icon}</p>
+            <h4 class="font-semibold text-base mb-2" style="color: var(--text-primary);">{duty.title}</h4>
+            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">{duty.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

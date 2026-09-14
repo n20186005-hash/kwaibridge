@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# 全站规范 URL 为「带尾斜杠」形式（/en/、/th/、/zh/）。
+# 无尾斜杠的写法会 301 重定向到规范形式，无需单独收录。
+Sitemap: https://kwaibridge.org/sitemap.xml

@@ -1,0 +1,70 @@
+---
+import { getI18n } from '../i18n/ui';
+const { messages } = getI18n(Astro.url);
+const a = messages.audiencePlans;
+const items = a.items ?? [];
+---
+
+<section id="audience-plans" class="section-padding" style="background: var(--bg-primary);">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="max-w-3xl mx-auto text-center mb-12">
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3" style="color: var(--text-primary);">{a.title}</h2>
+      <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary);">{a.subtitle}</p>
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-3">
+      {items.map((item) => (
+        <article
+          class="rounded-3xl border p-7 flex flex-col h-full"
+          style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);"
+        >
+          <div class="flex items-center gap-4 mb-5">
+            <div
+              class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl shrink-0"
+              style="background: color-mix(in srgb, var(--accent) 14%, transparent);"
+            >
+              {item.icon}
+            </div>
+            <div>
+              <h3 class="font-display text-xl font-semibold leading-tight" style="color: var(--text-primary);">{item.name}</h3>
+              <p class="text-xs mt-0.5" style="color: var(--text-muted);">{item.tagline}</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 mb-5 text-sm">
+            <div class="rounded-xl px-3 py-2.5 border" style="background: var(--bg-tertiary); border-color: var(--border-color);">
+              <p class="text-[11px] uppercase tracking-[0.14em]" style="color: var(--text-muted);">{a.labels.duration}</p>
+              <p class="font-semibold mt-0.5" style="color: var(--text-primary);">{item.duration}</p>
+            </div>
+            <div class="rounded-xl px-3 py-2.5 border" style="background: var(--bg-tertiary); border-color: var(--border-color);">
+              <p class="text-[11px] uppercase tracking-[0.14em]" style="color: var(--text-muted);">{a.labels.pace}</p>
+              <p class="font-semibold mt-0.5" style="color: var(--text-primary);">{item.pace}</p>
+            </div>
+          </div>
+
+          <p class="text-xs font-semibold uppercase tracking-[0.14em] mb-2.5" style="color: var(--accent);">{a.labels.includes}</p>
+          <ul class="space-y-2.5 text-sm mb-5" style="color: var(--text-secondary);">
+            {item.includes.map((line) => (
+              <li class="flex gap-2.5"><span class="shrink-0" style="color: var(--accent);" aria-hidden="true">✦</span><span class="leading-relaxed">{line}</span></li>
+            ))}
+          </ul>
+
+          <p class="text-xs font-semibold uppercase tracking-[0.14em] mb-2.5" style="color: var(--accent);">{a.labels.tips}</p>
+          <ul class="space-y-2.5 text-sm" style="color: var(--text-secondary);">
+            {item.tips.map((line) => (
+              <li class="flex gap-2.5"><span class="shrink-0" style="color: var(--accent);" aria-hidden="true">✓</span><span class="leading-relaxed">{line}</span></li>
+            ))}
+          </ul>
+
+          <div
+            class="mt-6 pt-5 border-t text-sm leading-relaxed"
+            style="border-color: var(--border-color); color: var(--text-secondary);"
+          >
+            <p class="text-xs font-semibold uppercase tracking-[0.14em] mb-1.5" style="color: var(--text-muted);">{a.labels.watchOut}</p>
+            <p>{item.watchOut}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

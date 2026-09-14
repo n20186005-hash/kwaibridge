@@ -1,0 +1,260 @@
+---
+/**
+ * 实时天气与预报（Server Component）
+ * ---------------------------------------------------------------
+ * 该组件通过 `server:defer` 在边缘节点按需渲染：
+ * 页面本身仍是静态 HTML，天气数据在用户打开页面时由服务器取回并缓存，
+ * 浏览器不直接接触第三方接口。数据不可用时回退到静态的常年气候说明。
+ */
+import { getMessagesByLang } from '../i18n/ui';
+import { getWeather, CONDITION_ICON } from '../lib/weather';
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const messages = getMessagesByLang(lang);
+const w = messages.weather;
+const runtime = (Astro.locals as any)?.runtime;
+const data = await getWeather(runtime);
+
+const locale = lang === 'zh' ? 'zh-CN' : lang === 'th' ? 'th-TH' : 'en-GB';
+
+/** 把 {placeholder} 替换成实际数值 */
+const fill = (template: string, params?: Record<string, string | number>): string => {
+  if (!template) return '';
+  if (!params) return template;
+  return template.replace(/\{(\w+)\}/g, (_match, key) =>
+    params[key] === undefined ? `{${key}}` : String(params[key]),
+  );
+};
+
+const groupMeta = [
+  { id: 'outfit' as const, icon: '👕', title: w.groups.outfit },
+  { id: 'plan' as const, icon: '🗺️', title: w.groups.plan },
+  { id: 'gear' as const, icon: '🎒', title: w.groups.gear },
+];
+
+const adviceOf = (group: string) => (data?.advice ?? []).filter((item) => item.group === group);
+
+const conditionLabel = (key: string) => (w.condition as any)?.[key] ?? key;
+const levelLabel = (level: string) => (w.levels as any)?.[level] ?? level;
+
+const levelStyle: Record<string, string> = {
+  low: 'background: rgba(34,150,94,0.14); color: #1f7a4d; border-color: rgba(34,150,94,0.35);',
+  moderate: 'background: rgba(214,148,26,0.16); color: #9a6712; border-color: rgba(214,148,26,0.38);',
+  high: 'background: rgba(198,58,46,0.14); color: #a83226; border-color: rgba(198,58,46,0.38);',
+};
+
+/** 2024-01-07 is a Sunday, so index 0 → Sunday */
+const weekdayLabel = (index: number) =>
+  new Intl.DateTimeFormat(locale, { weekday: 'short', timeZone: 'UTC' }).format(
+    new Date(Date.UTC(2024, 0, 7 + index)),
+  );
+---
+
+{
+  data ? (
+    <div class="space-y-6">
+      {/* ---------- 风险提醒（置顶，最高优先级） ---------- */}
+      {data.alerts.length > 0 ? (
+        <div
+          class="rounded-2xl border p-5 sm:p-6"
+          style="background: rgba(198,58,46,0.08); border-color: rgba(198,58,46,0.42); border-left-width: 4px;"
+          role="alert"
+        >
+          <p class="font-display text-lg font-semibold mb-3 flex items-center gap-2" style="color: #a83226;">
+            <span aria-hidden="true">⚠️</span>
+            {w.alertsTitle}
+          </p>
+          <ul class="space-y-2.5">
+            {data.alerts.map((alert) => (
+              <li class="flex gap-2.5">
+                <span class="shrink-0" style="color: #a83226;" aria-hidden="true">•</span>
+                <span class="text-sm leading-relaxed" style="color: var(--text-primary);">
+                  {fill((w.alerts as any)[alert.key] ?? '', alert.params)}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <div
+          class="rounded-2xl border px-5 py-4 flex items-center gap-3"
+          style="background: rgba(34,150,94,0.08); border-color: rgba(34,150,94,0.32);"
+        >
+          <span aria-hidden="true">✅</span>
+          <span class="text-sm" style="color: var(--text-secondary);">
+            <strong style="color: var(--text-primary);">{w.alertsNoneTitle}</strong>
+            {' — '}
+            {w.alertsNoneText}
+          </span>
+        </div>
+      )}
+
+      {/* ---------- 实况 + 7 日预报 ---------- */}
+      <div class="grid gap-5 lg:grid-cols-3">
+        <div
+          class="rounded-2xl border p-6"
+          style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);"
+        >
+          <p class="text-xs uppercase tracking-[0.18em] mb-4" style="color: var(--text-muted);">{w.nowLabel}</p>
+          <div class="flex items-center gap-4">
+            <span class="text-5xl leading-none" aria-hidden="true">
+              {CONDITION_ICON[data.current.condition] ?? '🌡️'}
+            </span>
+            <div>
+              <p class="font-display text-4xl font-semibold leading-none" style="color: var(--text-primary);">
+                {Math.round(data.current.temperature)}°C
+              </p>
+              <p class="text-sm mt-1" style="color: var(--text-secondary);">
+                {conditionLabel(data.current.condition)}
+                {' · '}
+                {w.feelsLike} {Math.round(data.current.apparent)}°C
+              </p>
+            </div>
+          </div>
+
+          <dl class="grid grid-cols-2 gap-3 mt-6 text-sm">
+            <div>
+              <dt style="color: var(--text-muted);">{w.humidity}</dt>
+              <dd class="font-semibold" style="color: var(--text-primary);">{Math.round(data.current.humidity)}%</dd>
+            </div>
+            <div>
+              <dt style="color: var(--text-muted);">{w.wind}</dt>
+              <dd class="font-semibold" style="color: var(--text-primary);">
+                {fill(w.windLevel, { level: data.current.windLevel })}
+              </dd>
+            </div>
+            <div>
+              <dt style="color: var(--text-muted);">{w.rainChance}</dt>
+              <dd class="font-semibold" style="color: var(--text-primary);">{Math.round(data.current.rainChance)}%</dd>
+            </div>
+            <div>
+              <dt style="color: var(--text-muted);">{w.uvLabel}</dt>
+              <dd class="font-semibold" style="color: var(--text-primary);">{Math.round(data.current.uvIndex)}</dd>
+            </div>
+          </dl>
+
+          <p class="text-xs mt-5 pt-4 border-t" style="color: var(--text-muted); border-color: var(--border-color);">
+            {w.updated} {data.updatedAt}
+          </p>
+        </div>
+
+        <div
+          class="lg:col-span-2 rounded-2xl border p-6"
+          style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);"
+        >
+          <p class="text-xs uppercase tracking-[0.18em] mb-4" style="color: var(--text-muted);">{w.forecastTitle}</p>
+          <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+            {data.days.map((day, i) => (
+              <div
+                class="rounded-xl border px-2 py-3 text-center"
+                style={`border-color: var(--border-color); background: ${i === 0 ? 'var(--bg-tertiary)' : 'transparent'};`}
+                title={i === 0 && day.sunrise ? `${w.sunLabel} ${day.sunrise} – ${day.sunset}` : undefined}
+              >
+                <p class="text-xs font-semibold mb-1" style="color: var(--text-primary);">
+                  {i === 0 ? w.today : weekdayLabel(day.weekday)}
+                </p>
+                <p class="text-2xl leading-none mb-2" aria-hidden="true">{CONDITION_ICON[day.condition] ?? '🌡️'}</p>
+                <p class="text-xs font-semibold" style="color: var(--text-primary);">
+                  {day.max}°<span style="color: var(--text-muted);"> / {day.min}°</span>
+                </p>
+                <p class="text-[11px] mt-1" style="color: var(--text-muted);">
+                  💧 {Math.round(day.rainChance)}%
+                </p>
+              </div>
+            ))}
+          </div>
+          <p class="text-xs mt-4" style="color: var(--text-muted);">
+            {w.lowHigh} · {w.rainChance}
+          </p>
+        </div>
+      </div>
+
+      {/* ---------- 出行建议 ---------- */}
+      <div>
+        <h3 class="font-display text-xl font-semibold mb-4" style="color: var(--text-primary);">{w.adviceTitle}</h3>
+        <div class="grid gap-4 md:grid-cols-3">
+          {groupMeta.map((group) => {
+            const items = adviceOf(group.id);
+            if (items.length === 0) return null;
+            return (
+              <div
+                class="rounded-2xl border p-5"
+                style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);"
+              >
+                <p class="font-semibold mb-3 flex items-center gap-2" style="color: var(--text-primary);">
+                  <span aria-hidden="true">{group.icon}</span>
+                  {group.title}
+                </p>
+
+                {group.id === 'gear' ? (
+                  <ul class="flex flex-wrap gap-2">
+                    {items.map((item) => (
+                      <li
+                        class="text-xs px-2.5 py-1.5 rounded-full border"
+                        style="background: var(--tag-bg); border-color: var(--border-color); color: var(--tag-text);"
+                      >
+                        {fill((w.gear as any)[item.key] ?? '', item.params)}
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <ul class="space-y-2.5">
+                    {items.map((item) => (
+                      <li class="flex gap-2.5">
+                        <span class="shrink-0 text-xs mt-0.5" style="color: var(--accent);" aria-hidden="true">✓</span>
+                        <span class="text-sm leading-relaxed" style="color: var(--text-secondary);">
+                          {fill((w[group.id] as any)[item.key] ?? '', item.params)}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ---------- 现场环境指数 ---------- */}
+      <div>
+        <h3 class="font-display text-xl font-semibold mb-1" style="color: var(--text-primary);">{w.envTitle}</h3>
+        <p class="text-xs mb-4 max-w-3xl" style="color: var(--text-muted);">{w.envNote}</p>
+        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          {data.indices.map((index) => (
+            <div
+              class="rounded-2xl border p-4"
+              style="background: var(--card-bg); border-color: var(--border-color);"
+            >
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <p class="text-sm font-semibold" style="color: var(--text-primary);">
+                  {(w.indices as any)[index.key]?.name ?? index.key}
+                </p>
+                <span
+                  class="text-[11px] px-2 py-0.5 rounded-full border shrink-0"
+                  style={levelStyle[index.level]}
+                >
+                  {levelLabel(index.level)}
+                </span>
+              </div>
+              <p class="text-xs leading-relaxed" style="color: var(--text-secondary);">
+                {(w.indices as any)[index.key]?.[index.level] ?? ''}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div
+      class="rounded-2xl border p-6 sm:p-8"
+      style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);"
+    >
+      <p class="font-display text-xl font-semibold mb-2" style="color: var(--text-primary);">{w.fallbackTitle}</p>
+      <p class="text-sm leading-relaxed max-w-3xl" style="color: var(--text-secondary);">{w.fallbackText}</p>
+    </div>
+  )
+}

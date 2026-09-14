@@ -1,0 +1,202 @@
+---
+/**
+ * 深度长文板块
+ * ---------------------------------------------------------------
+ * Search Console 显示，站点曝光量最高的查询簇是「位置」类
+ * （bridge over the river kwai location 等合计约 250 次曝光）与
+ * 「曼谷交通」类，而原站内容「广而不深」——27 个模块多为浅层卡片。
+ *
+ * 本板块把三件真正决定停留时长与主题权威度的事情讲透：
+ *   1. 历史考据（含 1957 年电影与史实的差异）
+ *   2. 曼谷前往的交通细节（含桥头车站这一非常识性事实）
+ *   3. 周边值得顺访的目的地
+ *   4. 出发前的实用事实
+ *
+ * 内容以英文为源撰写，泰文/中文同为完整对照版本。
+ * 渲染采用通用 block 结构，便于三语结构严格对齐。
+ */
+import { getI18n } from '../i18n/ui';
+
+const { messages } = getI18n(Astro.url);
+const g = messages.deepGuide ?? {};
+const sections = g.sections ?? [];
+
+/** 章节锚点加前缀，避免与既有 #history / #transport 等冲突 */
+const anchor = (id: string) => `deep-${id}`;
+---
+
+<section id="deep-guide" class="section-padding" style="background: var(--bg-primary);">
+  <div class="max-w-4xl mx-auto px-4">
+    <p class="text-xs uppercase tracking-[0.22em] text-center mb-3" style="color: var(--accent);">{g.eyebrow}</p>
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3 text-center" style="color: var(--text-primary);">{g.title}</h2>
+    {g.subtitle && (
+      <p class="text-center text-base sm:text-lg mb-8 max-w-3xl mx-auto leading-relaxed" style="color: var(--text-secondary);">{g.subtitle}</p>
+    )}
+
+    <!-- 章内跳转：长文的关键，避免读者在四段长内容里迷路 -->
+    <nav class="flex flex-wrap justify-center gap-2 mb-12" aria-label={g.navLabel}>
+      {sections.map((s) => (
+        <a
+          href={`#${anchor(s.id)}`}
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm border"
+          style="background: var(--card-bg); border-color: var(--border-color); color: var(--text-secondary);"
+        >
+          <span aria-hidden="true">{s.icon}</span>
+          <span>{s.navLabel}</span>
+        </a>
+      ))}
+    </nav>
+
+    <div class="space-y-14">
+      {sections.map((s) => (
+        <article id={anchor(s.id)} class="scroll-mt-28">
+          <h3 class="font-display text-2xl sm:text-3xl font-semibold mb-3 flex items-start gap-3" style="color: var(--text-primary);">
+            <span aria-hidden="true">{s.icon}</span>
+            <span>{s.title}</span>
+          </h3>
+
+          {s.lead && (
+            <p
+              class="text-base sm:text-lg leading-relaxed mb-6 pl-4 border-l-2 font-medium"
+              style="color: var(--text-primary); border-color: var(--accent);"
+            >
+              {s.lead}
+            </p>
+          )}
+
+          {s.blocks.map((b) => (
+            <>
+              {b.type === 'text' && (
+                <p class="text-base leading-[1.85] mb-5" style="color: var(--text-secondary);">{b.text}</p>
+              )}
+
+              {b.type === 'callout' && (
+                <div
+                  class="rounded-2xl border-l-4 p-5 sm:p-6 my-6"
+                  style="background: var(--bg-secondary); border-color: var(--accent); border-top-color: var(--border-color); border-right-color: var(--border-color); border-bottom-color: var(--border-color);"
+                >
+                  <p class="font-semibold text-base mb-2" style="color: var(--text-primary);">{b.title}</p>
+                  <p class="text-sm sm:text-base leading-relaxed" style="color: var(--text-secondary);">{b.text}</p>
+                </div>
+              )}
+
+              {b.type === 'timeline' && (
+                <div class="my-8">
+                  <h4 class="font-semibold text-sm uppercase tracking-[0.16em] mb-5" style="color: var(--text-primary);">{b.title}</h4>
+                  <ol class="list-none space-y-0">
+                    {(b.items ?? []).map((it) => (
+                      <li class="flex gap-4 pb-5 last:pb-0">
+                        <span
+                          class="shrink-0 w-24 text-sm font-semibold pt-0.5 text-right"
+                          style="color: var(--accent);"
+                        >
+                          {it.year}
+                        </span>
+                        <span class="shrink-0 w-px self-stretch" style="background: var(--border-color);" aria-hidden="true"></span>
+                        <span class="text-sm sm:text-base leading-relaxed" style="color: var(--text-secondary);">{it.text}</span>
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              )}
+
+              {b.type === 'table' && (
+                <div class="my-8">
+                  <h4 class="font-semibold text-sm uppercase tracking-[0.16em] mb-4" style="color: var(--text-primary);">{b.title}</h4>
+                  <div class="overflow-x-auto rounded-2xl border" style="border-color: var(--border-color);">
+                    <table class="w-full text-sm border-collapse">
+                      <thead>
+                        <tr style="background: var(--bg-secondary);">
+                          {(b.columns ?? []).map((c) => (
+                            <th
+                              class="text-left px-4 py-3 font-semibold whitespace-nowrap"
+                              style="color: var(--text-primary); border-bottom: 1px solid var(--border-color);"
+                            >
+                              {c}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {(b.rows ?? []).map((row) => (
+                          <tr>
+                            {row.map((cell, i) => (
+                              <td
+                                class="px-4 py-3 align-top"
+                                style={`color: var(--text-${i === 0 ? 'primary' : 'secondary'}); border-bottom: 1px solid var(--border-color); ${i === 0 ? 'font-medium;' : ''}`}
+                              >
+                                {cell}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+
+              {b.type === 'cards' && (
+                <div class="my-8">
+                  <h4 class="font-semibold text-sm uppercase tracking-[0.16em] mb-4" style="color: var(--text-primary);">{b.title}</h4>
+                  <div class="grid sm:grid-cols-2 gap-4">
+                    {(b.items ?? []).map((it) => (
+                      <div
+                        class="rounded-2xl p-5 border h-full flex flex-col"
+                        style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);"
+                      >
+                        <p class="font-semibold text-base mb-1" style="color: var(--text-primary);">{it.name}</p>
+                        <p class="text-xs uppercase tracking-[0.12em] mb-3" style="color: var(--accent);">{it.meta}</p>
+                        <p class="text-sm leading-relaxed flex-1" style="color: var(--text-secondary);">{it.text}</p>
+                        {it.tip && (
+                          <p
+                            class="text-xs leading-relaxed mt-3 pt-3 border-t"
+                            style="color: var(--text-muted); border-color: var(--border-color);"
+                          >
+                            💡 {it.tip}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {b.type === 'facts' && (
+                <div class="my-8">
+                  <h4 class="font-semibold text-sm uppercase tracking-[0.16em] mb-4" style="color: var(--text-primary);">{b.title}</h4>
+                  <dl class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {(b.items ?? []).map((it) => (
+                      <div
+                        class="rounded-2xl px-4 py-3.5 border"
+                        style="background: var(--card-bg); border-color: var(--border-color);"
+                      >
+                        <dt class="text-xs uppercase tracking-[0.14em] mb-1.5" style="color: var(--text-muted);">{it.label}</dt>
+                        <dd class="text-lg font-semibold mb-1" style="color: var(--text-primary);">{it.value}</dd>
+                        <dd class="text-xs leading-relaxed" style="color: var(--text-secondary);">{it.note}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              )}
+            </>
+          ))}
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* 三语混排时长文档的阅读节奏：正文行高放宽，段落间距统一 */
+  #deep-guide article p {
+    text-wrap: pretty;
+  }
+  #deep-guide table td:last-child,
+  #deep-guide table th:last-child {
+    border-right: none;
+  }
+  #deep-guide table tr:last-child td {
+    border-bottom: none;
+  }
+</style>

@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "River Kwai Bridge (สะพานข้ามแม่น้ำแคว) · Visitor Guide & History",
-    "description": "An independent, non-profit guide to the River Kwai Bridge in Kanchanaburi, Thailand — the history of the Death Railway, how to get there, the best photo spots, and nearby war memorials."
+    "title": "River Khwae Bridge / River Kwai Bridge — Location, Map & Access",
+    "description": "River Kwai Bridge (River Khwae), Kanchanaburi: exact location on the Khwae Yai, map, coordinates and Plus Code, plus train, bus and day-trip options from Bangkok."
   },
   "header": {
     "siteName": "River Kwai Bridge",
@@ -20,13 +20,9 @@
     "changeLanguage": "Change language",
     "toggleTheme": "Toggle dark / light"
   },
-  "nonprofitBanner": {
+  "noticeBanner": {
     "text": "This is a non-profit, educational guide. All information is compiled from public sources, with no commercial endorsement or booking commissions.",
     "dataSource": "Sources: Tourism Authority of Thailand (TAT), Kanchanaburi Province public info, and public map services, cross-checked."
-  },
-  "mission": {
-    "title": "About this guide",
-    "text": "We want every traveller to Kanchanaburi to understand the River Kwai Bridge before they arrive — how a wartime railway became a place of memory. We gathered scattered official information, local stories and practical tips into one calm, ad-free guide, so a visit becomes a real encounter with history."
   },
   "breadcrumb": {
     "home": "Home",
@@ -47,8 +43,15 @@
     "title": "Bridge on the River Kwai · A Place of Memory Across the Flames of War",
     "subtitle": "The Bridge on the River Kwai — Explore the history and peace lessons of the Thai-Burma \"Death Railway\".",
     "badge": "Non-profit Educational Guide | Free Entry · Open 24 Hours",
+    "entityName": "River Kwai Bridge (Kanchanaburi)",
+    "officialName": "RIVER KWAI BRIDGE",
+    "localName": "สะพานข้ามแม่น้ำแคว",
     "rating": "4.6",
-    "reviewCount": "14,465",
+    "reviewCount": "14,890",
+    "ratingLabel": "Google Maps rating",
+    "reviewCountSuffix": "Google Maps reviews",
+    "ratingSource": "Ratings and reviews come from Google Maps users. Click to view all reviews on Google Maps:",
+    "ratingSourceLink": "View all Google Maps reviews",
     "openMaps": "View location on Google Maps",
     "mapsUrl": "https://maps.app.goo.gl/tze9JQUAKaV3Mbm78",
     "legend": {
@@ -83,10 +86,13 @@
       { "icon": "💸", "label": "Entry", "value": "Free", "note": "Free to walk across; nearby museums may charge a small fee." },
       { "icon": "🌉", "label": "Scale", "value": "≈ 300 m span", "note": "A curved steel through-truss bridge still used by trains." },
       { "icon": "🌃", "label": "Best time", "value": "Morning & sunset", "note": "Cool, quiet, and best for photography." },
-      { "icon": "🚶", "label": "Walkable", "value": "From Kanchanaburi town", "note": "A short taxi, songthaew or bike ride from the centre." }
+      { "icon": "🚶", "label": "Walkable", "value": "From Kanchanaburi town", "note": "A short taxi, songthaew or bike ride from the centre." },
+      { "icon": "🏷️", "label": "Official name", "value": "River Kwai Bridge", "note": "สะพานข้ามแม่น้ำแคว · Tha Ma Kham, Mueang Kanchanaburi District." },
+      { "icon": "🧭", "label": "Address", "value": "River Kwai Rd, Tha Ma Kham", "note": "Mueang Kanchanaburi District, Kanchanaburi 71000, Thailand · Plus Code 2GR3+QM." },
+      { "icon": "⭐", "label": "Google Maps rating", "value": "4.6 / 5", "note": "Based on 14,890 Google Maps reviews (latest)." }
     ]
   },
-  "hiddenRules": {
+  "insiderTips": {
     "title": "Local tricks the regulars know",
     "subtitle": "Tips from visitors and locals to make your visit easier.",
     "highlights": [
@@ -112,19 +118,19 @@
       }
     ]
   },
-  "trainTracker": {
-    "title": "SRT Regular Train Schedule (Placeholder)",
-    "description": "Seeing a train cross the bridge is the highlight of the visit. Below is a reference for trains heading towards Nam Tok.",
-    "colTrain": "Train No.",
-    "colRoute": "Route",
-    "colTime": "Est. Crossing Time",
+  "trainCrossings": {
+    "title": "Watching a train cross the bridge",
+    "description": "A train crossing the bridge is the highlight of a visit. Services run several times a day in each direction and cross slowly, so you have time to see the whole structure flex. The times below are a planning guide only — confirm them locally before you build a day around them.",
+    "colTrain": "Service",
+    "colRoute": "Direction",
+    "colTime": "Usual crossing time",
     "schedules": [
-      { "train": "No. 257", "route": "Bangkok (Thon Buri) → Nam Tok", "time": "~ 10:45 (Placeholder)" },
-      { "train": "No. 259", "route": "Bangkok (Thon Buri) → Nam Tok", "time": "~ 16:20 (Placeholder)" }
+      { "train": "No. 257", "route": "Bangkok (Thon Buri) → Nam Tok", "time": "Late morning" },
+      { "train": "No. 259", "route": "Bangkok (Thon Buri) → Nam Tok", "time": "Late afternoon" }
     ],
-    "warning": "Important: Trains are often delayed to varying degrees. We recommend waiting safely at the refuge points 20 minutes in advance. Schedule subject to change."
+    "warning": "Important: trains are frequently delayed, so treat these times as a rough guide. Be behind the refuge points at least 20 minutes ahead, never stand on the rails for a photo, and check the current timetable locally. The schedule is subject to change."
   },
-  "complianceGuide": {
+  "etiquetteSafety": {
     "title": "Etiquette & safety tips",
     "subtitle": "A few small rules so visitors and the memory of the place are both respected.",
     "rules": [
@@ -134,39 +140,11 @@
       { "badge": "Community", "title": "Support fairly", "text": "Riverside vendors and museums are part of the community; agree prices and tip modestly if happy." }
     ]
   },
-  "higashiyamaRoute": {
-    "title": "Half-day · visit route",
-    "subtitle": "From morning to evening, a no-backtracking Kanchanaburi line.",
-    "steps": [
-      {
-        "title": "08:30 · Walk the bridge",
-        "meta": "Morning · Tha Ma Kham",
-        "text": "Arrive early to cross on foot before the heat builds, reading the plaques and watching the river below.",
-        "tips": ["Walk from the north bank path", "Or take a songthaew from town"]
-      },
-      {
-        "title": "10:00 · Museums & cemetery",
-        "meta": "History · nearby",
-        "text": "Visit the JEATH War Museum and Thailand–Burma Railway Centre, then the Kanchanaburi War Cemetery.",
-        "tips": ["Both are a short ride from the bridge", "Allow 1–2 hours together"]
-      },
-      {
-        "title": "12:30 · Lunch by the river",
-        "meta": "Lunch · riverside",
-        "text": "Riverside restaurants near the bridge serve Thai food with a view of the water and the trains.",
-        "tips": ["Try a riverside café", "Shaded seating available"]
-      },
-      {
-        "title": "16:30 · Return for sunset",
-        "meta": "Evening · the bridge",
-        "text": "Come back before sunset for the best light and the famous evening atmosphere on the water.",
-        "tips": ["Blue hour is most photogenic", "Stay for the riverside glow"]
-      }
-    ],
-    "disclaimer": "Route is experience-based; actual opening hours and transport follow on-site conditions."
-  },
   "intro": {
-    "title": "Meet the River Kwai Bridge",
+    "title": "About River Kwai Bridge (Kanchanaburi)",
+    "equalStatement": "Welcome to River Kwai Bridge (สะพานข้ามแม่น้ำแคว), widely recognized as the central Kwai Bridge. Located in the heart of Kanchanaburi, Kanchanaburi Province, Thailand, this destination serves as a primary hub for travellers visiting the region.",
+    "geoHierarchy": ["River Kwai Bridge", "Tha Ma Kham", "Kanchanaburi", "Kanchanaburi Province", "Thailand"],
+    "nearbyStatement": "When visiting River Kwai Bridge, visitors can easily explore surrounding historical landmarks and points of interest, including Kanchanaburi War Cemetery (Don Rak) and Hellfire Pass Memorial.",
     "description": "The River Kwai Bridge is part of the Burma–Thailand (Death) Railway, built by Imperial Japan between 1942 and 1943 to link Thailand with Burma. Constructed under brutal conditions by Allied prisoners of war and tens of thousands of Asian forced labourers, the line became known for the enormous human cost of its construction. The bridge you see today is a reconstruction: parts were destroyed in Allied bombing and rebuilt after the war. Trains still run across it, and the riverbanks have become a place where history, daily life, and remembrance meet.",
     "visitGuide": {
       "title": "How to get the most out of it",
@@ -188,26 +166,26 @@
     }
   },
   "transportSection": {
-    "title": "How to get to the River Kwai Bridge",
-    "subtitle": "The easiest ways from Bangkok and beyond — pick what fits.",
+    "title": "Location & How to Visit the River Kwai Bridge in Kanchanaburi",
+    "subtitle": "Where the bridge is, and the easiest ways to get there from Bangkok and beyond — pick what fits.",
     "overviewTitle": "Location overview",
     "overviewText": "The bridge sits on River Kwai Road in Tha Ma Kham, on the south bank of the Khwae Yai, about 3 km from central Kanchanaburi. It is roughly a 2–3 hour drive west of Bangkok.",
     "overviewText2": "Kanchanaburi is also reachable by train and bus; once in town, the bridge is a short taxi or songthaew ride away.",
     "arrivalTitle": "Common ways to arrive",
     "arrivalItems": [
-      "Train from Bangkok (Thon Buri / Wongwian Yai) toward Kanchanaburi and Nam Tok",
+      "Train from Thonburi station (Bangkok Noi) toward Kanchanaburi and Nam Tok — the bridge has its own halt",
       "Bus or minivan from Bangkok Southern Bus Terminal (Sai Tai Mai)",
       "Drive west on Route 323, with parking near the bridge",
       "Guided day tour from Bangkok or Kanchanaburi",
-      "Fly into Bangkok (Suvarnabhumi BKK / Don Mueang DMK) then transfer overland, or to Kanchanaburi Airport (KDT)"
+      "Fly into Bangkok (Suvarnabhumi BKK / Don Mueang DMK), then continue overland — Kanchanaburi has no scheduled flights"
     ],
     "modes": [
       {
         "label": "Flight",
         "icon": "✈️",
         "title": "By air",
-        "description": "Most travellers fly into Bangkok's two airports, then take a train, bus or drive about 2–3 hours to Kanchanaburi; Kanchanaburi Airport (KDT) also has limited domestic and charter flights.",
-        "details": ["Arrive at Suvarnabhumi (BKK) or Don Mueang (DMK)", "Kanchanaburi Airport (KDT) ~45 min from the bridge", "Transfer by train / bus / car"],
+        "description": "Most travellers fly into Bangkok's two airports and continue overland, about 2–3 hours to Kanchanaburi. Kanchanaburi has a small airfield (KDT) but no regular scheduled passenger flights, so plan on train, bus or car.",
+        "details": ["Arrive at Suvarnabhumi (BKK) or Don Mueang (DMK)", "No scheduled flights to Kanchanaburi (KDT)", "Transfer by train / bus / car"],
         "steps": [
           { "n": "1", "t": "Fly into Bangkok or Kanchanaburi" },
           { "n": "2", "t": "Transfer overland to Kanchanaburi" },
@@ -219,7 +197,7 @@
         "icon": "🚂",
         "title": "By train from Bangkok",
         "description": "Take a train toward Kanchanaburi and Nam Tok; the line itself follows part of the old Death Railway.",
-        "details": ["Depart Thon Buri or Wongwian Yai", "Scenic ride through the countryside", "Alight at Kanchanaburi, then a short transfer"],
+        "details": ["Depart Thonburi station (Bangkok Noi)", "Scenic ride through the countryside", "Or alight at the River Kwai Bridge halt, at the span"],
         "steps": [
           { "n": "1", "t": "Board in Bangkok" },
           { "n": "2", "t": "Ride to Kanchanaburi" },
@@ -282,42 +260,78 @@
       "text": "Cool season (Nov–Feb) is most pleasant for walking the bridge. Hot season (Mar–May) is very warm — go after 16:00. Rainy season (Jun–Oct) brings showers; the river is fullest and the hills greenest."
     }
   },
-  "officialManagement": {
+  "siteNotes": {
     "title": "Management & public order",
     "text": "The bridge sits at the meeting point of railway, tourism, and local community. The State Railway of Thailand operates the active line, the Tourism Authority of Thailand promotes the site, and Kanchanaburi Province manages local infrastructure and the annual River Kwai Bridge Week. Riverside vendors and museums keep the area welcoming. Please follow on-site guidance and visit respectfully."
   },
-  "humanities": {
-    "title": "The bridge: then and now",
-    "subtitle": "From a wartime strategic line to a symbol remembered around the world."
+  "historyIntro": {
+    "title": "History & Significance of River Kwai Bridge",
+    "subtitle": "The bridge: then and now — from a wartime strategic line to a symbol remembered around the world."
   },
-  "knowledge": {
-    "title": "History & Story of the Bridge",
+  "historyStory": {
+    "title": "History & Significance of River Kwai Bridge",
+    "subtitle": "From a wartime supply line to a place of remembrance — the full story behind the bridge.",
+    "intro": "The bridge is one link in a 415-kilometre railway built between Thailand and Burma under Japanese occupation. Why it was built, how fast it went up, and what it cost are the keys to reading everything you see here.",
     "sections": [
       {
+        "id": "route",
+        "year": "1942",
+        "title": "Why a railway through the jungle",
+        "content": "Japan needed a secure land route to supply its forces in Burma once the sea lanes became dangerous. In June 1942 work began on a line linking Nong Pla Duk in Thailand with Thanbyuzayat in Burma — a route earlier surveyors had judged impractical."
+      },
+      {
         "id": "build",
-        "year": "1942 - 1943",
-        "title": "Forced Construction",
-        "content": "The Japanese Empire mobilized around 60,000 Allied POWs and hundreds of thousands of Asian forced laborers (Romusha), building it under brutal conditions with immense loss of life."
+        "year": "1942 – 1943",
+        "title": "Forced labour at impossible speed",
+        "content": "Around 60,000 Allied prisoners of war and some 200,000 Asian labourers were moved onto the line. The original estimate was five years; the railway was finished in roughly sixteen months, driven by pressure rather than machinery. About 12,000 Allied prisoners and an estimated 90,000 Asian labourers died."
+      },
+      {
+        "id": "bridge",
+        "year": "1943",
+        "title": "Two bridges in one place",
+        "content": "A temporary wooden trestle bridge opened in February 1943, with a steel bridge alongside it in April 1943, carrying the railway across the Khwae Yai towards the Three Pagodas Pass. The steel spans arrived dismantled and were reassembled on site."
       },
       {
         "id": "bomb",
-        "year": "1944 - 1945",
-        "title": "Allied Bombing",
-        "content": "As a strategic chokepoint, the middle spans of the bridge were precisely destroyed by Allied air raids on several occasions."
+        "year": "1944 – 1945",
+        "title": "Bombed, repaired, bombed again",
+        "content": "The bridge was a bottleneck for the whole line, so Allied aircraft attacked it repeatedly. Raids in 1945 dropped the central spans into the river. What you walk across today is the repaired structure, put back into service after the war."
+      },
+      {
+        "id": "film",
+        "year": "1957",
+        "title": "A film that rewrote the story",
+        "content": "Pierre Boulle's novel became David Lean's Oscar-winning film, shot largely in Sri Lanka rather than Thailand. Its fictional bridge, its fictional colonel and its heroic demolition never happened here. The film made the name world-famous and, unfairly, buried the real history of forced labour."
+      },
+      {
+        "id": "name",
+        "year": "1960s",
+        "title": "How a river got renamed",
+        "content": "There was never a river called 'Kwai' at this crossing. The film's title was applied to a stretch of the Mae Klong, and in the 1960s that section was formally renamed Khwae Yai — the river effectively took its name from a film."
       },
       {
         "id": "rebirth",
-        "year": "Post-war to Present",
-        "title": "Restoration & Rebirth",
-        "content": "Fully repaired by the Thai government after the war, it continues to carry daily trains today and has become a pilgrimage site for peace-lovers worldwide."
+        "year": "Today",
+        "title": "Still a working railway, and a memorial",
+        "content": "Trains still cross the bridge as part of the Nam Tok line. Around it stand the Kanchanaburi War Cemetery, the Thailand–Burma Railway Centre and, deeper in the mountains, the Hellfire Pass Memorial — together the main places where the railway's dead are remembered and explained."
       }
     ],
+    "legendsTitle": "Stories, legends and common misconceptions",
+    "legendsIntro": "Much of what visitors 'know' about the bridge comes from a 1957 film. Here is what is documented, what is local story, and what is simply not true.",
+    "legends": [
+      { "icon": "🎬", "title": "Myth: the bridge was blown up by commandos", "text": "There was no commando raid of that kind. The bridge was brought down by bombing from the air and was rebuilt afterwards — it still stands because it was repaired, not because it was never destroyed." },
+      { "icon": "🏞️", "title": "Myth: the river is called the River Kwai", "text": "The river crossing the bridge is the Khwae Yai, part of the Mae Klong system. The name 'River Kwai' spread from the film and was later adopted officially for this stretch — a rare case of fiction renaming geography." },
+      { "icon": "🎥", "title": "Myth: the film was shot here", "text": "Almost none of it was. The bridge sequences were filmed at Kitulgala in Sri Lanka, with a full-size wooden bridge built for the purpose. Nothing on this river was used for the destruction sequence." },
+      { "icon": "🔧", "title": "Story: the steel came from Java", "text": "The steel spans are widely reported to have come from a dismantled bridge in the Dutch East Indies and to have been shipped here in pieces. Whatever their exact origin, they were assembled by hand under wartime conditions — which is why the workmanship is visibly uneven." },
+      { "icon": "🌉", "title": "Story: the wooden bridge vanished", "text": "Locals still point out where the temporary wooden bridge stood. It carried the first trains while the steel bridge was being finished, then was dismantled or lost to war damage — only its memory and the alignment remain." },
+      { "icon": "🙏", "title": "Local custom: quiet offerings at the trackside", "text": "Railway workers and residents sometimes leave small offerings beside the line out of respect for those who died. If you see flowers, incense or small tokens, leave them undisturbed — they are memorials, not litter." }
+    ],
     "didYouKnow": {
-      "title": "Movie Fiction vs. Reality",
-      "text": "Pierre Boulle's novel and the 1957 Oscar-winning film 'The Bridge on the River Kwai' made it globally famous, but many movie scenes were shot in Sri Lanka, and the true history is far more brutal than the cinematic portrayal. The real story of the Death Railway carries a much heavier weight than what the silver screen shows."
+      "title": "Movie fiction vs. reality",
+      "text": "The 1957 Oscar-winning film made the bridge globally famous, but its story is fiction: the bridge sequences were shot in Sri Lanka, and no wartime destruction like the film's took place here. The real history of the Death Railway carries far more weight than the cinema version — which is why this page sets the record out in full."
     }
   },
-  "sitePlaques": {
+  "areaGuide": {
     "title": "Bridge & riverside cheat-sheet",
     "subtitle": "Split the area into blocks so it's easier to navigate.",
     "locationLabel": "Location",
@@ -327,8 +341,6 @@
         "id": "bridge",
         "badge": "Bridge",
         "title": "The span & walkway",
-        "koTitle": "The span",
-        "koTitleZh": "桥身",
         "location": "Across the Khwae Yai",
         "body": "The curved steel through-truss with a narrow wooden walkway beside the tracks — cross on foot between trains."
       },
@@ -336,8 +348,6 @@
         "id": "northbank",
         "badge": "North bank",
         "title": "Riverside promenade",
-        "koTitle": "Riverside",
-        "koTitleZh": "河畔",
         "location": "North side of the river",
         "body": "Cafés, restaurants and the best wide view of the curved bridge and its reflection."
       },
@@ -345,8 +355,6 @@
         "id": "museums",
         "badge": "Nearby",
         "title": "Museums & cemetery",
-        "koTitle": "Museums",
-        "koTitleZh": "博物馆",
         "location": "Short ride from the bridge",
         "body": "JEATH War Museum, Thailand–Burma Railway Centre, and the Kanchanaburi War Cemetery."
       },
@@ -354,8 +362,6 @@
         "id": "festival",
         "badge": "Events",
         "title": "Bridge Week ground",
-        "koTitle": "Bridge Week",
-        "koTitleZh": "大桥节",
         "location": "Riverside near the bridge",
         "body": "Each year the River Kwai Bridge Week brings lights, a sound-and-light show and memorial events."
       }
@@ -390,13 +396,22 @@
       "The bridge silhouetted against the sky",
       "A wide view of bridge and river"
     ],
+    "altSuffix": "River Kwai Bridge, Kanchanaburi, Thailand",
+    "creditNote": "Photo credit: all images displayed on this site remain the property and copyright of their original photographers.",
     "viewAll": "See more photos on Google Maps",
     "showMore": "Show more",
     "mapsUrl": "https://maps.app.goo.gl/tze9JQUAKaV3Mbm78"
   },
   "reviews": {
     "title": "What visitors say",
-    "declaration": "Reviews below are illustrative compilations reflecting common experiences; not live-scraped and not a commercial position.",
+    "declaration": "The quotes below are illustrative compilations reflecting common visitor experiences — not a commercial position.",
+    "ratingValue": "4.6",
+    "reviewCount": "14,890",
+    "ratingLabel": "Google Maps rating",
+    "reviewCountLabel": "reviews on Google Maps",
+    "sourceTitle": "Ratings & reviews source",
+    "sourceNote": "Ratings and reviews are sourced from Google Maps users. Click to view all reviews on Google Maps:",
+    "sourceLink": "View all Google Maps reviews",
     "featuredTitle": "In their words",
     "featuredSubtitle": "One-line impressions from different travellers.",
     "moreReviews": "See more reviews on Google Maps",
@@ -413,11 +428,180 @@
       { "name": "Kenji T.", "date": "2025-09", "rating": 5, "text": "A place of remembrance and reconciliation. The museums complete the story." }
     ]
   },
+  "mobileBar": {
+    "ariaLabel": "Location shortcuts",
+    "mapsLabel": "Open in Google Maps",
+    "copyLabel": "Copy Plus Code",
+    "copied": "Plus Code copied",
+    "failed": "Copy failed — press and hold to select"
+  },
   "mapSection": {
     "title": "Map & location",
+    "answerTitle": "The short answer",
+    "answerText": "The River Kwai Bridge — also spelled River Khwae Bridge (สะพานข้ามแม่น้ำแคว) — crosses the Khwae Yai River in Tha Ma Kham, Kanchanaburi, Thailand. It sits about 3 km from Kanchanaburi town centre and roughly 2–3 hours from Bangkok by road or rail.",
     "subtitle": "The River Kwai Bridge is on River Kwai Road, Tha Ma Kham, south bank of the Khwae Yai, Kanchanaburi.",
+    "addressTitle": "Address & coordinates",
+    "addressLabel": "Address",
+    "plusCodeLabel": "Plus Code",
+    "coordinatesLabel": "Coordinates",
+    "mapTitle": "Google Maps – River Kwai Bridge, Kanchanaburi",
+    "officialNote": "For official updates and regional tourism information, visit the Thailand / Kanchanaburi official tourism portal:",
+    "officialLink": "Thailand / Kanchanaburi Official Tourism Portal",
     "openMaps": "View location on Google Maps",
     "mapsUrl": "https://maps.app.goo.gl/tze9JQUAKaV3Mbm78"
+  },
+  "deepGuide": {
+    "eyebrow": "In depth",
+    "navLabel": "In depth",
+    "title": "The River Kwai Bridge in depth",
+    "subtitle": "The history behind the name, the detail of getting there from Bangkok, and what else is worth your time once you are in Kanchanaburi.",
+    "sections": [
+      {
+        "id": "history",
+        "icon": "📖",
+        "navLabel": "History",
+        "title": "History: what actually happened here",
+        "lead": "The bridge you walk across was bombed, rebuilt, and then renamed by a film — and the film's version is not the real story.",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "Between 1942 and 1943 Imperial Japan built a railway to supply its army in Burma, linking Ban Pong in Thailand with Thanbyuzayat in Burma: roughly 415 km through jungle, river valleys and limestone hills. It was built by about 60,000 Allied prisoners of war — British, Dutch, Australian and American — together with an estimated 200,000 Asian labourers, most of them Burmese, Malayan, Tamil and Javanese men recruited or conscripted by the Japanese. Around 12,000 prisoners died on the project, and estimates for the Asian labourers run far higher. The line became known as the Death Railway, and the crossing at Kanchanaburi is its most photographed point."
+          },
+          {
+            "type": "text",
+            "text": "There were two bridges, not one. The first was a temporary wooden structure, finished in February 1943. A permanent steel bridge was completed about two months later, in April 1943, and the two stood side by side. The steel spans were not designed for this site: they were dismantled from bridges in Java and shipped to Thailand."
+          },
+          {
+            "type": "text",
+            "text": "From late 1944 into 1945, Allied aircraft bombed the crossing repeatedly, and two spans of the steel bridge were dropped into the river. After the war the bridge was repaired. What you walk across today is a mix of original wartime steel and post-war replacement spans, still carrying scheduled trains."
+          },
+          {
+            "type": "callout",
+            "title": "The film was not shot here — and its story is fiction",
+            "text": "David Lean's The Bridge on the River Kwai (1957) was filmed largely in what is now Sri Lanka, not in Thailand. Its plot — British officers helping their captors build the bridge and then destroying it — was invented for the screen. No bridge was blown up by the men who built it. This matters because many visitors arrive expecting the film's story to be the site's story. It is not."
+          },
+          {
+            "type": "text",
+            "text": "The name is a film artefact too. The river the bridge crosses is the Khwae Yai. Until the 1960s this stretch was generally called the Mae Klong, and “River Kwai” entered English usage through the film rather than from local naming. Thai signage reads สะพานข้ามแม่น้ำแคว. That is why both “River Kwai Bridge” and “River Khwae Bridge” appear on maps, and why neither is wrong in practice."
+          },
+          {
+            "type": "timeline",
+            "title": "Timeline",
+            "items": [
+              { "year": "1942", "text": "Japan begins the Burma–Thailand railway to supply its Burma campaign. Prisoners of war and Asian labourers are moved onto the line." },
+              { "year": "Feb 1943", "text": "The temporary wooden bridge over the Khwae Yai is completed and the line is joined through." },
+              { "year": "Apr 1943", "text": "A permanent steel bridge, built from spans brought from Java, opens alongside the wooden one." },
+              { "year": "1944–45", "text": "Allied aircraft bomb the bridge repeatedly; two steel spans collapse into the river." },
+              { "year": "1945", "text": "The war ends. Most of the railway is abandoned and lifted; the Kanchanaburi section survives." },
+              { "year": "1957", "text": "David Lean's film is released and fixes the name “River Kwai” in English." },
+              { "year": "Today", "text": "The Nam Tok line still crosses the bridge, and the riverbanks serve as a place of remembrance." }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "getting-there",
+        "icon": "🚂",
+        "navLabel": "Getting there",
+        "title": "Bangkok to the bridge, in detail",
+        "lead": "There is a railway halt at the bridge itself, so on the train you can step off within a few minutes' walk of the span instead of going into Kanchanaburi town and doubling back.",
+        "blocks": [
+          {
+            "type": "text",
+            "text": "The train is the arrival most visitors remember, because the final stretch follows the old Death Railway alignment. Departures are from Thonburi station, also called Bangkok Noi, on the Nam Tok line — note that this is a different station from Wongwian Yai, which serves the Mahachai line south to Samut Sakhon and does not go to Kanchanaburi. Allow roughly 2.5 to 3 hours. Beyond Kanchanaburi station the line crosses the river at its own halt, สะพานแม่น้ำแคว (River Kwai Bridge), on the way toward Nam Tok."
+          },
+          {
+            "type": "text",
+            "text": "Third-class carriages are cheap and open-windowed, and some services carry air-conditioned tourist carriages at a higher fare. Trains are few — only a small number each way per day, and the last return toward Bangkok leaves in the afternoon — so check the current timetable with the State Railway of Thailand before committing, and consider staying a night in Kanchanaburi rather than day-tripping."
+          },
+          {
+            "type": "text",
+            "text": "Buses and minivans from Bangkok's Southern Bus Terminal (Sai Tai Mai) are more frequent and less likely to sell out, running through the day, and take 2–3 hours depending on traffic leaving the city. Minivans are faster but more cramped. Either way you arrive at Kanchanaburi's bus station and take a songthaew, taxi or ride-hailing car the last few kilometres to the bridge."
+          },
+          {
+            "type": "text",
+            "text": "By car, the usual route is Route 4 (Phet Kasem) west and then Route 323 into Kanchanaburi, around 130 km and 2–3 hours. Parking sits along the road and at riverside restaurants close to the bridge. Guided day tours from Bangkok are the least flexible option but remove all logistics if you have only one day; most combine the bridge with the war cemetery and a museum."
+          },
+          {
+            "type": "table",
+            "title": "Comparing your options",
+            "columns": ["Option", "Time from Bangkok", "Cost", "Best for"],
+            "rows": [
+              ["Train", "2.5–3 h", "Lowest", "The experience, and arriving as a train crosses"],
+              ["Minivan", "2–2.5 h", "Low to mid", "Speed and frequency"],
+              ["Public bus", "2.5–3 h", "Low", "Space and a guaranteed seat"],
+              ["Self-drive", "2–3 h", "Fuel + tolls", "Reaching nearby sites the same day"],
+              ["Guided day tour", "Full day", "Highest", "No planning; single-day visits"]
+            ]
+          },
+          {
+            "type": "callout",
+            "title": "Check before you go",
+            "text": "Train timetables, fares and bus frequencies change with the season. Treat the figures above as planning ranges rather than fixed prices, and confirm times with the State Railway of Thailand or at your accommodation on arrival day."
+          }
+        ]
+      },
+      {
+        "id": "nearby",
+        "icon": "🗺️",
+        "navLabel": "Nearby",
+        "title": "What else is worth your time nearby",
+        "lead": "The bridge is one stop on a railway and one point on a river. Almost everything that gives it meaning lies within an hour or two.",
+        "blocks": [
+          {
+            "type": "cards",
+            "title": "In and around Kanchanaburi town",
+            "items": [
+              { "name": "Kanchanaburi War Cemetery (Don Rak)", "meta": "About 3 km from the bridge", "text": "The main Commonwealth cemetery for the railway, holding nearly 7,000 graves and maintained by the Commonwealth War Graves Commission. Flat, quiet and free to enter.", "tip": "Go in the cooler part of the day; there is little shade." },
+              { "name": "Thailand–Burma Railway Centre", "meta": "In Kanchanaburi town", "text": "A modern, carefully curated museum covering the railway's construction and the people who built it. The clearest single explanation of what happened here.", "tip": "Visit this before the bridge if you want the site to make sense." },
+              { "name": "JEATH War Museum", "meta": "Beside the bridge", "text": "The older, rougher museum next to the bridge, housed in a reconstruction of a prisoner-of-war hut. Less polished than the Railway Centre, more atmospheric.", "tip": "Cheap, close, and easy to add to a bridge visit." }
+            ]
+          },
+          {
+            "type": "cards",
+            "title": "Further along the line",
+            "items": [
+              { "name": "Wampo Viaduct (Tham Krasae)", "meta": "About 55 km northwest", "text": "A wooden trestle hugging the cliff above the river: the most dramatic surviving stretch of the railway, and the section most visitors photograph without knowing its name.", "tip": "Reachable by train; walking the trestle is the highlight." },
+              { "name": "Hellfire Pass Memorial Museum", "meta": "About 80 km northwest", "text": "The cutting that prisoners excavated by hand, now an Australian-funded memorial with a walking trail down through the pass. The most affecting site on the whole line.", "tip": "Needs the better part of a day; start early and carry water." },
+              { "name": "Erawan National Park", "meta": "About 65 km from town", "text": "A seven-tier limestone waterfall with turquoise pools, set in forest northwest of Kanchanaburi. A natural counterweight to the history.", "tip": "Swimming is allowed in the lower tiers; the upper ones are a steep climb." }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "practical",
+        "icon": "✅",
+        "navLabel": "Practical",
+        "title": "Practical facts before you go",
+        "lead": "The bridge is open, free and unstaffed — which is exactly why a little preparation changes the visit.",
+        "blocks": [
+          {
+            "type": "facts",
+            "title": "At a glance",
+            "items": [
+              { "label": "Entry", "value": "Free", "note": "No ticket and no gate. Nearby museums charge separately." },
+              { "label": "Hours", "value": "Open all day", "note": "The bridge is part of a working railway, not a ticketed attraction." },
+              { "label": "Time needed", "value": "45–90 min", "note": "For the bridge and riverside alone; half a day with a museum and the cemetery." },
+              { "label": "Best light", "value": "Late afternoon", "note": "Golden hour on the steel, once the heat has broken." },
+              { "label": "Busiest", "value": "10:00–15:00", "note": "Coach groups cluster around midday, especially in the cool season." },
+              { "label": "Access", "value": "Partly limited", "note": "The riverside is easy; the bridge walkway is uneven in places." }
+            ]
+          },
+          {
+            "type": "text",
+            "text": "Walk the bridge rather than only photographing it from the bank. There is a wooden walkway beside the rails with refuge bays where you can stand aside as a train passes. Stay inside the bays while a train is moving, hold children's hands, and watch your footing on the sleepers and the gaps between them."
+          },
+          {
+            "type": "text",
+            "text": "Late November to early December brings River Kwai Bridge Week, when the province stages a sound-and-light event recalling the bridge's wartime history. It is the liveliest the site ever gets, and the most crowded. Outside that period, early morning and the two hours before sunset are the calmest times to be there."
+          },
+          {
+            "type": "text",
+            "text": "Bring cash: the small museums, riverside vendors and songthaews generally do not take cards. Sun protection matters more than it looks, because the bridge is fully exposed and the reflected heat off the steel and water is considerable in the middle of the day."
+          }
+        ]
+      }
+    ]
   },
   "footer": {
     "siteName": "River Kwai Bridge Guide",
@@ -439,6 +623,10 @@
       { "name": "Thai Meteorological Department (TMD)", "url": "https://www.tmd.go.th" }
     ],
     "disclaimer": "This website is an independent non-profit visitor information project. We are not affiliated with any government agency or official organization.",
+    "imageCopyright": "Photo credit: all images displayed on this website remain the property and copyright of their original photographers.",
+    "sourcesLink": "Sources & references",
+    "govtLinkLabel": "Thailand / Kanchanaburi Official Tourism Portal",
+    "govtUrl": "https://www.tourismthailand.org",
     "dataSource": "Data Source · 資料來源： The attraction information referenced on this site is cross-checked against Sources: Tourism Authority of Thailand, Kanchanaburi Province public info and public map services, with no commercial endorsement.",
     "dataSourceLabel": "Sources"
   },
@@ -483,6 +671,18 @@
     },
     "categories": [
       {
+        "id": "location",
+        "title": "Location & essentials",
+        "items": [
+          { "q": "Where is River Kwai Bridge located?", "a": "River Kwai Bridge is located in Tha Ma Kham, Mueang Kanchanaburi District, Kanchanaburi 71000, Thailand — on the south bank of the Khwae Yai, about 3 km from central Kanchanaburi." },
+          { "q": "Is it River Kwai Bridge or River Khwae Bridge?", "a": "Both names mean the same bridge. “Khwae” (แคว) is the correct Thai romanisation, so River Khwae Bridge is the more accurate spelling and the form used by the State Railway of Thailand and heritage bodies. “River Kwai” spread worldwide through the 1957 film and remains the most common search term, so you will see both on signs and maps. The river it crosses is the Khwae Yai, and the Thai name of the bridge is สะพานข้ามแม่น้ำแคว." },
+          { "q": "How do I get to River Kwai Bridge from Bangkok?", "a": "Three practical options. By train: from Thonburi station (Bangkok Noi) on the Nam Tok line, roughly 2.5–3 hours to Kanchanaburi and unaffected by road traffic — the bridge has its own halt on the Nam Tok side of Kanchanaburi station, so you can step off within a few minutes' walk of the span. By minivan or bus: from Mo Chit, Sai Tai Mai or the Kanchanaburi-bound vans, about 2–3 hours. By car or taxi: around 130 km via Route 4 (Phet Kasem) then Route 323, roughly 2–3 hours depending on Bangkok traffic." },
+          { "q": "Is River Kwai Bridge free to visit?", "a": "Yes — River Kwai Bridge is a public space and is free to visit year-round. Only the nearby museums may charge a small entry fee." },
+          { "q": "What is the exact address and postal code?", "a": "River Kwai Rd, Tha Ma Kham, Mueang Kanchanaburi District, Kanchanaburi 71000, Thailand. Google Maps Plus Code: 2GR3+QM Ban Tai, Mueang Kanchanaburi District." },
+          { "q": "What is the Google Maps rating of River Kwai Bridge?", "a": "River Kwai Bridge holds a 4.6 / 5 rating on Google Maps, based on 14,890 user reviews (latest). Ratings and reviews are sourced from Google Maps users." }
+        ]
+      },
+      {
         "id": "visit",
         "title": "Visiting",
         "items": [
@@ -520,8 +720,378 @@
       }
     ]
   },
+  "weather": {
+    "navLabel": "Weather",
+    "title": "Live weather, 7-day outlook — and what to do about it",
+    "subtitle": "Real conditions at the bridge right now, turned into what to wear, how to plan the day and what to pack.",
+    "nowLabel": "Right now at the bridge",
+    "feelsLike": "Feels like",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "windLevel": "Force {level}",
+    "gust": "Gusts",
+    "uvLabel": "UV index",
+    "visibility": "Visibility",
+    "rainNow": "Rain now",
+    "updated": "Updated",
+    "forecastTitle": "Next 7 days",
+    "today": "Today",
+    "rainChance": "Rain",
+    "lowHigh": "Low / High",
+    "sunLabel": "Sun",
+    "alertsTitle": "Weather alerts",
+    "alertsNoneTitle": "No weather alerts",
+    "alertsNoneText": "No warnings are in force for this area right now. Ordinary precautions are enough.",
+    "alerts": {
+      "thunder": "Thunderstorms are forecast. Keep off the open bridge spans and away from the riverbank while they pass — do not shelter under trees or stand on high ground.",
+      "heavyRain": "Heavy rain is on the way, around {rain} mm over the next 12 hours. Avoid the river channel, low ground and the valleys, and watch for flash flooding.",
+      "wind": "Strong wind, force {level}, with gusts near {gust} km/h. Hold the handrail on the bridge and stay clear of loose signage and the rocky riverbank.",
+      "heat": "Serious heat, up to {max}°C. Move the heavy walking to early morning, stay in shade at midday and carry more water than you think you need.",
+      "fog": "Fog with visibility around {visibility} km. River crossings and road journeys can be delayed, and the long views will be lost — not the day for the postcard shot.",
+      "riverRise": "Heavy rain upstream, around {rain} mm. River levels can rise and turn muddy at short notice — stay off the sandbars and do not swim.",
+      "fireRisk": "High fire risk: humidity near {humidity}%, no rain on the way and hot, breezy air. No fires, no smoking and no naked flames in the wooded areas.",
+      "tempSwing": "A swing of about {drop}°C between day and night. Carry a light layer you can add or remove."
+    },
+    "adviceTitle": "What this means for your visit",
+    "groups": {
+      "outfit": "What to wear",
+      "plan": "How to plan the day",
+      "gear": "What to pack"
+    },
+    "outfit": {
+      "hot": "Around {max}°C and climbing — light, breathable clothing, and keep the long walks for first thing in the morning or after 16:00.",
+      "humid": "Humid with it, near {humidity}% — quick-drying fabrics will be far more comfortable.",
+      "cold": "Cool for this region at about {max}°C — bring a proper jacket, especially for the early start and the river at dusk.",
+      "cool": "Mild at around {max}°C — long sleeves and a light outer layer are comfortable all day.",
+      "mild": "Pleasant, roughly {min}–{max}°C — ordinary light clothing, with a thin layer for the evening.",
+      "tempDrop": "Day and night differ by about {drop}°C — a light jacket you can put on or take off is the practical choice.",
+      "uv": "UV index around {uv} — cover up, use sunscreen and keep to shade between 11:00 and 15:00.",
+      "rain": "Rain is in the picture — water-resistant or quick-drying clothes work better than an umbrella on an open bridge.",
+      "windy": "Breezy at force {level} — skip wide skirts and loose scarves, and secure anything light."
+    },
+    "plan": {
+      "thunder": "Thunderstorms during the day — skip the open walkways and the river, and move to the museums and the railway centre instead.",
+      "heavyRain": "Not a day for outdoor sightseeing — river boats and outdoor attractions may close, so build the day around indoor stops.",
+      "rainLikely": "A good chance of rain at about {chance}% — keep the plan flexible and have an indoor fallback ready.",
+      "lightRain": "Showers look possible rather than constant — outdoor time is fine, just shorten the exposed stretches and shelter when it builds.",
+      "heat": "Very hot at around {max}°C — walk the bridge at first light or after 16:00 and treat midday as indoor time.",
+      "clear": "Clear skies — excellent for outdoor sightseeing, and the best conditions for sunrise and sunset views.",
+      "overcast": "Soft, even light with no glare — genuinely good for photography and for long, unhurried exploring.",
+      "fog": "Poor visibility, around {visibility} km — the long views over the river and hills will be gone, so plan a shorter, closer visit.",
+      "wind": "Wind at force {level} — river boats and open-air activities may be suspended, and the exposed bridge spans feel rougher.",
+      "uvStrong": "Strong UV at index {uv} — shorten the midday outdoor stretch and stick to the shaded riverside.",
+      "riverCalm": "The river is calm and low with little wind — the best conditions of the week for riverside photography and reflections.",
+      "pleasant": "Reasonably settled — an easy day for the bridge, the banks and the war cemetery."
+    },
+    "gear": {
+      "umbrella": "Compact folding umbrella",
+      "raincoat": "Light rain jacket — better than a long umbrella in wind",
+      "sunscreen": "Sunscreen SPF 30+",
+      "sunglasses": "Sunglasses",
+      "sunhat": "Sun hat",
+      "water": "Plenty of drinking water",
+      "outerwear": "A light layer for the evening",
+      "shoes": "Shoes with grip — the sleepers and riverbank turn slippery",
+      "mask": "A mask if you are sensitive to poor air",
+      "repellent": "Insect repellent for the riverside at dusk"
+    },
+    "envTitle": "Conditions on the ground",
+    "envNote": "Indicative readings worked out from the forecast, not measurements taken on site — use them to decide how hard to push the day.",
+    "levels": {
+      "low": "Low",
+      "moderate": "Moderate",
+      "high": "High"
+    },
+    "indices": {
+      "riverRise": {
+        "name": "River rise risk",
+        "low": "No rain of note upstream — the river is steady and clear.",
+        "moderate": "Some rain upstream — the water may rise and colour slightly. Keep an eye on the level.",
+        "high": "Heavy rain upstream — expect a fast, muddy rise. Stay off the sandbars and out of the water."
+      },
+      "waterWind": {
+        "name": "Wind on the water",
+        "low": "The surface is calm — good for boats and for reflections.",
+        "moderate": "A working breeze — small boats will feel it and the surface will chop.",
+        "high": "Rough water — river trips may be suspended and small craft should stay in."
+      },
+      "mosquito": {
+        "name": "Mosquito activity",
+        "low": "Little activity right now.",
+        "moderate": "Noticeable near the water and at dusk — repellent is a good idea.",
+        "high": "Very active after the rain — cover up at dawn and dusk and use repellent."
+      },
+      "fireRisk": {
+        "name": "Fire risk in the hills",
+        "low": "Low risk — conditions are not favourable for fire.",
+        "moderate": "Rising risk in the dry grass and woodland — no open flames.",
+        "high": "High risk — no fires, no smoking and no burning off in the wooded areas."
+      },
+      "heatStress": {
+        "name": "Heat stress",
+        "low": "Comfortable for walking and standing around.",
+        "moderate": "Noticeable heat — take regular breaks in shade and drink often.",
+        "high": "Serious heat load — limit outdoor time, rest often and watch for dizziness."
+      }
+    },
+    "condition": {
+      "clear": "Clear",
+      "mainlyClear": "Mostly clear",
+      "partlyCloudy": "Partly cloudy",
+      "overcast": "Overcast",
+      "fog": "Fog",
+      "drizzle": "Light drizzle",
+      "freezingDrizzle": "Freezing drizzle",
+      "rain": "Rain",
+      "freezingRain": "Freezing rain",
+      "snow": "Snow",
+      "showers": "Showers",
+      "snowShowers": "Snow showers",
+      "thunderstorm": "Thunderstorm",
+      "thunderstormHail": "Thunderstorm with hail",
+      "unknown": "Unsettled"
+    },
+    "fallbackTitle": "Typical conditions for this time of year",
+    "fallbackText": "Live readings are refreshing. The bridge sits in a tropical savanna climate: warm to hot all year, wettest from June to October, a hot dry stretch from March to May, and the most comfortable weather from November to February.",
+    "fallbackNote": "Live readings refresh automatically."
+  },
+  "seasonStrategy": {
+    "navLabel": "Seasons",
+    "title": "Seasonal visit strategy",
+    "subtitle": "Weather, river water and wildlife side by side, so you can choose when to come.",
+    "intro": "Kanchanaburi has three recognisable seasons rather than four. The table below combines long-term monthly climate averages with the usual river and wildlife patterns recorded around the Khwae Yai — the practical way to decide what to pack and how hard to push each day.",
+    "note": "Weather, water and wildlife are a combined reading of 30-year monthly climate normals (1991–2020) for the Kanchanaburi area, cross-checked against national meteorological and conservation records. River and wildlife notes describe typical seasonal behaviour, not measurements taken on any single day.",
+    "columns": {
+      "season": "Season",
+      "months": "Months",
+      "weather": "Weather",
+      "water": "River & water",
+      "wildlife": "Wildlife & greenery",
+      "verdict": "Best for"
+    },
+    "levels": { "best": "Prime", "good": "Good", "caution": "Demanding" },
+    "rows": [
+      {
+        "icon": "🌤️",
+        "name": "Cool season",
+        "months": "Nov – Feb",
+        "level": "best",
+        "weather": "The most comfortable stretch: roughly 20–32 °C, low humidity, clear skies and almost no rain. Mornings and evenings can feel genuinely cool.",
+        "water": "The Khwae Yai runs low and clear, holding the deepest green water of the year — the best month for reflections and for seeing the pier structure.",
+        "wildlife": "Birds are most active along the river and in the hotel gardens, and the hills stay lush green well into December after the rains.",
+        "verdict": "First-time visitors, photographers, walking the full bridge, combining with Erawan Falls or Hellfire Pass."
+      },
+      {
+        "icon": "🔥",
+        "name": "Hot season",
+        "months": "Mar – May",
+        "level": "caution",
+        "weather": "The hottest months: highs commonly 35–38 °C with strong midday sun and rising humidity. Occasional pre-monsoon storms arrive towards the end of the period.",
+        "water": "Water levels are at their lowest and the river turns shallow and slow; some waterfalls further upstream run dry.",
+        "wildlife": "Animals retreat into shade, so the best sightings are at dawn and dusk rather than midday. Dust and dry grass dominate the hills.",
+        "verdict": "Early-morning visits, the war cemetery and indoor museums, hot springs or riverside hotel time."
+      },
+      {
+        "icon": "🌧️",
+        "name": "Rainy season",
+        "months": "Jun – Oct",
+        "level": "good",
+        "weather": "Warm and humid with frequent heavy showers, usually arriving as intense afternoon bursts rather than all-day drizzle. September and October are the wettest.",
+        "water": "The river swells, runs fast and turns turbid brown — dramatic to photograph, but not safe to swim in.",
+        "wildlife": "Peak greenery, loudest birdsong and the most visible insects and lizards. Waterfalls and reservoirs are at their fullest.",
+        "verdict": "Green landscapes, dramatic river photography, low-season prices and thinner crowds."
+      }
+    ]
+  },
+  "visitRoutes": {
+    "navLabel": "Routes",
+    "title": "Recommended routes: half day or full day",
+    "subtitle": "Two ready-to-follow itineraries — one for a quick stop, one that covers the story properly.",
+    "tabHalf": "Half day",
+    "tabFull": "Full day",
+    "labels": {
+      "duration": "Total time",
+      "bestStart": "Best start",
+      "goodFor": "Best for",
+      "summary": "In short"
+    },
+    "disclaimer": "Routes are experience-based outlines. Actual train times, museum hours and transport depend on conditions on the day.",
+    "routes": {
+      "half": {
+        "name": "Half day at the bridge",
+        "duration": "About 4 hours",
+        "bestStart": "07:30 – 08:30",
+        "goodFor": "Travellers passing through, families, first-time visitors",
+        "summary": "Enough time to walk the bridge, see it from both banks and understand the story without rushing — or fighting the heat.",
+        "steps": [
+          { "time": "07:30", "title": "Arrive early and walk the span", "text": "Cool air, soft light and few people. Walk from the eastern end towards the western bank, pausing at the refuge points and reading the plaques as you go." },
+          { "time": "08:30", "title": "Both banks, two vantage points", "text": "Cross to the far bank for the classic full-curve view, then come back down to river level for the low angle under the spans." },
+          { "time": "09:30", "title": "Watch a train cross", "text": "Stand well clear of the track. Trains move slowly across the bridge, which gives you time to see the whole structure flex as they pass." },
+          { "time": "10:15", "title": "Museum and war cemetery", "text": "A short look at the bridge-side museum or the Thailand–Burma Railway Centre, then a quiet 30 minutes at the Kanchanaburi War Cemetery." },
+          { "time": "11:30", "title": "Riverside lunch", "text": "Eat by the water, then head on — you have covered the essentials before the heat of the day." },
+          { "time": "16:30", "title": "Optional: return for golden hour", "text": "If you are staying nearby, come back before sunset for the best light and the calmest atmosphere on the water." }
+        ]
+      },
+      "full": {
+        "name": "Full day: the bridge and the railway",
+        "duration": "About 8 – 9 hours",
+        "bestStart": "06:30 – 07:00",
+        "goodFor": "History-minded travellers, photographers, anyone with their own transport or a hired driver",
+        "summary": "Pairs the bridge with the two places that explain it: the war cemetery in town and the Hellfire Pass cutting in the mountains.",
+        "steps": [
+          { "time": "06:30", "title": "Sunrise at the bridge", "text": "The quietest and coolest hour, with mist on the water in the cool season. Photograph before the crowds arrive." },
+          { "time": "08:00", "title": "Breakfast and the riverside", "text": "Refuel locally, then walk the full length of the bridge and both approaches at an easy pace." },
+          { "time": "09:30", "title": "Kanchanaburi War Cemetery", "text": "Close to 7,000 Commonwealth and Dutch graves, laid out with deliberate symmetry. Allow 30–45 minutes." },
+          { "time": "11:00", "title": "Ride the Death Railway", "text": "Take the train towards Nam Tok for the river viaduct section — the most scenic stretch of the line." },
+          { "time": "13:00", "title": "Lunch near the line", "text": "Eat where the train stops, then continue by road towards the mountains." },
+          { "time": "14:30", "title": "Hellfire Pass Memorial", "text": "Walk down into the cutting that was carved by hand, and visit the museum at the top. Allow 1.5–2 hours." },
+          { "time": "17:00", "title": "Return for golden hour", "text": "Back at the bridge for the late light, then dinner by the river." }
+        ]
+      }
+    }
+  },
+  "audiencePlans": {
+    "navLabel": "Who it suits",
+    "title": "Plans tailored to who you're travelling with",
+    "subtitle": "Three ready-made approaches — pick the one that matches your group and the pace you want.",
+    "labels": {
+      "duration": "Suggested time",
+      "pace": "Pace",
+      "includes": "What's included",
+      "tips": "Practical tips",
+      "watchOut": "Good to know"
+    },
+    "items": [
+      {
+        "id": "family",
+        "icon": "👨‍👩‍👧",
+        "name": "Families with children",
+        "tagline": "Short, safe and full of small discoveries",
+        "duration": "1.5 – 2 hours",
+        "pace": "Slow, with plenty of breaks",
+        "includes": [
+          "Walk the main span and stop at the riverside viewing terraces",
+          "Watch a train cross — the moment children remember most",
+          "A short stroll to the riverside cafés and stalls",
+          "Optional: the small museum beside the bridge for a 20-minute look"
+        ],
+        "tips": [
+          "Hold hands on the walkway — the gaps between the sleepers open straight down to the river",
+          "Come before 10:00 or after 16:00 to avoid the hottest hours",
+          "Bring water, hats and a spare set of clothes in the rainy season"
+        ],
+        "watchOut": "There is no barrier along the walkway edge and the surface is uneven steel and timber sleepers, so scooters, wheeled toys and open sandals are best left behind."
+      },
+      {
+        "id": "photography",
+        "icon": "📷",
+        "name": "Photographers & nature lovers",
+        "tagline": "Light first, everything else second",
+        "duration": "3 – 5 hours",
+        "pace": "Flexible, waiting for light",
+        "includes": [
+          "Blue hour and sunrise from the western bank",
+          "Framing the bridge through the sleepers and along the river bends",
+          "Midday: the war cemetery and riverside markets for context shots",
+          "Golden hour from the opposite bank, then dusk with the bridge lights"
+        ],
+        "tips": [
+          "A wide lens covers the full curve; a short telephoto catches trains, rivets and people on the span",
+          "The best reflections need low water and no wind — cool-season mornings",
+          "Bring a cloth: river spray and dust settle on the glass surprisingly fast"
+        ],
+        "watchOut": "Never photograph from the tracks themselves — trains cross without warning. Stay on the pedestrian side, behind the refuge points."
+      },
+      {
+        "id": "accessible",
+        "icon": "♿",
+        "name": "Low mobility & step-free visits",
+        "tagline": "See the bridge properly without climbing",
+        "duration": "1 – 1.5 hours",
+        "pace": "Flat and unhurried",
+        "includes": [
+          "The level riverside promenade and viewing areas at the bridge approach",
+          "Ground-level viewpoints on both banks for the classic photograph",
+          "Seating and shade within a short, even distance",
+          "Optional: a slow drive along the river road for changing angles"
+        ],
+        "tips": [
+          "Vehicle drop-off is possible close to the bridge entrance — ask the driver to stop there rather than at the car park",
+          "Mornings are cooler and much quieter, with more room to move",
+          "A companion is recommended if you plan to go onto the bridge itself"
+        ],
+        "watchOut": "The bridge deck is historic steel with open gaps between the sleepers and no handrail at the walkway edge. Many visitors take in the whole structure from the banks instead, which is just as rewarding."
+      }
+    ]
+  },
+  "facilities": {
+    "navLabel": "Facilities",
+    "title": "Visitor services & nearby amenities",
+    "subtitle": "What's available around the bridge, described by category rather than by business.",
+    "neutralNote": "This is an independent, non-commercial guide. We describe the kinds of services you will find nearby and we do not recommend, rank or link to individual businesses.",
+    "legend": { "onSite": "At the bridge", "walk": "Short walk (5–15 min)", "town": "Kanchanaburi town centre" },
+    "labels": { "where": "Where", "note": "What to expect" },
+    "items": [
+      { "icon": "🚻", "name": "Public toilets", "where": "onSite", "note": "Basic facilities at the bridge approach and by the riverside food area. A small fee is normal, and paper often runs out — carry tissues." },
+      { "icon": "🅿️", "name": "Parking", "where": "onSite", "note": "Roadside spaces and small private car parks within a few minutes' walk. Weekends and holidays fill early; expect a modest fee for attended parking." },
+      { "icon": "🍜", "name": "Food & drink", "where": "walk", "note": "Riverside restaurants, noodle shops and street stalls, from a quick bowl to a full sit-down meal with a river view. Busiest after sunset." },
+      { "icon": "🧋", "name": "Cafés", "where": "walk", "note": "Several cafés with river terraces — useful for waiting out a shower or for late-afternoon shade." },
+      { "icon": "🛒", "name": "Shops & convenience stores", "where": "walk", "note": "Small groceries and convenience stores near the bridge for water, snacks and basics; larger supermarkets and a shopping centre in the town centre." },
+      { "icon": "🏨", "name": "Accommodation", "where": "town", "note": "From riverside guesthouses and hostels to floating hotels and mid-range resorts, mostly within 10–20 minutes of the bridge. Book ahead in the cool season." },
+      { "icon": "💊", "name": "Pharmacy", "where": "town", "note": "Pharmacies cluster in the town centre. Bridge-side stalls sell drinks and snacks, not medicines, so stock up before you go." },
+      { "icon": "🏥", "name": "Medical help", "where": "town", "note": "A provincial hospital and several clinics sit in Kanchanaburi town, roughly 10–15 minutes away. For an emergency in Thailand dial 1669." },
+      { "icon": "🏧", "name": "ATMs & cash", "where": "walk", "note": "ATMs are available near the bridge and in town. Many small stalls and some transport still prefer cash, so keep some baht on you." },
+      { "icon": "⛽", "name": "Fuel & EV charging", "where": "town", "note": "Fuel stations line the main roads into town, and some larger stations and hotels have electric-vehicle charging points. There are none on the bridge approach itself, so plan ahead." },
+      { "icon": "👶", "name": "Baby care", "where": "town", "note": "No dedicated nursing room at the bridge. Riverside restaurants and the town-centre shopping centre are the practical places to feed and change a baby." },
+      { "icon": "📶", "name": "Mobile signal & Wi-Fi", "where": "onSite", "note": "Mobile data coverage is generally good around the bridge. Many cafés and hotels offer free Wi-Fi to customers." },
+      { "icon": "🧳", "name": "Left luggage", "where": "town", "note": "No lockers at the bridge. Hotels and guesthouses will usually hold bags for guests, and some town-centre shops offer paid storage." },
+      { "icon": "☂️", "name": "Rain gear & essentials", "where": "walk", "note": "Ponchos, hats, sunscreen and bottled water are sold by stalls near the entrance, especially through the rainy season." }
+    ]
+  },
+  "bridgeInDetail": {
+    "navLabel": "Science & respect",
+    "title": "Reading the bridge — and visiting it with care",
+    "subtitle": "A short explainer for what you are actually looking at, plus the responsibilities that come with this place.",
+    "explainTitle": "How to read what you're looking at",
+    "explainIntro": "The bridge is a working piece of 1940s engineering, and its shape tells you what it had to do: carry heavy trains across a wide river, on a deadline that left no time to build a proper foundation first.",
+    "explainItems": [
+      { "icon": "🌉", "title": "A curved bridge, not a straight one", "text": "The spans sit slightly off-axis so the track meets each bank at a gentler angle. Look along the walkway and you will see the curve — it is a response to the river bend, not a construction error." },
+      { "icon": "🔩", "title": "Riveted steel plate girders", "text": "The main spans are riveted steel, joined plate by plate. Riveting was the standard way to hold steel together before on-site welding became reliable, and it is still visible as rows of small domes along every beam." },
+      { "icon": "🪵", "title": "There used to be two bridges", "text": "A temporary wooden trestle bridge and a steel bridge stood side by side. The wooden structure carried the first trains while the steel one took the heavy loads. Only the steel bridge survives today." },
+      { "icon": "🌊", "title": "Why the water looks different every season", "text": "In the cool season the Khwae Yai runs low and clear, so the pier bases and the riverbed structure become visible. In the rainy season it carries sediment and rises fast — which is why the piers are set so deep and so wide." },
+      { "icon": "🚂", "title": "It is still a live railway", "text": "This is not a museum piece: passenger trains still cross on a regular daytime schedule. That is why the walkway has refuge platforms — they exist so you have somewhere safe to stand when a train arrives." },
+      { "icon": "🪨", "title": "Why trains crawl through here", "text": "The alignment through the mountains is tight and steep, so trains slow to walking pace across the bridge and through the cuttings. That slowness is a direct result of how quickly the line was built." }
+    ],
+    "responsibilityTitle": "Visiting with respect",
+    "responsibilityIntro": "Tens of thousands of people died building this railway, and the bridge is both an active railway and a memorial. A few simple habits keep it that way for everyone.",
+    "duties": [
+      { "icon": "🕯️", "title": "Treat it as a memorial first", "text": "The cemeteries, memorial plaques and the cutting at Hellfire Pass are graves and commemorative sites. Keep voices low, avoid playful posing on memorials, and never move or lean on markers." },
+      { "icon": "🚧", "title": "Never stand on the tracks", "text": "Trains cross without warning and cannot stop quickly. Stay behind the refuge points when a train approaches, and keep children within arm's reach at all times." },
+      { "icon": "🗑️", "title": "Take everything back out", "text": "The bridge and riverbanks have limited waste collection. Carry out bottles, wrappers and food scraps — plastic in the river is the most visible damage visitors cause." },
+      { "icon": "🐒", "title": "Do not feed the animals", "text": "Macaques, monitor lizards and river birds quickly become dependent on handouts, and fed animals can turn aggressive. Watch from a distance and never feed by hand." },
+      { "icon": "🛕", "title": "Respect local places of worship", "text": "Nearby temples and shrines are working religious sites. Cover shoulders and knees, remove shoes where indicated, and ask before photographing people at prayer." },
+      { "icon": "🛍️", "title": "Support locally, and fairly", "text": "Buying from small riverside stalls and family-run shops keeps the benefit in the community. Do not buy objects presented as wartime relics — that trade damages heritage sites." }
+    ]
+  },
+  "sources": {
+    "title": "Sources & references",
+    "subtitle": "Where the facts, ratings and practical details on this page come from.",
+    "intro": "This is a non-profit educational guide. Every detail below is cross-checked against public, attributable sources so you can verify it yourself.",
+    "referenceLabel": "Reference",
+    "officialNote": "For official updates and regional tourism information, visit the official tourism portal:",
+    "note": "Ratings and reviews are sourced from Google Maps users. Photo credit: all images displayed on this site remain the property and copyright of their original photographers.",
+    "items": [
+      { "icon": "⭐", "name": "Google Maps — River Kwai Bridge (ratings & reviews)", "desc": "Rating 4.6 / 5 from 14,890 user reviews, address, Plus Code 2GR3+QM and visitor photos.", "url": "https://maps.app.goo.gl/tze9JQUAKaV3Mbm78", "label": "View on Google Maps" },
+      { "icon": "🇹🇭", "name": "Tourism Authority of Thailand (TAT)", "desc": "Official national tourism information for Kanchanaburi and the River Kwai Bridge.", "url": "https://www.tourismthailand.org", "label": "tourismthailand.org" },
+      { "icon": "🏛️", "name": "Kanchanaburi Province", "desc": "Provincial public information and the annual River Kwai Bridge Week.", "url": "https://www.kanchanaburi.go.th", "label": "kanchanaburi.go.th" },
+      { "icon": "🌦️", "name": "Thai Meteorological Department (TMD)", "desc": "Seasonal weather and rainfall reference used for the best-season advice.", "url": "https://www.tmd.go.th", "label": "tmd.go.th" },
+      { "icon": "🚂", "name": "State Railway of Thailand (SRT)", "desc": "The operating railway and the passenger services that still cross the bridge.", "url": "https://www.railway.co.th", "label": "railway.co.th" },
+      { "icon": "🕯️", "name": "Commonwealth War Graves Commission (CWGC)", "desc": "Records for Kanchanaburi War Cemetery and the Death Railway memorials.", "url": "https://www.cwgc.org", "label": "cwgc.org" }
+    ]
+  },
   "recommendations": {
-    "title": "What else is nearby",
+    "title": "Landmarks & Attractions Around River Kwai Bridge",
+    "subtitle": "What else is nearby in Kanchanaburi, and the historic stops worth pairing with the bridge.",
     "route": {
       "title": "WWII Historical Pilgrimage Route",
       "desc": "A complete historical journey starting from the Bridge, diving deeper into the heavy memories of the Death Railway.",
@@ -546,10 +1116,10 @@
       { "name": "Erawan Falls & nature day", "url": "https://www.google.com/maps?q=14.3756,99.1447" }
     ]
   },
-  "scienceArt": {
+  "engineeringNotes": {
     "title": "Engineering & history notes",
     "subtitle": "The bridge is also an open lesson in wartime engineering.",
-    "scienceMuseum": {
+    "engineering": {
       "name": "The steel truss",
       "role": "Engineering role",
       "highlight": "A curved through-truss mixing original wartime steel and later replacements.",
@@ -557,7 +1127,7 @@
       "ctaLabel": "Learn the railway's story",
       "ctaUrl": "https://www.tourismthailand.org"
     },
-    "artMuseum": {
+    "culture": {
       "name": "A name from film",
       "role": "Cultural role",
       "highlight": "The 1957 film fixed 'River Kwai' in global memory, long after the wartime build.",
@@ -566,7 +1136,7 @@
       "ctaUrl": "https://www.tourismthailand.org"
     }
   },
-  "outdoorMuseum": {
+  "photoSpots": {
     "title": "Bridge photo spots",
     "subtitle": "A few angles to shoot the bridge and river well.",
     "items": [
@@ -599,7 +1169,7 @@
       }
     ]
   },
-  "education": {
+  "whyItMatters": {
     "title": "Why it's worth knowing",
     "subtitle": "The bridge isn't just a crossing — it's a face of memory.",
     "points": [
@@ -608,10 +1178,9 @@
       { "title": "A story of reconciliation", "text": "Today it is visited by people from many nations, including those connected to the conflict.", "items": ["Visitors from many lands", "Memory and peace", "Shared history"] }
     ]
   },
-  "plantGuide": {
+  "seasonGuide": {
     "title": "Visit by season",
     "subtitle": "Kanchanaburi has three clear seasons; the bridge feels different each.",
-    "comparison": [],
     "seasonTitle": "Three seasons",
     "seasonSubtitle": "Pick the season, visit easier.",
     "seasons": [
@@ -620,7 +1189,7 @@
       { "icon": "🌧️", "badge": "Rainy", "name": "Rainy (Jun–Oct)", "summary": "Showers; an umbrella is enough, and the river is fullest.", "highlights": ["Mostly showers", "Greener hills", "Fewer crowds"] }
     ]
   },
-  "audience": {
+  "visitorTypes": {
     "title": "Who will love it",
     "subtitle": "Different travellers each find their rhythm here.",
     "resonanceLabel": "Good for",

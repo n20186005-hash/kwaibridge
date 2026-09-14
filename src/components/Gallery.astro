@@ -1,13 +1,12 @@
 ---
 import { getI18n } from '../i18n/ui';
+import { galleryConfig } from '../config';
 const { messages } = getI18n(Astro.url);
 const g = messages.gallery;
-const totalImages = 23;
-const images = Array.from({ length: totalImages }, (_, i) => {
-  const n = String(i + 1);
-  return `/gallery/river-kwai-bridge-${n}.jpg`;
-});
+const images = Array.from({ length: galleryConfig.count }, (_, i) => galleryConfig.file(i + 1));
 const photoAlts = g.photoAlts ?? images.map(() => g.photoAlt);
+const altSuffix = g.altSuffix ?? '';
+const semanticAlt = (alt: string) => (altSuffix ? `${alt} — ${altSuffix}` : alt);
 ---
 
 <section id="gallery" class="section-padding" style="background: var(--bg-secondary);">
@@ -17,8 +16,8 @@ const photoAlts = g.photoAlts ?? images.map(() => g.photoAlt);
 
     <div class="gallery-grid" id="gallery-grid">
       {images.map((src, index) => (
-        <button type="button" class="gallery-item" data-index={index} aria-label={photoAlts[index] ?? g.photoAlt}>
-          <img src={src} alt={photoAlts[index] ?? g.photoAlt} loading="lazy" />
+        <button type="button" class="gallery-item" data-index={index} aria-label={semanticAlt(photoAlts[index] ?? g.photoAlt)}>
+          <img src={src} alt={semanticAlt(photoAlts[index] ?? g.photoAlt)} loading={index === 0 ? 'eager' : 'lazy'} />
         </button>
       ))}
     </div>
@@ -28,6 +27,10 @@ const photoAlts = g.photoAlts ?? images.map(() => g.photoAlt);
         📍 {g.viewAll}
       </a>
     </div>
+
+    {g.creditNote && (
+      <p class="text-center text-xs mt-6 leading-relaxed" style="color: var(--text-muted);">{g.creditNote}</p>
+    )}
   </div>
 </section>
 

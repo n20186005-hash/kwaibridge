@@ -1,5 +1,5 @@
 {
-  "name": "hyuhyuam-hermitage",
+  "name": "kwaibridge",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -7,15 +7,21 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "cf:dev": "astro build && wrangler dev",
+    "cf:deploy": "astro build && wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^12.6.13",
     "@tailwindcss/vite": "^4.0.0",
     "astro": "^5.5.0",
     "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
-    "typescript": "^5.9.3"
+    "sharp": "^0.35.4",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.131.1"
   }
 }
