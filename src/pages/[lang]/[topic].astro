@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TopicPage from '../../components/TopicPage.astro';
+import { languagesList } from '../../i18n/ui';
+import { topics, topicBySlug, type TopicLang } from '../../i18n/topics';
+
+export function getStaticPaths() {
+  return languagesList.flatMap((lang) =>
+    topics.map((topic) => ({
+      params: { lang, topic: topic.slug },
+    })),
+  );
+}
+
+const { lang, topic: slug } = Astro.params;
+const topic = topicBySlug(slug as string);
+const safeLang = (lang ?? 'en') as TopicLang;
+const title = topic ? topic.title[safeLang] : 'River Kwai Bridge';
+const description = topic ? topic.description[safeLang] : '';
+---
+
+<BaseLayout title={title} description={description} path={slug as string}>
+  <TopicPage slug={slug as string} />
+</BaseLayout>

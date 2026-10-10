@@ -10,9 +10,10 @@ interface Props {
   title: string;
   description: string;
   path?: string;
+  noindex?: boolean;
 }
 
-const { title, description, path = '' } = Astro.props;
+const { title, description, path = '', noindex = false } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const htmlLang = htmlLangAttr(lang);
 const alts = buildAlternates(path);
@@ -165,6 +166,7 @@ const placeLd = {
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex,follow" />}
     <!-- 首屏大图以 CSS background 呈现，浏览器无法提前发现，需显式预加载以改善移动端 LCP -->
     <link rel="preload" as="image" href={heroImageAbsolute} fetchpriority="high" />
     <link rel="canonical" href={canonical} />

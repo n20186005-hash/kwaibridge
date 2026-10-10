@@ -49,7 +49,7 @@ export const placeConfig = {
   /* 街道地址 */
   streetAddress: 'River Kwai Rd, Tha Ma Kham, Mueang Kanchanaburi District',
   /* Google 地图 Plus Code */
-  plusCode: '2GR3+QM Ban Tai, Mueang Kanchanaburi District, Kanchanaburi',
+  plusCode: '2GR3+RM Tha Ma Kham, Mueang Kanchanaburi District, Kanchanaburi',
   /* {{LATITUDE}} / {{LONGITUDE}} */
   latitude: 14.0419,
   longitude: 99.5041,
@@ -90,9 +90,9 @@ export const placeConfig = {
   /* {{NEARBY_LANDMARK_1}} / {{NEARBY_LANDMARK_2}} */
   nearbyLandmark1: 'Kanchanaburi War Cemetery (Don Rak)',
   nearbyLandmark2: 'Hellfire Pass Memorial',
-  /* 评分与评价数（须与谷歌地图保持一致） */
+  /* 评分与评价数（须与谷歌地图保持一致，核对日期 2026-10） */
   ratingValue: '4.6',
-  reviewCount: '14890',
+  reviewCount: '15019',
   /* 图片资源 */
   heroImage: '/gallery/river-kwai-bridge-kanchanaburi-22.jpg',
   icon: '/icon.svg',

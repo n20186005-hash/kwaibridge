@@ -1,6 +1,7 @@
 import type { APIRoute } from 'astro';
 import { siteConfig } from '../config';
 import { languagesList } from '../i18n/ui';
+import { topicSlugs } from '../i18n/topics';
 
 export const prerender = true;
 
@@ -10,12 +11,13 @@ export const prerender = true;
  * 1. 所有 URL 统一为带尾斜杠的规范形式（与 canonical / hreflang 一致）；
  * 2. 每条记录内嵌 xhtml:link 语言互指，便于 Google 关联三语版本；
  * 3. 把法务页（隐私政策 / 服务条款 / Cookie 设置）标记为低优先级，
- *    让抓取预算优先落在承载搜索意图的主页上。
+ *    让抓取预算优先落在承载搜索意图的主页与专题页上。
  */
 
 /** 路由清单：路径片段 -> 优先级与更新频率 */
 const routes: { segment: string; priority: string; changefreq: string }[] = [
   { segment: '', priority: '1.0', changefreq: 'weekly' },
+  ...topicSlugs.map((slug) => ({ segment: slug, priority: '0.8', changefreq: 'monthly' })),
   { segment: 'privacy-policy', priority: '0.2', changefreq: 'yearly' },
   { segment: 'terms-of-service', priority: '0.2', changefreq: 'yearly' },
   { segment: 'cookie-settings', priority: '0.1', changefreq: 'yearly' },

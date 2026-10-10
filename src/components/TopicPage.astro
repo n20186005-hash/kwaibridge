@@ -1,0 +1,138 @@
+---
+import { getI18n, buildAlternates, languagesList } from '../i18n/ui';
+import { siteConfig, placeConfig } from '../config';
+import { topicBySlug, type TopicLang } from '../i18n/topics';
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const lang = getI18n(Astro.url).lang as TopicLang;
+const topic = topicBySlug(slug);
+
+if (!topic) {
+  throw new Error(`Unknown topic slug: ${slug}`);
+}
+
+const t = topic;
+const title = t.title[lang];
+const description = t.description[lang];
+const h1 = t.h1[lang];
+const intro = t.intro[lang];
+const sections = t.sections[lang];
+const faq = t.faq[lang];
+
+const canonical = buildAlternates(slug)[lang];
+const homeHref = `/${lang}/`;
+
+const faqLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+
+const breadcrumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteConfig.baseUrl}/${lang}/` },
+    { '@type': 'ListItem', position: 2, name: h1, item: canonical },
+  ],
+};
+
+const relatedLinks = t.related
+  .map((s) => topicBySlug(s))
+  .filter((x): x is NonNullable<typeof x> => Boolean(x))
+  .map((x) => ({ href: `/${lang}/${x.slug}/`, label: x.h1[lang] }));
+---
+
+<article class="section-padding" style="background: var(--bg-primary);">
+  <div class="max-w-3xl mx-auto px-4">
+    <nav aria-label="Breadcrumb" class="text-sm mb-4" style="color: var(--text-muted);">
+      <a href={homeHref} class="hover:opacity-70">{lang === 'th' ? 'หน้าแรก' : lang === 'zh' ? '首页' : 'Home'}</a>
+      <span class="mx-2">/</span>
+      <span style="color: var(--text-secondary);">{h1}</span>
+    </nav>
+
+    <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style="color: var(--text-primary);">{h1}</h1>
+    <p class="text-base sm:text-lg leading-relaxed mb-10" style="color: var(--text-secondary);">{intro}</p>
+
+    <div class="space-y-8">
+      {sections.map((s) => (
+        <section>
+          <h2 class="font-display text-xl sm:text-2xl font-semibold mb-3" style="color: var(--text-primary);">{s.heading}</h2>
+          <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary);">{s.body}</p>
+        </section>
+      ))}
+    </div>
+
+    <!-- Interactive map for location-oriented topics -->
+    {slug === 'location-map' && (
+      <section class="mt-10">
+        <div class="map-container overflow-hidden border rounded-2xl" style="border-color: var(--map-border);">
+          <iframe
+            src={placeConfig.mapsEmbedSrc}
+            class="w-full h-[320px] sm:h-[420px]"
+            width="100%"
+            height="420"
+            style="border:0;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            title={title}
+          ></iframe>
+        </div>
+        <div class="text-center mt-6">
+          <a href={placeConfig.mapsShareUrl} target="_blank" rel="noopener noreferrer" class="inline-flex justify-center px-8 py-3 rounded-full font-semibold text-white" style="background: var(--accent);">
+            📍 {lang === 'th' ? 'เปิดแผนที่ Google Maps' : lang === 'zh' ? '在 Google 地图中打开' : 'Open in Google Maps'}
+          </a>
+        </div>
+      </section>
+    )}
+
+    <!-- FAQ -->
+    <section class="mt-12" id="faq">
+      <h2 class="font-display text-2xl sm:text-3xl font-semibold mb-5" style="color: var(--text-primary);">
+        {lang === 'th' ? 'คำถามที่พบบ่อย' : lang === 'zh' ? '常见问题' : 'Frequently asked questions'}
+      </h2>
+      <div class="space-y-3">
+        {faq.map((item) => (
+          <details class="rounded-2xl border p-4" style="background: var(--card-bg); border-color: var(--border-color);">
+            <summary class="cursor-pointer font-semibold text-base sm:text-lg" style="color: var(--text-primary);">{item.q}</summary>
+            <p class="mt-3 text-sm sm:text-base leading-relaxed" style="color: var(--text-secondary);">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related topics -->
+    {relatedLinks.length > 0 && (
+      <section class="mt-12">
+        <h2 class="font-display text-xl sm:text-2xl font-semibold mb-4" style="color: var(--text-primary);">
+          {lang === 'th' ? 'อ่านเพิ่มเติม' : lang === 'zh' ? '延伸阅读' : 'Related guides'}
+        </h2>
+        <div class="grid sm:grid-cols-2 gap-3">
+          {relatedLinks.map((link) => (
+            <a href={link.href} class="rounded-2xl border p-4 text-sm font-medium hover:opacity-80" style="background: var(--card-bg); border-color: var(--border-color); color: var(--text-primary);">
+              → {link.label}
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <div class="mt-12">
+      <a href={homeHref} class="text-sm hover:opacity-70" style="color: var(--accent);">
+        {lang === 'th' ? '← กลับหน้าแรก' : lang === 'zh' ? '← 返回首页' : '← Back to home'}
+      </a>
+    </div>
+  </div>
+</article>
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(faqLd)}></script>
+<script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbLd)}></script>
