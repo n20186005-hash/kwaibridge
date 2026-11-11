@@ -52,6 +52,7 @@ const facts = [
   [text.kind, profile.kind[lang]],
   [text.area, profile.area[lang]],
   [text.time, profile.visitTime[lang]],
+  ...(details?.steward?.[lang] ? [[text.management, details.steward[lang]]] : []),
 ];
 ---
 
