@@ -1,0 +1,132 @@
+---
+import type { AttractionProfile as Profile } from '../i18n/attractionProfiles';
+import { attractionNotes } from '../i18n/placeEnhancements';
+import type { TopicLang } from '../i18n/topics';
+
+interface Props {
+  slug: string;
+  lang: TopicLang;
+  name: string;
+  mapQuery: string;
+  profile: Profile;
+}
+
+const { slug, lang, name, mapQuery, profile } = Astro.props;
+const details = attractionNotes[slug];
+const mapHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapQuery)}`;
+const text = {
+  en: {
+    basic: 'Basic information', name: 'Place name', kind: 'Attraction type', area: 'Location', management: 'Management',
+    hours: 'Opening hours', tickets: 'Ticket prices', transport: 'Getting there', time: 'Suggested visit duration',
+    route: 'Recommended route', step1: 'Arrive at the correct entrance', step2: 'Explore the main features', step3: 'Observe and photograph thoughtfully',
+    cautions: 'Visitor guidelines', photo: 'Photography locations', stay: 'Where to stay', reviews: 'Visitor reviews',
+    stayText: 'For a trip focused on the bridge, museums and cemetery, staying in central Kanchanaburi makes transfers easier. For farther attractions in Sai Yok or Si Sawat, compare travel time carefully with riverside lodges and confirm return transport before booking.',
+    cautionsText: 'Check the day’s weather and posted notices, bring drinking water and wear stable footwear. Follow site staff directions, avoid restricted zones and respect worship, remembrance or wildlife spaces as applicable.',
+    reviewText: 'Read the latest visitor reports, photos and current access information on the specific Google Maps place listing. Ratings change over time and are not reproduced as a fixed score here.',
+    maps: 'Open this place in Google Maps', open: 'Latest rating and reviews',
+  },
+  th: {
+    basic: 'ข้อมูลพื้นฐาน', name: 'ชื่อสถานที่', kind: 'ประเภทแหล่งท่องเที่ยว', area: 'ที่ตั้ง', management: 'หน่วยงานดูแล',
+    hours: 'เวลาเปิดให้เข้าชม', tickets: 'ราคาบัตรเข้าชม', transport: 'วิธีเดินทาง', time: 'เวลาเที่ยวที่แนะนำ',
+    route: 'เส้นทางเที่ยวแนะนำ', step1: 'มาถึงทางเข้าที่ถูกต้อง', step2: 'ชมจุดเด่นของสถานที่', step3: 'สังเกตและถ่ายภาพอย่างเหมาะสม',
+    cautions: 'ข้อควรรู้ก่อนเข้าชม', photo: 'มุมถ่ายภาพ', stay: 'ที่พักที่เหมาะกับเส้นทาง', reviews: 'รีวิวจากผู้เยี่ยมชม',
+    stayText: 'หากเน้นสะพาน พิพิธภัณฑ์ และสุสาน การพักในตัวเมืองกาญจนบุรีช่วยให้เดินทางง่าย ส่วนจุดไกลในไทรโยคหรือศรีสวัสดิ์ควรเทียบเวลาเดินทางกับที่พักริมน้ำและเตรียมรถกลับก่อนจอง',
+    cautionsText: 'ตรวจอากาศและป้ายประกาศในวันเดินทาง พกน้ำและสวมรองเท้ากระชับ ทำตามเจ้าหน้าที่ หลีกเลี่ยงเขตห้ามเข้า และเคารพสถานที่ศาสนา อนุสรณ์ หรือธรรมชาติตามความเหมาะสม',
+    reviewText: 'ดูประสบการณ์ ภาพถ่าย และข้อมูลเข้าชมล่าสุดจากหน้าสถานที่นี้บน Google Maps คะแนนรีวิวเปลี่ยนแปลงได้จึงไม่แสดงเป็นตัวเลขคงที่',
+    maps: 'เปิดสถานที่นี้ใน Google Maps', open: 'คะแนนและรีวิวล่าสุด',
+  },
+  zh: {
+    basic: '景点基本信息', name: '景点名称', kind: '景点类型', area: '所在区域', management: '管理单位',
+    hours: '开放时间', tickets: '门票价格', transport: '交通方式', time: '建议停留时间',
+    route: '推荐游览路线', step1: '抵达正确入口', step2: '了解核心看点', step3: '观察细节与安全拍摄',
+    cautions: '游览须知', photo: '拍照机位', stay: '住宿建议', reviews: '游客评价',
+    stayText: '若以桂河大桥、博物馆和战争公墓为主，住在北碧府市中心更便于换乘。前往赛育或诗沙瓦的郊外景点，应比较河畔住宿与市区住宿的交通时间，并在订房前确认返程方式。',
+    cautionsText: '出行当天查看天气与现场告示，携带饮水、穿稳固鞋履，遵从工作人员指引，勿进入限制区域；根据场所性质尊重宗教活动、纪念环境或野生动物。',
+    reviewText: '可在该景点专属 Google Maps 地点页查看近期游客体验、实拍照片和开放反馈。评分随时间变化，因此这里不展示未经实时核实的固定分数。',
+    maps: '打开该景点 Google 地图', open: '查看最新评分与评价',
+  },
+}[lang];
+
+const facts = [
+  [text.name, name],
+  [text.kind, profile.kind[lang]],
+  [text.area, profile.area[lang]],
+  [text.time, profile.visitTime[lang]],
+];
+---
+
+<div class="mt-12 space-y-12" id="attraction-details">
+  <section>
+    <h2 class="font-display text-2xl sm:text-3xl font-semibold mb-5" style="color: var(--text-primary);">{text.basic}</h2>
+    <dl class="rounded-2xl border overflow-hidden" style="border-color: var(--border-color);">
+      {facts.map(([label, value], index) => (
+        <div class="grid sm:grid-cols-[11rem_1fr] gap-2 p-4" style={`background: ${index % 2 === 0 ? 'var(--card-bg)' : 'var(--bg-secondary)'};`}>
+          <dt class="font-semibold" style="color: var(--text-primary);">{label}</dt>
+          <dd style="color: var(--text-secondary);">{value}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <div class="grid sm:grid-cols-2 gap-6">
+    <section class="rounded-2xl border p-5" style="border-color: var(--border-color); background: var(--card-bg);">
+      <h2 class="font-display text-xl font-semibold mb-3" style="color: var(--text-primary);">{text.hours}</h2>
+      <p class="leading-relaxed" style="color: var(--text-secondary);">{profile.opening[lang]}</p>
+    </section>
+    <section class="rounded-2xl border p-5" style="border-color: var(--border-color); background: var(--card-bg);">
+      <h2 class="font-display text-xl font-semibold mb-3" style="color: var(--text-primary);">{text.tickets}</h2>
+      <p class="leading-relaxed" style="color: var(--text-secondary);">{profile.admission[lang]}</p>
+    </section>
+  </div>
+
+  <section>
+    <h2 class="font-display text-2xl font-semibold mb-3" style="color: var(--text-primary);">{text.transport}</h2>
+    <p class="leading-relaxed" style="color: var(--text-secondary);">{profile.arrival[lang]}</p>
+  </section>
+
+  <section>
+    <h2 class="font-display text-2xl font-semibold mb-5" style="color: var(--text-primary);">{text.route}</h2>
+    <ol class="space-y-4">
+      {[
+        [text.step1, profile.arrival[lang]],
+        [text.step2, details.features[lang]],
+        [text.step3, details.photo[lang]],
+      ].map(([heading, body], i) => (
+        <li class="flex gap-4 items-start">
+          <span class="shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-white font-bold" style="background: var(--accent);">{i + 1}</span>
+          <div>
+            <h3 class="font-semibold mb-1" style="color: var(--text-primary);">{heading}</h3>
+            <p class="leading-relaxed" style="color: var(--text-secondary);">{body}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section>
+    <h2 class="font-display text-2xl font-semibold mb-3" style="color: var(--text-primary);">{text.cautions}</h2>
+    <p class="leading-relaxed" style="color: var(--text-secondary);">{text.cautionsText}</p>
+  </section>
+
+  <section>
+    <h2 class="font-display text-2xl font-semibold mb-3" style="color: var(--text-primary);">{text.photo}</h2>
+    <p class="leading-relaxed" style="color: var(--text-secondary);">{details.photo[lang]}</p>
+  </section>
+
+  <section>
+    <h2 class="font-display text-2xl font-semibold mb-3" style="color: var(--text-primary);">{text.stay}</h2>
+    <p class="leading-relaxed" style="color: var(--text-secondary);">{text.stayText}</p>
+  </section>
+
+  <section class="rounded-2xl border p-5" style="border-color: var(--border-color); background: var(--card-bg);">
+    <h2 class="font-display text-2xl font-semibold mb-3" style="color: var(--text-primary);">{text.reviews}</h2>
+    <p class="leading-relaxed mb-4" style="color: var(--text-secondary);">{text.reviewText}</p>
+    <a href={mapHref} target="_blank" rel="noopener noreferrer" class="font-semibold" style="color: var(--accent);">{text.open} →</a>
+  </section>
+
+  <section>
+    <h2 class="font-display text-2xl font-semibold mb-3" style="color: var(--text-primary);">{text.maps}</h2>
+    <p class="mb-4" style="color: var(--text-secondary);">{profile.area[lang]} · {name}</p>
+    <a href={mapHref} target="_blank" rel="noopener noreferrer" class="inline-flex px-6 py-3 rounded-full text-white font-semibold" style="background: var(--accent);">{text.maps}</a>
+  </section>
+</div>

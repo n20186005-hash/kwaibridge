@@ -1,4 +1,5 @@
 import { siteConfig } from '../config';
+import { expansionTopics } from './expansion';
 
 export type TopicLang = 'en' | 'th' | 'zh';
 
@@ -29,9 +30,13 @@ export interface TopicContent {
   faq: Record<TopicLang, TopicFaq[]>;
   /** slugs of related topics for cross-linking */
   related: string[];
+  /** Independent Google Maps place search, when the topic describes another location. */
+  mapQuery?: string;
+  steward?: Record<TopicLang, string>;
+  image?: string;
 }
 
-export const topics: TopicContent[] = [
+const coreTopics: TopicContent[] = [
   {
     slug: 'location-map',
     title: {
@@ -50,9 +55,9 @@ export const topics: TopicContent[] = [
       zh: '桂河大桥 — 位置与地图',
     },
     intro: {
-      en: 'The River Kwai Bridge spans the Khwae Yai River in Tha Ma Kham, about 3 km south of central Kanchanaburi in western Thailand. Below are the exact coordinates, Plus Code, and the easiest ways to reach the bridge from town or from Bangkok.',
-      th: 'สะพานข้ามแม่น้ำแคว ข้ามแม่น้ำแควใหญ่ที่ท่ามะขาม ห่างจากใจกลางจังหวัดกาญจนบุรีไปทางใต้ประมาณ 3 กม. ทางตะวันตกของประเทศไทย ด้านล่างนี้คือพิกัดที่แน่ชัด Plus Code และวิธีเดินทางที่สะดวกที่สุดจากตัวเมืองหรือจากกรุงเทพฯ',
-      zh: '桂河大桥横跨北碧府他玛堪（Tha Ma Kham）的桂河（Khwae Yai），位于泰国西部北碧府市区以南约 3 公里。以下提供精确坐标、Plus Code，以及从市区或曼谷前往大桥的最便捷方式。',
+      en: 'The River Kwai Bridge spans the Khwae Yai River in Tha Ma Kham, about 3 km north of central Kanchanaburi in western Thailand. Below are the coordinates, Plus Code, and ways to reach the bridge from town or Bangkok.',
+      th: 'สะพานข้ามแม่น้ำแคว ข้ามแม่น้ำแควใหญ่ที่ท่ามะขาม ห่างจากใจกลางเมืองกาญจนบุรีไปทางเหนือประมาณ 3 กม. ทางตะวันตกของประเทศไทย ด้านล่างคือพิกัด Plus Code และวิธีเดินทางจากตัวเมืองหรือกรุงเทพฯ',
+      zh: '桂河大桥横跨北碧府他玛堪（Tha Ma Kham）的桂河（Khwae Yai），位于泰国西部北碧府市区以北约 3 公里。以下提供坐标、Plus Code，以及从市区或曼谷前往大桥的方式。',
     },
     sections: {
       en: [
@@ -612,6 +617,8 @@ export const topics: TopicContent[] = [
     related: ['location-map', 'train-guide', 'history', 'bangkok-to-river-kwai-bridge'],
   },
 ];
+
+export const topics: TopicContent[] = [...coreTopics, ...expansionTopics];
 
 export const topicBySlug = (slug: string): TopicContent | undefined =>
   topics.find((t) => t.slug === slug);

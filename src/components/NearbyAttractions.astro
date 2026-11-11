@@ -1,0 +1,33 @@
+---
+import { getI18n } from '../i18n/ui';
+import { expansionTopics, attractionSlugs } from '../i18n/expansion';
+import type { TopicLang } from '../i18n/topics';
+
+const { lang } = getI18n(Astro.url);
+const language = lang as TopicLang;
+const labels = {
+  en: { heading: 'Explore nearby Kanchanaburi', lead: 'Museums, railway landmarks, temples and waterfalls for a longer stay.', more: 'Explore this place' },
+  th: { heading: 'เที่ยวต่อรอบกาญจนบุรี', lead: 'พิพิธภัณฑ์ จุดสำคัญทางรถไฟ วัด และน้ำตกสำหรับจัดทริปต่อ', more: 'ดูรายละเอียดสถานที่' },
+  zh: { heading: '探索北碧府周边景点', lead: '串联战争博物馆、铁路遗迹、寺庙与瀑布，规划更丰富的旅程。', more: '查看景点详情' },
+}[language];
+const items = expansionTopics.filter((topic) => attractionSlugs.has(topic.slug));
+---
+
+<section class="section-padding" style="background: var(--bg-secondary);" id="nearby-attractions">
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold text-center mb-3" style="color: var(--text-primary);">{labels.heading}</h2>
+    <p class="text-center mb-9" style="color: var(--text-secondary);">{labels.lead}</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {items.map((topic) => (
+        <a href={`/${language}/${topic.slug}/`} class="block rounded-2xl overflow-hidden border hover:opacity-85 transition-opacity" style="background: var(--card-bg); border-color: var(--border-color);">
+          {topic.image ? <img src={topic.image} alt={topic.h1[language]} width="480" height="320" loading="lazy" class="w-full h-44 object-cover" /> : <div class="h-3" style="background: var(--accent);"></div>}
+          <div class="p-5">
+            <h3 class="font-semibold text-lg mb-2" style="color: var(--text-primary);">{topic.h1[language]}</h3>
+            <p class="text-sm leading-relaxed mb-3" style="color: var(--text-secondary);">{topic.intro[language]}</p>
+            <span class="text-sm font-semibold" style="color: var(--accent);">{labels.more} →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

@@ -2,6 +2,8 @@
 import { getI18n, buildAlternates, languagesList } from '../i18n/ui';
 import { siteConfig, placeConfig } from '../config';
 import { topicBySlug, type TopicLang } from '../i18n/topics';
+import { attractionProfiles } from '../i18n/attractionProfiles';
+import AttractionProfile from './AttractionProfile.astro';
 
 interface Props {
   slug: string;
@@ -22,6 +24,8 @@ const h1 = t.h1[lang];
 const intro = t.intro[lang];
 const sections = t.sections[lang];
 const faq = t.faq[lang];
+const attractionProfile = attractionProfiles[slug];
+const attractionMapHref = t.mapQuery ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(t.mapQuery)}` : undefined;
 
 const canonical = buildAlternates(slug)[lang];
 const homeHref = `/${lang}/`;
@@ -60,7 +64,28 @@ const relatedLinks = t.related
     </nav>
 
     <h1 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4" style="color: var(--text-primary);">{h1}</h1>
+    {attractionProfile && attractionMapHref && (
+      <div class="flex flex-wrap gap-3 items-center mb-6">
+        <span class="rounded-full border px-4 py-2 text-sm" style="border-color: var(--border-color); color: var(--text-secondary);">{attractionProfile.kind[lang]}</span>
+        <span class="rounded-full border px-4 py-2 text-sm" style="border-color: var(--border-color); color: var(--text-secondary);">{lang === 'th' ? 'ตรวจเวลาเปิดล่าสุด' : lang === 'zh' ? '查看最新开放时间' : 'Check current hours'}</span>
+        <a href={attractionMapHref} target="_blank" rel="noopener noreferrer" class="rounded-full px-5 py-2 text-sm font-semibold text-white" style="background: var(--accent);">{lang === 'th' ? 'ที่ตั้งและรีวิว' : lang === 'zh' ? '位置与评分' : 'Location & ratings'} ↗</a>
+      </div>
+    )}
     <p class="text-base sm:text-lg leading-relaxed mb-10" style="color: var(--text-secondary);">{intro}</p>
+
+    {t.image && (
+      <figure class="mb-9 overflow-hidden rounded-2xl border" style="border-color: var(--border-color);">
+        <img src={t.image} alt={h1} width="960" height="640" loading="lazy" class="w-full h-auto object-cover" />
+        <figcaption class="px-4 py-2 text-xs" style="color: var(--text-muted);">{lang === 'th' ? 'ภาพสถานที่จริงประกอบคู่มือ' : lang === 'zh' ? '景点实景照片' : 'Photo of the featured location'}</figcaption>
+      </figure>
+    )}
+
+    {t.steward && (
+      <section class="mb-10 rounded-2xl border p-6" style="border-color: var(--border-color); background: var(--card-bg);">
+        <h2 class="font-display text-2xl font-semibold mb-3" style="color: var(--text-primary);">{lang === 'th' ? `เกี่ยวกับ${h1}และหน่วยงานดูแล` : lang === 'zh' ? `关于${h1}及管理单位` : `About ${h1} and its management`}</h2>
+        <p class="leading-relaxed" style="color: var(--text-secondary);">{t.steward[lang]}</p>
+      </section>
+    )}
 
     <div class="space-y-8">
       {sections.map((s) => (
@@ -70,6 +95,18 @@ const relatedLinks = t.related
         </section>
       ))}
     </div>
+
+    {attractionProfile && t.mapQuery && (
+      <AttractionProfile slug={slug} lang={lang} name={h1} mapQuery={t.mapQuery} profile={attractionProfile} />
+    )}
+
+    {t.mapQuery && !attractionProfile && (
+      <section class="mt-10 rounded-2xl border p-5" style="border-color: var(--border-color); background: var(--card-bg);">
+        <h2 class="text-xl font-semibold mb-2" style="color: var(--text-primary);">{lang === 'th' ? 'แผนที่สถานที่นี้' : lang === 'zh' ? '该地点的专属地图' : 'Map for this place'}</h2>
+        <p class="text-sm mb-4" style="color: var(--text-secondary);">{lang === 'th' ? 'ตรวจสอบชื่อและเส้นทางก่อนออกเดินทาง' : lang === 'zh' ? '出行前核对地点名称与路线' : 'Confirm the place name and route before leaving.'}</p>
+        <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(t.mapQuery)}`} target="_blank" rel="noopener noreferrer" class="inline-flex px-5 py-3 rounded-full text-white font-semibold" style="background: var(--accent);">{lang === 'th' ? 'เปิด Google Maps' : lang === 'zh' ? '打开 Google 地图' : 'Open Google Maps'}</a>
+      </section>
+    )}
 
     <!-- Interactive map for location-oriented topics -->
     {slug === 'location-map' && (
