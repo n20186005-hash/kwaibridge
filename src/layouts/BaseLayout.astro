@@ -10,10 +10,11 @@ interface Props {
   title: string;
   description: string;
   path?: string;
+  image?: string;
   noindex?: boolean;
 }
 
-const { title, description, path = '', noindex = false } = Astro.props;
+const { title, description, path = '', image, noindex = false } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const htmlLang = htmlLangAttr(lang);
 const alts = buildAlternates(path);
@@ -22,6 +23,7 @@ const { messages } = getI18n(Astro.url);
 const attractionName = messages.header?.siteName ?? messages.footer?.siteName ?? messages.meta.title;
 
 const heroImageAbsolute = absoluteUrl(placeConfig.heroImage);
+const pageImageAbsolute = image ? absoluteUrl(image) : heroImageAbsolute;
 const iconAbsolute = absoluteUrl(placeConfig.icon);
 const locale = ogLocale[lang] ?? lang;
 
@@ -168,7 +170,7 @@ const placeLd = {
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex,follow" />}
     <!-- 首屏大图以 CSS background 呈现，浏览器无法提前发现，需显式预加载以改善移动端 LCP -->
-    <link rel="preload" as="image" href={heroImageAbsolute} fetchpriority="high" />
+    {path === '' && <link rel="preload" as="image" href={heroImageAbsolute} fetchpriority="high" />}
     <link rel="canonical" href={canonical} />
     <link rel="alternate" hreflang="zh" href={alts.zh} />
     <link rel="alternate" hreflang="en" href={alts.en} />
@@ -195,17 +197,17 @@ const placeLd = {
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={locale} />
-    <meta property="og:image" content={heroImageAbsolute} />
-    <meta property="og:image:secure_url" content={heroImageAbsolute} />
+    <meta property="og:image" content={pageImageAbsolute} />
+    <meta property="og:image:secure_url" content={pageImageAbsolute} />
     <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1600" />
     <meta property="og:image:height" content="1200" />
-    <meta property="og:image:alt" content={`${placeConfig.fullName} in ${placeConfig.city}`} />
+    <meta property="og:image:alt" content={image ? title : `${placeConfig.fullName} in ${placeConfig.city}`} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={heroImageAbsolute} />
-    <meta name="twitter:image:alt" content={`${placeConfig.fullName} in ${placeConfig.city}`} />
+    <meta name="twitter:image" content={pageImageAbsolute} />
+    <meta name="twitter:image:alt" content={image ? title : `${placeConfig.fullName} in ${placeConfig.city}`} />
 
     {placeConfig.adsensePublisherId && (
       <>
@@ -218,9 +220,13 @@ const placeLd = {
       </>
     )}
 
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbLd)}></script>
-    <script type="application/ld+json" is:inline set:html={JSON.stringify(placeLd)}></script>
+    {path === '' && (
+      <>
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)}></script>
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbLd)}></script>
+        <script type="application/ld+json" is:inline set:html={JSON.stringify(placeLd)}></script>
+      </>
+    )}
 
     <script is:inline>
       (function () {

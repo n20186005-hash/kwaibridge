@@ -29,7 +29,7 @@ const switchTo = (l: string) => (pageSeg ? `/${l}/${pageSeg}/` : `/${l}/`);
     </nav>
 
     <div class="flex items-center gap-2 sm:gap-3">
-      <button type="button" id="mobile-menu-toggle" class="md:hidden w-9 h-9 rounded-lg border flex items-center justify-center text-lg" style="border-color: var(--border-color); color: var(--text-primary);" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+      <button type="button" id="mobile-menu-toggle" class="md:hidden w-9 h-9 rounded-lg border flex items-center justify-center text-lg" style="border-color: var(--border-color); color: var(--text-primary);" aria-label={lang === 'th' ? 'เปิดหรือปิดเมนู' : lang === 'zh' ? '展开或收起菜单' : 'Toggle menu'} aria-expanded="false" aria-controls="mobile-menu">
         ☰
       </button>
 

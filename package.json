@@ -8,6 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "check:i18n": "node scripts/audit-i18n.mjs",
     "optimize:images": "node scripts/optimize-images.mjs",
     "cf:dev": "astro build && wrangler dev",
     "cf:deploy": "astro build && wrangler deploy"

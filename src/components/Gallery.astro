@@ -1,7 +1,7 @@
 ---
 import { getI18n } from '../i18n/ui';
 import { galleryConfig } from '../config';
-const { messages } = getI18n(Astro.url);
+const { messages, lang } = getI18n(Astro.url);
 const g = messages.gallery;
 const images = Array.from({ length: galleryConfig.count }, (_, i) => galleryConfig.file(i + 1));
 const photoAlts = g.photoAlts ?? images.map(() => g.photoAlt);
@@ -36,13 +36,13 @@ const semanticAlt = (alt: string) => (altSuffix ? `${alt} — ${altSuffix}` : al
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
-  <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
-  <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous">‹</button>
+  <button type="button" class="lightbox-close" id="lightbox-close" aria-label={lang === 'th' ? 'ปิดภาพ' : lang === 'zh' ? '关闭图片' : 'Close image'}>✕</button>
+  <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label={lang === 'th' ? 'ภาพก่อนหน้า' : lang === 'zh' ? '上一张图片' : 'Previous image'}>‹</button>
   <figure class="lightbox-figure">
     <img id="lightbox-img" src="" alt="" />
     <figcaption id="lightbox-caption"></figcaption>
   </figure>
-  <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next">›</button>
+  <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next" aria-label={lang === 'th' ? 'ภาพถัดไป' : lang === 'zh' ? '下一张图片' : 'Next image'}>›</button>
 </div>
 
 <script is:inline>

@@ -19,6 +19,6 @@ const title = topic ? topic.title[safeLang] : 'River Kwai Bridge';
 const description = topic ? topic.description[safeLang] : '';
 ---
 
-<BaseLayout title={title} description={description} path={slug as string}>
+<BaseLayout title={title} description={description} path={slug as string} image={topic?.image}>
   <TopicPage slug={slug as string} />
 </BaseLayout>

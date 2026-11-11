@@ -44,10 +44,22 @@ const breadcrumbLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: `${siteConfig.baseUrl}/${lang}/` },
+    { '@type': 'ListItem', position: 1, name: lang === 'th' ? 'หน้าแรก' : lang === 'zh' ? '首页' : 'Home', item: `${siteConfig.baseUrl}/${lang}/` },
     { '@type': 'ListItem', position: 2, name: h1, item: canonical },
   ],
 };
+
+const attractionLd = t.mapQuery ? {
+  '@context': 'https://schema.org',
+  '@type': 'TouristAttraction',
+  name: h1,
+  description,
+  inLanguage: lang,
+  url: canonical,
+  ...(t.image ? { image: `${siteConfig.baseUrl}${t.image}` } : {}),
+  hasMap: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(t.mapQuery)}`,
+  address: { '@type': 'PostalAddress', addressRegion: 'Kanchanaburi', addressCountry: 'TH' },
+} : undefined;
 
 const relatedLinks = t.related
   .map((s) => topicBySlug(s))
@@ -173,3 +185,4 @@ const relatedLinks = t.related
 
 <script type="application/ld+json" is:inline set:html={JSON.stringify(faqLd)}></script>
 <script type="application/ld+json" is:inline set:html={JSON.stringify(breadcrumbLd)}></script>
+{attractionLd && <script type="application/ld+json" is:inline set:html={JSON.stringify(attractionLd)}></script>}
