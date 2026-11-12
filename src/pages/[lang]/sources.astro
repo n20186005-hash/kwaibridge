@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getI18n, languagesList } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return languagesList.map((lang) => ({ params: { lang } }));
+}
+
+const { lang, messages } = getI18n(Astro.url);
+const f = messages.footer;
+const localized = {
+  zh: {
+    title: '信息来源和参考文献',
+    subtitle: '本页汇总景点事实、评分、评论与旅行信息的公开出处，方便读者自行查证。',
+    method: '这是一份独立的旅游学习指南。我们参考公开资料并交叉核对重要信息；开放时间、票价与评分可能变化，出行前请以各单位最新公布的信息为准。',
+    about: '关于本网站',
+    sources: '信息来源和参考文献',
+    rating: '用户提供的 Google Maps 数据：4.6/5（15,019 条评论）。该数字会随新增评论变化；地点页面还提供地址、Plus Code 与访客照片。',
+    photo: '图片版权',
+    provenance: '数据来源与核实方式',
+    address: '景点地址与周边纪念地',
+    note: '评分和评论来自 Google Maps 用户，并非本站自行统计或实时评分。',
+    official: '了解最新官方资讯，请访问泰国旅游局（TAT）网站。',
+    source: '查看来源',
+    back: '返回首页',
+    place: '桂河大桥 — River Kwai Rd, Tha Ma Kham, Mueang Kanchanaburi District, Kanchanaburi 71000, Thailand · Plus Code 2GR3+RM',
+    nearby: '北碧府战争公墓（Don Rak） · 地狱火隘口纪念馆',
+    entries: [
+      ['Google Maps — 桂河大桥（评分与评论）', '查看地点地址、访客照片、最新用户评分及评论。', 'Google Maps', 'https://maps.app.goo.gl/tze9JQUAKaV3Mbm78'],
+      ['泰国旅游局（TAT）', '北碧府及桂河大桥的国家级官方旅游资讯。', 'tourismthailand.org', 'https://www.tourismthailand.org/'],
+      ['北碧府政府', '省级公开资讯与桂河大桥周等地方活动消息。', 'kanchanaburi.go.th', 'https://www.kanchanaburi.go.th/'],
+      ['泰国气象局（TMD）', '天气、季节和降雨资料，可用于规划出行时间。', 'tmd.go.th', 'https://www.tmd.go.th/'],
+      ['泰国国家铁路局（SRT）', '车次、客运与仍在铁路桥上运行的列车服务。', 'railway.co.th', 'https://www.railway.co.th/'],
+      ['英联邦战争墓地委员会（CWGC）', 'Don Rak 战争公墓及相关战争纪念资料和人员记录。', 'cwgc.org', 'https://www.cwgc.org/'],
+    ],
+  },
+  en: {
+    title: 'Information Sources and References',
+    subtitle: 'Public references for the facts, ratings, reviews and travel information on this guide, so you can verify them independently.',
+    method: 'This is an independent educational travel guide. We compare important details with publicly available sources. Opening hours, prices and ratings can change; check the latest notices issued by the relevant organizations before visiting.',
+    about: 'About this website',
+    sources: 'Information sources and references',
+    rating: 'Google Maps figures supplied for this guide: 4.6/5 from 15,019 user reviews. This figure changes as reviews are added. The place listing also includes the address, Plus Code and visitor photographs.',
+    photo: 'Image copyright',
+    provenance: 'Data sources and verification',
+    address: 'Bridge address and nearby memorial sites',
+    note: 'Ratings and reviews are contributed by Google Maps users; they are not an independent or live rating calculated by this site.',
+    official: 'For the latest official visitor information, consult the Tourism Authority of Thailand (TAT).',
+    source: 'View source',
+    back: 'Back to home',
+    place: 'River Kwai Bridge — River Kwai Rd, Tha Ma Kham, Mueang Kanchanaburi District, Kanchanaburi 71000, Thailand · Plus Code 2GR3+RM',
+    nearby: 'Kanchanaburi War Cemetery (Don Rak) · Hellfire Pass Memorial Museum',
+    entries: [
+      ['Google Maps — River Kwai Bridge (ratings and reviews)', 'Place address, visitor photos and the latest user ratings and reviews.', 'Google Maps', 'https://maps.app.goo.gl/tze9JQUAKaV3Mbm78'],
+      ['Tourism Authority of Thailand (TAT)', 'National tourism information for Kanchanaburi and the River Kwai Bridge.', 'tourismthailand.org', 'https://www.tourismthailand.org/'],
+      ['Kanchanaburi Provincial Government', 'Provincial public information and local events, including River Kwai Bridge Week.', 'kanchanaburi.go.th', 'https://www.kanchanaburi.go.th/'],
+      ['Thai Meteorological Department (TMD)', 'Weather, seasonal conditions and rainfall information for trip planning.', 'tmd.go.th', 'https://www.tmd.go.th/'],
+      ['State Railway of Thailand (SRT)', 'Passenger rail services and train operations on the active railway bridge.', 'railway.co.th', 'https://www.railway.co.th/'],
+      ['Commonwealth War Graves Commission (CWGC)', 'Records relating to Don Rak War Cemetery and wartime memorials.', 'cwgc.org', 'https://www.cwgc.org/'],
+    ],
+  },
+  th: {
+    title: 'แหล่งข้อมูลและเอกสารอ้างอิง',
+    subtitle: 'รวบรวมแหล่งอ้างอิงสาธารณะของข้อเท็จจริง คะแนน รีวิว และข้อมูลเดินทาง เพื่อให้ตรวจสอบเพิ่มเติมได้ด้วยตนเอง',
+    method: 'เว็บไซต์นี้เป็นคู่มือท่องเที่ยวเพื่อการเรียนรู้อย่างอิสระ เราเปรียบเทียบข้อมูลสำคัญกับแหล่งสาธารณะ เวลาเปิด ค่าเข้าชม และคะแนนรีวิวอาจเปลี่ยนแปลงได้ โปรดตรวจประกาศล่าสุดจากหน่วยงานที่เกี่ยวข้องก่อนเดินทาง',
+    about: 'เกี่ยวกับเว็บไซต์นี้',
+    sources: 'แหล่งข้อมูลและเอกสารอ้างอิง',
+    rating: 'ข้อมูล Google Maps ที่ได้รับสำหรับคู่มือนี้: คะแนน 4.6/5 จากรีวิวผู้ใช้ 15,019 รายการ ตัวเลขอาจเปลี่ยนเมื่อมีรีวิวใหม่ หน้าสถานที่ยังมีที่อยู่ Plus Code และภาพถ่ายจากผู้เยี่ยมชม',
+    photo: 'ลิขสิทธิ์ภาพ',
+    provenance: 'แหล่งข้อมูลและวิธีตรวจสอบ',
+    address: 'ที่อยู่สะพานและอนุสรณ์สถานใกล้เคียง',
+    note: 'คะแนนและรีวิวมาจากผู้ใช้ Google Maps ไม่ใช่คะแนนที่เว็บไซต์นี้คำนวณขึ้นหรืออัปเดตแบบเรียลไทม์',
+    official: 'ข้อมูลทางการล่าสุดสำหรับผู้เยี่ยมชม โปรดตรวจสอบเว็บไซต์การท่องเที่ยวแห่งประเทศไทย (ททท.)',
+    source: 'ดูแหล่งข้อมูล',
+    back: 'กลับหน้าแรก',
+    place: 'สะพานข้ามแม่น้ำแคว — River Kwai Rd, Tha Ma Kham, Mueang Kanchanaburi District, Kanchanaburi 71000, Thailand · Plus Code 2GR3+RM',
+    nearby: 'สุสานทหารกาญจนบุรี (ดอนรัก) · พิพิธภัณฑ์อนุสรณ์ช่องเขาขาด',
+    entries: [
+      ['Google Maps — สะพานข้ามแม่น้ำแคว (คะแนนและรีวิว)', 'ที่อยู่ ภาพถ่ายจากผู้เยี่ยมชม และคะแนนพร้อมรีวิวล่าสุด', 'Google Maps', 'https://maps.app.goo.gl/tze9JQUAKaV3Mbm78'],
+      ['การท่องเที่ยวแห่งประเทศไทย (ททท.)', 'ข้อมูลท่องเที่ยวระดับประเทศของกาญจนบุรีและสะพานข้ามแม่น้ำแคว', 'tourismthailand.org', 'https://www.tourismthailand.org/'],
+      ['จังหวัดกาญจนบุรี', 'ข่าวสารสาธารณะระดับจังหวัดและงานสัปดาห์สะพานข้ามแม่น้ำแคว', 'kanchanaburi.go.th', 'https://www.kanchanaburi.go.th/'],
+      ['กรมอุตุนิยมวิทยา (TMD)', 'ข้อมูลสภาพอากาศ ฤดูกาล และปริมาณฝนสำหรับวางแผนเดินทาง', 'tmd.go.th', 'https://www.tmd.go.th/'],
+      ['การรถไฟแห่งประเทศไทย (รฟท.)', 'บริการรถไฟโดยสารและการเดินรถบนสะพานที่ยังใช้งานจริง', 'railway.co.th', 'https://www.railway.co.th/'],
+      ['คณะกรรมาธิการสุสานทหารเครือจักรภพ (CWGC)', 'ข้อมูลสุสานทหารดอนรักและอนุสรณ์สถานเกี่ยวกับสงคราม', 'cwgc.org', 'https://www.cwgc.org/'],
+    ],
+  },
+}[lang as 'zh' | 'en' | 'th'];
+---
+
+<BaseLayout title={localized.title} description={localized.subtitle} path="sources">
+  <section class="section-padding" style="background: var(--bg-secondary);">
+    <div class="max-w-4xl mx-auto px-4">
+      <a href={`/${lang}/`} class="text-sm hover:opacity-70" style="color: var(--accent);">← {localized.back}</a>
+      <h1 class="font-display text-3xl sm:text-4xl font-semibold mt-4 mb-4" style="color: var(--text-primary);">{localized.title}</h1>
+      <p class="text-base sm:text-lg leading-relaxed mb-4" style="color: var(--text-secondary);">{localized.subtitle}</p>
+      <p class="text-sm leading-relaxed mb-10" style="color: var(--text-muted);">{localized.method}</p>
+
+      <section class="rounded-2xl border p-6 mb-10" style="border-color: var(--border-color); background: var(--card-bg);">
+        <h2 class="font-display text-2xl font-semibold mb-3" style="color: var(--text-primary);">{localized.about}</h2>
+        <p class="leading-relaxed" style="color: var(--text-secondary);">{f.mission.text}</p>
+      </section>
+
+      <section>
+        <h2 class="font-display text-2xl font-semibold mb-5" style="color: var(--text-primary);">{localized.sources}</h2>
+        <ol class="grid sm:grid-cols-2 gap-5 list-none">
+          {localized.entries.map(([name, desc, label, url], index) => (
+            <li class="rounded-2xl border p-6" style="border-color: var(--border-color); background: var(--card-bg);">
+              <span class="text-sm font-semibold" style="color: var(--accent);">{String(index + 1).padStart(2, '0')}</span>
+              <h3 class="font-display text-xl font-semibold mt-2 mb-3" style="color: var(--text-primary);">{name}</h3>
+              <p class="text-sm leading-relaxed mb-4" style="color: var(--text-secondary);">{desc}</p>
+              <a href={url} target="_blank" rel="noopener noreferrer" class="text-sm font-semibold underline underline-offset-2" style="color: var(--accent);">{localized.source}: {label} ↗</a>
+            </li>
+          ))}
+        </ol>
+        <p class="mt-5 text-sm leading-relaxed" style="color: var(--text-muted);">{localized.rating}</p>
+      </section>
+
+      <section class="mt-12 rounded-2xl border p-6" style="border-color: var(--border-color); background: var(--card-bg);">
+        <h2 class="font-display text-2xl font-semibold mb-3" style="color: var(--text-primary);">{localized.address}</h2>
+        <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">{localized.place}</p>
+        <p class="text-sm leading-relaxed mt-3" style="color: var(--text-secondary);">{localized.nearby}</p>
+        <p class="text-sm mt-4"><a href="https://www.tourismthailand.org/" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2" style="color: var(--accent);">{localized.official} ↗</a></p>
+      </section>
+
+      <section class="mt-10 space-y-6">
+        <div>
+          <h2 class="font-display text-2xl font-semibold mb-2" style="color: var(--text-primary);">{localized.photo}</h2>
+          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">{f.imageCopyright}</p>
+        </div>
+        <div>
+          <h2 class="font-display text-2xl font-semibold mb-2" style="color: var(--text-primary);">{localized.provenance}</h2>
+          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);" set:html={f.dataSource}></p>
+          <p class="text-sm leading-relaxed mt-2" style="color: var(--text-muted);">{localized.note}</p>
+        </div>
+      </section>
+      <div class="mt-12 grid sm:grid-cols-2 gap-6 text-sm">
+        <a href={`/${lang}/privacy-policy/`} class="underline underline-offset-2" style="color: var(--accent);">{f.privacy}</a>
+        <a href={`/${lang}/terms-of-service/`} class="underline underline-offset-2" style="color: var(--accent);">{f.terms}</a>
+        <a href={`/${lang}/cookie-settings/`} class="underline underline-offset-2" style="color: var(--accent);">{f.cookies}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -18,6 +18,7 @@ export const prerender = true;
 const routes: { segment: string; priority: string; changefreq: string }[] = [
   { segment: '', priority: '1.0', changefreq: 'weekly' },
   ...topicSlugs.map((slug) => ({ segment: slug, priority: '0.8', changefreq: 'monthly' })),
+  { segment: 'sources', priority: '0.5', changefreq: 'monthly' },
   { segment: 'privacy-policy', priority: '0.2', changefreq: 'yearly' },
   { segment: 'terms-of-service', priority: '0.2', changefreq: 'yearly' },
   { segment: 'cookie-settings', priority: '0.1', changefreq: 'yearly' },

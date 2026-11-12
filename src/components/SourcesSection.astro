@@ -1,91 +1,20 @@
 ---
 import { getI18n } from '../i18n/ui';
-import { placeConfig } from '../config';
 const { lang, messages } = getI18n(Astro.url);
-const f = messages.footer;
 const s = messages.sources ?? {};
-const items = s.items ?? [];
-const landmarks = [placeConfig.nearbyLandmark1, placeConfig.nearbyLandmark2];
+const title = lang === 'zh' ? '信息来源和参考文献' : lang === 'th' ? 'แหล่งข้อมูลและเอกสารอ้างอิง' : 'Information Sources and References';
+const caption = lang === 'zh'
+  ? '查看桂河大桥历史、地点、评分、交通及天气资料的公开来源，并了解图片版权与资料核实方式。'
+  : lang === 'th'
+    ? 'ดูแหล่งอ้างอิงสาธารณะสำหรับประวัติ ที่ตั้ง รีวิว การเดินทาง และอากาศ พร้อมข้อมูลลิขสิทธิ์ภาพ'
+    : 'Explore the public references behind the bridge history, location, reviews, rail and weather information, including image credits.';
+const action = lang === 'zh' ? '查看完整来源与参考文献' : lang === 'th' ? 'อ่านแหล่งข้อมูลและเอกสารอ้างอิงทั้งหมด' : 'Read all sources and references';
 ---
 
 <section id="sources" class="section-padding" style="background: var(--bg-secondary);">
-  <div class="max-w-4xl mx-auto px-4">
-    <div id="about-site" class="mb-12 rounded-2xl border p-6 sm:p-8" style="border-color: var(--border-color); background: var(--card-bg);">
-      <h2 class="font-display text-2xl sm:text-3xl font-semibold mb-3" style="color: var(--text-primary);">{f.mission.title}</h2>
-      <p class="text-base leading-relaxed" style="color: var(--text-secondary);">{f.mission.text}</p>
-    </div>
-    <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3 text-center" style="color: var(--text-primary);">{s.title}</h2>
-    {s.subtitle && (
-      <p class="text-center text-base sm:text-lg mb-4" style="color: var(--text-secondary);">{s.subtitle}</p>
-    )}
-    {s.intro && (
-      <p class="text-center text-sm leading-relaxed mb-10 max-w-3xl mx-auto" style="color: var(--text-muted);">{s.intro}</p>
-    )}
-
-    <ul class="grid sm:grid-cols-2 gap-4 list-none">
-      {items.map((item) => (
-        <li class="rounded-2xl p-5 border h-full" style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);">
-          <div class="flex items-start gap-3">
-            <span class="text-xl shrink-0" aria-hidden="true">{item.icon}</span>
-            <div class="min-w-0">
-              <h3 class="font-semibold text-sm mb-1" style="color: var(--text-primary);">{item.name}</h3>
-              <p class="text-xs leading-relaxed mb-3" style="color: var(--text-secondary);">{item.desc}</p>
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-xs font-medium underline underline-offset-2 break-words"
-                style="color: var(--accent);"
-              >
-                {s.referenceLabel}：{item.label} ↗
-              </a>
-            </div>
-          </div>
-        </li>
-      ))}
-    </ul>
-
-    <div class="mt-8 rounded-2xl p-5 border text-sm leading-relaxed" style="background: var(--bg-tertiary); border-color: var(--border-color); color: var(--text-secondary);">
-      <p>
-        {placeConfig.officialName} — {placeConfig.streetAddress}, {placeConfig.district}, {placeConfig.province} {placeConfig.postalCode}, {placeConfig.country} · Plus Code {placeConfig.plusCode}
-      </p>
-      <p class="mt-2">
-        {landmarks.join(' · ')}
-      </p>
-      <p class="mt-2">
-        {s.officialNote ?? ''}
-        <a href={placeConfig.govtTourismUrl} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2" style="color: var(--accent);">
-          {placeConfig.govtTourismName} ↗
-        </a>
-      </p>
-    </div>
-
-    {s.note && (
-      <p class="text-xs mt-6 leading-relaxed text-center" style="color: var(--text-muted);">{s.note}</p>
-    )}
-    <div class="mt-10 grid sm:grid-cols-2 gap-8 text-sm" style="color: var(--text-secondary);">
-      <section>
-        <h3 class="font-semibold mb-3" style="color: var(--text-primary);">{f.officialResourcesTitle}</h3>
-        <ul class="space-y-2">
-          {f.officialLinksList.map((link) => (
-            <li><a href={link.url} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2" style="color: var(--accent);">{link.name} ↗</a></li>
-          ))}
-          <li><a href={f.mapsUrl} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2" style="color: var(--accent);">{f.mapsLabel}</a></li>
-          <li><a href={f.govtUrl ?? placeConfig.govtTourismUrl} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2" style="color: var(--accent);">{f.govtLinkLabel} ↗</a></li>
-        </ul>
-      </section>
-      <section>
-        <h3 class="font-semibold mb-3" style="color: var(--text-primary);">{f.legalLinksTitle}</h3>
-        <ul class="space-y-2">
-          <li><a href={`/${lang}/privacy-policy/`} class="underline underline-offset-2" style="color: var(--accent);">{f.privacy}</a></li>
-          <li><a href={`/${lang}/terms-of-service/`} class="underline underline-offset-2" style="color: var(--accent);">{f.terms}</a></li>
-          <li><a href={`/${lang}/cookie-settings/`} class="underline underline-offset-2" style="color: var(--accent);">{f.cookies}</a></li>
-        </ul>
-      </section>
-    </div>
-    <div class="mt-8 text-xs leading-relaxed space-y-3" style="color: var(--text-muted);">
-      <p>{f.imageCopyright}</p>
-      <p><span class="font-semibold">{f.dataSourceLabel}{lang === 'zh' ? '：' : ':'}</span> <span set:html={f.dataSource}></span></p>
-    </div>
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-4" style="color: var(--text-primary);">{title}</h2>
+    <p class="text-base sm:text-lg leading-relaxed mb-6" style="color: var(--text-secondary);">{caption}</p>
+    <a href={`/${lang}/sources/`} class="inline-flex px-6 py-3 rounded-full text-white font-semibold" style="background: var(--accent);">{action} ↗</a>
   </div>
 </section>
