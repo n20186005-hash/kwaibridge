@@ -1,6 +1,8 @@
 ---
+import PlaceMentions from './PlaceMentions.astro';
 import { getI18n } from '../i18n/ui';
 const { messages } = getI18n(Astro.url);
+const linkLang = getI18n(Astro.url).lang as 'en' | 'th' | 'zh';
 const a = messages.audiencePlans;
 const groups = a.groups ?? [];
 const items = a.items ?? [];
@@ -23,8 +25,8 @@ const items = a.items ?? [];
                 <span class="text-xl leading-none" aria-hidden="true">{g.icon}</span>
                 <h3 class="font-semibold text-base" style="color: var(--text-primary);">{g.group}</h3>
               </div>
-              <p class="text-sm leading-relaxed" style="color: var(--accent);">{g.resonance}</p>
-              <p class="text-xs leading-relaxed mt-2" style="color: var(--text-muted);">{g.tip}</p>
+              <p class="text-sm leading-relaxed" style="color: var(--accent);"><PlaceMentions text={g.resonance} lang={linkLang} /></p>
+              <p class="text-xs leading-relaxed mt-2" style="color: var(--text-muted);"><PlaceMentions text={g.tip} lang={linkLang} /></p>
             </div>
           ))}
         </div>
@@ -46,7 +48,7 @@ const items = a.items ?? [];
             </div>
             <div>
               <h3 class="font-display text-xl font-semibold leading-tight" style="color: var(--text-primary);">{item.name}</h3>
-              <p class="text-xs mt-0.5" style="color: var(--text-muted);">{item.tagline}</p>
+              <p class="text-xs mt-0.5" style="color: var(--text-muted);"><PlaceMentions text={item.tagline} lang={linkLang} /></p>
             </div>
           </div>
 
@@ -64,14 +66,14 @@ const items = a.items ?? [];
           <p class="text-xs font-semibold uppercase tracking-[0.14em] mb-2.5" style="color: var(--accent);">{a.labels.includes}</p>
           <ul class="space-y-2.5 text-sm mb-5" style="color: var(--text-secondary);">
             {item.includes.map((line) => (
-              <li class="flex gap-2.5"><span class="shrink-0" style="color: var(--accent);" aria-hidden="true">✦</span><span class="leading-relaxed">{line}</span></li>
+              <li class="flex gap-2.5"><span class="shrink-0" style="color: var(--accent);" aria-hidden="true">✦</span><span class="leading-relaxed"><PlaceMentions text={line} lang={linkLang} /></span></li>
             ))}
           </ul>
 
           <p class="text-xs font-semibold uppercase tracking-[0.14em] mb-2.5" style="color: var(--accent);">{a.labels.tips}</p>
           <ul class="space-y-2.5 text-sm" style="color: var(--text-secondary);">
             {item.tips.map((line) => (
-              <li class="flex gap-2.5"><span class="shrink-0" style="color: var(--accent);" aria-hidden="true">✓</span><span class="leading-relaxed">{line}</span></li>
+              <li class="flex gap-2.5"><span class="shrink-0" style="color: var(--accent);" aria-hidden="true">✓</span><span class="leading-relaxed"><PlaceMentions text={line} lang={linkLang} /></span></li>
             ))}
           </ul>
 
@@ -80,7 +82,7 @@ const items = a.items ?? [];
             style="border-color: var(--border-color); color: var(--text-secondary);"
           >
             <p class="text-xs font-semibold uppercase tracking-[0.14em] mb-1.5" style="color: var(--text-muted);">{a.labels.watchOut}</p>
-            <p>{item.watchOut}</p>
+            <p><PlaceMentions text={item.watchOut} lang={linkLang} /></p>
           </div>
         </article>
       ))}

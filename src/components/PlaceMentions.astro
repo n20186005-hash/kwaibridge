@@ -1,0 +1,55 @@
+---
+import { expansionTopics, attractionSlugs } from '../i18n/expansion';
+import type { TopicLang } from '../i18n/topics';
+
+interface Props { text: string; lang: TopicLang; currentSlug?: string; }
+const { text, lang, currentSlug } = Astro.props;
+const sourceText = String(text ?? '');
+const synonyms: Record<string, Record<TopicLang, string[]>> = {
+  'thailand-burma-railway-centre': { en: ['Death Railway Museum', 'Thailand-Burma Railway Centre', 'Thailand–Burma Railway Centre'], th: ['ศูนย์รถไฟไทย-พม่า', 'ศูนย์รถไฟไทย–พม่า'], zh: ['泰缅铁路中心'] },
+  'kanchanaburi-war-cemetery': { en: ['Kanchanaburi War Cemetery', 'Don Rak War Cemetery', 'Don Rak cemetery'], th: ['สุสานทหารดอนรัก', 'สุสานทหารกาญจนบุรี', 'สุสานดอนรัก'], zh: ['北碧战争公墓', '北碧府战争公墓', 'Don Rak 公墓', '唐拉克盟军公墓'] },
+  'jeath-war-museum': { en: ['JEATH War Museum'], th: ['พิพิธภัณฑ์ JEATH'], zh: ['JEATH 战争博物馆', 'JEATH 博物馆'] },
+  'hellfire-pass': { en: ['Hellfire Pass', 'Hellfire Pass Memorial'], th: ['ช่องเขาขาด', 'อนุสรณ์สถานช่องเขาขาด'], zh: ['地狱火隘口', '地狱火通道', '地狱火通道纪念馆', 'Hellfire Pass 纪念地'] },
+  'tham-krasae-railway': { en: ['Tham Krasae Railway', 'Tham Krasae viaduct'], th: ['ทางรถไฟถ้ำกระแซ', 'ถ้ำกระแซ'], zh: ['探卡赛悬崖铁路', '探卡赛铁路'] },
+  'nam-tok-station': { en: ['Nam Tok Railway Station', 'Nam Tok station'], th: ['สถานีรถไฟน้ำตก', 'สถานีน้ำตก'], zh: ['Nam Tok 火车站', 'Nam Tok 站'] },
+  'chungkai-war-cemetery': { en: ['Chungkai War Cemetery'], th: ['สุสานทหารช่องไก่'], zh: ['Chungkai 战争公墓'] },
+  'erawan-waterfall': { en: ['Erawan Waterfall', 'Erawan Falls'], th: ['น้ำตกเอราวัณ'], zh: ['爱侣湾瀑布'] },
+  'sai-yok-noi-waterfall': { en: ['Sai Yok Noi Waterfall'], th: ['น้ำตกไทรโยคน้อย'], zh: ['赛育诺瀑布'] },
+  'sai-yok-national-park': { en: ['Sai Yok National Park'], th: ['อุทยานแห่งชาติไทรโยค'], zh: ['赛育国家公园'] },
+  'mueang-sing-historical-park': { en: ['Mueang Sing Historical Park'], th: ['อุทยานประวัติศาสตร์เมืองสิงห์'], zh: ['孟辛历史公园'] },
+  'wat-tham-suea': { en: ['Wat Tham Suea', 'Tiger Cave Temple'], th: ['วัดถ้ำเสือ'], zh: ['虎穴寺'] },
+  'wat-ban-tham': { en: ['Wat Ban Tham'], th: ['วัดบ้านถ้ำ'], zh: ['班探寺'] },
+  'kanchanaburi-skywalk': { en: ['Kanchanaburi Skywalk'], th: ['สกายวอล์คกาญจนบุรี'], zh: ['北碧府天空步道'] },
+  'pak-phraek-heritage-street': { en: ['Pak Phraek Heritage Street', 'Pak Phraek'], th: ['ถนนปากแพรก'], zh: ['帕帕勒历史老街'] },
+  'river-kwai-bridge-station': { en: ['River Kwai Bridge Railway Station', 'River Kwai Bridge station'], th: ['สถานีสะพานแควใหญ่'], zh: ['桂河大桥火车站'] },
+  'kanchanaburi-railway-station': { en: ['Kanchanaburi Railway Station'], th: ['สถานีรถไฟกาญจนบุรี'], zh: ['北碧府火车站'] },
+};
+const aliases = new Map<string, string>();
+for (const topic of expansionTopics) {
+  if (!attractionSlugs.has(topic.slug) || topic.slug === currentSlug) continue;
+  for (const alias of [topic.h1[lang], ...(synonyms[topic.slug]?.[lang] ?? [])]) {
+    if (alias.trim().length >= 4) aliases.set(alias.toLocaleLowerCase(), topic.slug);
+  }
+}
+const patterns = [...aliases.keys()].sort((a, b) => b.length - a.length);
+const escaped = patterns.map((p) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+const regex = patterns.length ? new RegExp(escaped.join('|'), lang === 'en' ? 'gi' : 'g') : null;
+const parts: { value: string; href?: string }[] = [];
+let cursor = 0;
+if (regex) {
+  for (const match of sourceText.matchAll(regex)) {
+    const at = match.index ?? 0;
+    const value = match[0];
+    if (lang === 'en' && ((at > 0 && /[A-Za-z]/.test(sourceText[at - 1])) || (at + value.length < sourceText.length && /[A-Za-z]/.test(sourceText[at + value.length])))) continue;
+    if (at > cursor) parts.push({ value: sourceText.slice(cursor, at) });
+    const slug = aliases.get(value.toLocaleLowerCase());
+    parts.push({ value, href: slug ? `/${lang}/${slug}/` : undefined });
+    cursor = at + value.length;
+  }
+}
+if (cursor < sourceText.length) parts.push({ value: sourceText.slice(cursor) });
+---
+{parts.map((part) => part.href
+  ? <a href={part.href} class="underline underline-offset-2 hover:opacity-75" style="color: var(--accent);">{part.value}</a>
+  : part.value
+)}

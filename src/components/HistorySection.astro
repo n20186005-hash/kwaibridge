@@ -1,9 +1,11 @@
 ---
+import PlaceMentions from './PlaceMentions.astro';
 import { getI18n } from '../i18n/ui';
 import HistoryStory from './HistoryStory.astro';
 import AreaGuide from './AreaGuide.astro';
 import EngineeringNotes from './EngineeringNotes.astro';
 const { messages } = getI18n(Astro.url);
+const linkLang = getI18n(Astro.url).lang as 'en' | 'th' | 'zh';
 const h = messages.historyIntro;
 const why = messages.whyItMatters;
 const whyPoints = why.points ?? [];
@@ -29,11 +31,11 @@ const whyPoints = why.points ?? [];
             {whyPoints.map((p) => (
               <div class="rounded-2xl p-6 border h-full" style="background: var(--bg-tertiary); border-color: var(--border-color);">
                 <h4 class="font-semibold text-lg mb-3" style="color: var(--accent);">{p.title}</h4>
-                <p class="text-base leading-relaxed" style="color: var(--text-secondary);">{p.text}</p>
+                <p class="text-base leading-relaxed" style="color: var(--text-secondary);"><PlaceMentions text={p.text} lang={linkLang} /></p>
                 {p.items && (
                   <ul class="mt-4 space-y-2 text-sm" style="color: var(--text-secondary);">
                     {p.items.map((item) => (
-                      <li class="flex gap-3"><span style="color: var(--accent);">•</span><span>{item}</span></li>
+                      <li class="flex gap-3"><span style="color: var(--accent);">•</span><span><PlaceMentions text={item} lang={linkLang} /></span></li>
                     ))}
                   </ul>
                 )}

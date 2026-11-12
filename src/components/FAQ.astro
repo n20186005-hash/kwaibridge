@@ -1,6 +1,8 @@
 ---
+import PlaceMentions from './PlaceMentions.astro';
 import { getI18n } from '../i18n/ui';
 const { messages } = getI18n(Astro.url);
+const linkLang = getI18n(Astro.url).lang as 'en' | 'th' | 'zh';
 const faq = messages.faq;
 const categories = faq.categories;
 const amenities = faq.amenities?.items ?? [];
@@ -34,7 +36,7 @@ const amenities = faq.amenities?.items ?? [];
                   <span>{item.q}</span>
                   <span class="shrink-0 text-xl transition-transform group-open:rotate-180" style="color: var(--accent);" aria-hidden="true">⌄</span>
                 </summary>
-                <p class="px-4 pb-4 text-base leading-relaxed" style="color: var(--text-secondary);">{item.a}</p>
+                <p class="px-4 pb-4 text-base leading-relaxed" style="color: var(--text-secondary);"><PlaceMentions text={item.a} lang={linkLang} /></p>
               </details>
             ))}
           </div>

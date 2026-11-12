@@ -1,6 +1,8 @@
 ---
+import PlaceMentions from './PlaceMentions.astro';
 import { getI18n } from '../i18n/ui';
 const { messages } = getI18n(Astro.url);
+const linkLang = getI18n(Astro.url).lang as 'en' | 'th' | 'zh';
 const s = messages.bridgeInDetail;
 const explainItems = s.explainItems ?? [];
 ---
@@ -14,7 +16,7 @@ const explainItems = s.explainItems ?? [];
 
     <div class="mb-14">
       <h3 class="font-display text-2xl font-semibold mb-2" style="color: var(--text-primary);">{s.explainTitle}</h3>
-      <p class="text-sm sm:text-base leading-relaxed max-w-3xl mb-6" style="color: var(--text-secondary);">{s.explainIntro}</p>
+      <p class="text-sm sm:text-base leading-relaxed max-w-3xl mb-6" style="color: var(--text-secondary);"><PlaceMentions text={s.explainIntro} lang={linkLang} /></p>
 
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mb-6">
         {explainItems.map((item) => (
@@ -24,7 +26,7 @@ const explainItems = s.explainItems ?? [];
           >
             <p class="text-2xl leading-none mb-3" aria-hidden="true">{item.icon}</p>
             <h4 class="font-semibold text-base mb-2" style="color: var(--text-primary);">{item.title}</h4>
-            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">{item.text}</p>
+            <p class="text-sm leading-relaxed" style="color: var(--text-secondary);"><PlaceMentions text={item.text} lang={linkLang} /></p>
           </article>
         ))}
       </div>

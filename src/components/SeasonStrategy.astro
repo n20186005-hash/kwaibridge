@@ -1,6 +1,8 @@
 ---
+import PlaceMentions from './PlaceMentions.astro';
 import { getI18n } from '../i18n/ui';
 const { messages } = getI18n(Astro.url);
+const linkLang = getI18n(Astro.url).lang as 'en' | 'th' | 'zh';
 const s = messages.seasonStrategy;
 const rows = s.rows ?? [];
 
@@ -26,7 +28,7 @@ const blocks = [
     </div>
 
     <p class="max-w-3xl mx-auto text-center text-sm leading-relaxed mb-10" style="color: var(--text-secondary);">
-      {s.intro}
+      <PlaceMentions text={s.intro} lang={linkLang} />
     </p>
 
     <div class="grid gap-5 lg:grid-cols-3">
@@ -64,12 +66,12 @@ const blocks = [
             <p class="text-xs font-semibold uppercase tracking-[0.14em] mb-1.5" style="color: var(--accent);">
               {s.columns.verdict}
             </p>
-            <p class="text-sm leading-relaxed" style="color: var(--text-primary);">{row.verdict}</p>
+            <p class="text-sm leading-relaxed" style="color: var(--text-primary);"><PlaceMentions text={row.verdict} lang={linkLang} /></p>
           </div>
         </article>
       ))}
     </div>
 
-    <p class="max-w-4xl mx-auto mt-8 text-xs leading-relaxed" style="color: var(--text-muted);">{s.note}</p>
+    <p class="max-w-4xl mx-auto mt-8 text-xs leading-relaxed" style="color: var(--text-muted);"><PlaceMentions text={s.note} lang={linkLang} /></p>
   </div>
 </section>

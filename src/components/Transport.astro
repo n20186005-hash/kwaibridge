@@ -1,6 +1,8 @@
 ---
+import PlaceMentions from './PlaceMentions.astro';
 import { getI18n } from '../i18n/ui';
 const { messages } = getI18n(Astro.url);
+const linkLang = getI18n(Astro.url).lang as 'en' | 'th' | 'zh';
 const section = messages.transportSection;
 ---
 
@@ -16,14 +18,14 @@ const section = messages.transportSection;
       <div class="grid lg:grid-cols-[1.25fr_0.75fr] gap-6 items-start">
         <div>
           <h3 class="font-semibold text-xl mb-3" style="color: var(--text-primary);">{section.overviewTitle}</h3>
-          <p class="text-base leading-relaxed" style="color: var(--text-secondary);">{section.overviewText}</p>
-          <p class="text-base leading-relaxed mt-3" style="color: var(--text-secondary);">{section.overviewText2}</p>
+          <p class="text-base leading-relaxed" style="color: var(--text-secondary);"><PlaceMentions text={section.overviewText} lang={linkLang} /></p>
+          <p class="text-base leading-relaxed mt-3" style="color: var(--text-secondary);"><PlaceMentions text={section.overviewText2} lang={linkLang} /></p>
         </div>
         <div class="rounded-2xl p-5 border" style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);">
           <h3 class="font-semibold mb-3" style="color: var(--text-primary);">{section.arrivalTitle}</h3>
           <ul class="space-y-3 text-sm" style="color: var(--text-secondary);">
             {section.arrivalItems.map((item) => (
-              <li class="flex gap-3"><span style="color: var(--accent);">•</span><span>{item}</span></li>
+              <li class="flex gap-3"><span style="color: var(--accent);">•</span><span><PlaceMentions text={item} lang={linkLang} /></span></li>
             ))}
           </ul>
         </div>
@@ -43,16 +45,16 @@ const section = messages.transportSection;
               <h3 class="font-semibold text-xl" style="color: var(--text-primary);">{mode.title}</h3>
             </div>
           </div>
-          <p class="text-base leading-relaxed mb-4" style="color: var(--text-secondary);">{mode.description}</p>
+          <p class="text-base leading-relaxed mb-4" style="color: var(--text-secondary);"><PlaceMentions text={mode.description} lang={linkLang} /></p>
           <ul class="space-y-3 text-sm" style="color: var(--text-secondary);">
             {mode.details.map((detail) => (
-              <li class="flex gap-3"><span style="color: var(--accent);">-</span><span>{detail}</span></li>
+              <li class="flex gap-3"><span style="color: var(--accent);">-</span><span><PlaceMentions text={detail} lang={linkLang} /></span></li>
             ))}
           </ul>
           {mode.steps && mode.steps.length > 0 && (
             <ol class="mt-4 space-y-2 text-sm" style="color: var(--text-secondary); counter-reset: step;">
               {mode.steps.map((step) => (
-                <li class="flex gap-3"><span class="shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-semibold" style="background: var(--accent); color: #fff;">{step.n}</span><span>{step.t}</span></li>
+                <li class="flex gap-3"><span class="shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-xs font-semibold" style="background: var(--accent); color: #fff;">{step.n}</span><span><PlaceMentions text={step.t} lang={linkLang} /></span></li>
               ))}
             </ol>
           )}
@@ -64,7 +66,7 @@ const section = messages.transportSection;
     {section.parking && (
       <div class="mt-10 rounded-2xl p-6 md:p-8 border" style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);">
         <h3 class="font-semibold text-xl mb-1" style="color: var(--text-primary);">{section.parking.title}</h3>
-        <p class="text-sm mb-5" style="color: var(--text-secondary);">{section.parking.note}</p>
+        <p class="text-sm mb-5" style="color: var(--text-secondary);"><PlaceMentions text={section.parking.note} lang={linkLang} /></p>
         <div class="overflow-x-auto -mx-2 px-2">
           <table class="w-full text-sm border-collapse" style="color: var(--text-secondary);">
             <thead>
@@ -95,7 +97,7 @@ const section = messages.transportSection;
         <h3 class="font-semibold text-xl mb-3" style="color: var(--text-primary);">{section.localTipsTitle}</h3>
         <ul class="space-y-3 text-base" style="color: var(--text-secondary);">
           {section.localTips.map((item) => (
-            <li class="flex gap-3"><span style="color: var(--accent);">✓</span><span>{item}</span></li>
+            <li class="flex gap-3"><span style="color: var(--accent);">✓</span><span><PlaceMentions text={item} lang={linkLang} /></span></li>
           ))}
         </ul>
       </div>
@@ -111,7 +113,7 @@ const section = messages.transportSection;
       <div class="shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center text-2xl" style="background: var(--accent); color:#fff;" aria-hidden="true">⏰</div>
       <div>
         <h3 class="font-semibold text-xl mb-2" style="color: var(--text-primary);">{section.bestTime.title}</h3>
-        <p class="text-base leading-relaxed" style="color: var(--text-secondary);">{section.bestTime.text}</p>
+        <p class="text-base leading-relaxed" style="color: var(--text-secondary);"><PlaceMentions text={section.bestTime.text} lang={linkLang} /></p>
       </div>
     </div>
 
@@ -126,7 +128,7 @@ const section = messages.transportSection;
                 <span class="shrink-0 text-xl transition-transform group-open:rotate-180" style="color: var(--accent);" aria-hidden="true">⌄</span>
               </summary>
               <div class="px-5 pb-5">
-                <p class="text-base leading-relaxed" style="color: var(--text-secondary);">{item.a}</p>
+                <p class="text-base leading-relaxed" style="color: var(--text-secondary);"><PlaceMentions text={item.a} lang={linkLang} /></p>
               </div>
             </details>
           ))}

@@ -1,6 +1,8 @@
 ---
+import PlaceMentions from './PlaceMentions.astro';
 import { getI18n } from '../i18n/ui';
 const { messages } = getI18n(Astro.url);
+const linkLang = getI18n(Astro.url).lang as 'en' | 'th' | 'zh';
 const sp = messages.areaGuide;
 const items = sp.items ?? [];
 const { embedded = false } = Astro.props;
@@ -16,7 +18,7 @@ const innerClass = embedded ? '' : 'max-w-5xl mx-auto px-4';
     <div class="max-w-3xl mx-auto text-center mb-10">
       <Heading class={`font-display ${embedded ? 'text-2xl sm:text-3xl' : 'text-3xl sm:text-4xl'} font-semibold mb-3`} style="color: var(--text-primary);">{sp.title}</Heading>
       <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary);">{sp.subtitle}</p>
-      <p class="text-sm mt-3" style="color: var(--text-tertiary);">{sp.intro}</p>
+      <p class="text-sm mt-3" style="color: var(--text-tertiary);"><PlaceMentions text={sp.intro} lang={linkLang} /></p>
     </div>
 
     <div class="grid gap-4 sm:grid-cols-2">
@@ -34,7 +36,7 @@ const innerClass = embedded ? '' : 'max-w-5xl mx-auto px-4';
           {it.location && (
             <p class="text-xs mb-2.5" style="color: var(--text-muted);">{sp.locationLabel}: {it.location}</p>
           )}
-          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);">{it.body}</p>
+          <p class="text-sm leading-relaxed" style="color: var(--text-secondary);"><PlaceMentions text={it.body} lang={linkLang} /></p>
         </article>
       ))}
     </div>

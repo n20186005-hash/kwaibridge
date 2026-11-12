@@ -1,11 +1,12 @@
 ---
 import { getI18n } from '../i18n/ui';
+import PlaceMentions from './PlaceMentions.astro';
 import { placeConfig } from '../config';
-const { messages } = getI18n(Astro.url);
+const { lang, messages } = getI18n(Astro.url);
+const linkLang = lang as 'en' | 'th' | 'zh';
 const intro = messages.intro;
 const site = messages.siteNotes;
 const geoHierarchy: string[] = intro.geoHierarchy ?? [];
-const nearbySearch = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(placeConfig.nearbyLandmark1)}`;
 ---
 
 <section id="about" class="section-padding" style="background: var(--bg-secondary);">
@@ -33,14 +34,14 @@ const nearbySearch = `https://www.google.com/maps/search/?api=1&query=${encodeUR
           </nav>
         )}
 
-        <p class="text-lg leading-relaxed mb-6" style="color: var(--text-secondary);">{intro.description}</p>
+        <p class="text-lg leading-relaxed mb-6" style="color: var(--text-secondary);"><PlaceMentions text={intro.description} lang={linkLang} /></p>
 
         {intro.nearbyStatement && (
           <div class="mb-8">
-            <p class="text-base leading-relaxed" style="color: var(--text-secondary);">{intro.nearbyStatement}</p>
+            <p class="text-base leading-relaxed" style="color: var(--text-secondary);"><PlaceMentions text={intro.nearbyStatement} lang={linkLang} /></p>
             <p class="text-sm mt-3 flex flex-wrap gap-x-4 gap-y-1">
-              <a href="#recommendations" class="underline underline-offset-2" style="color: var(--accent);">{placeConfig.nearbyLandmark1}</a>
-              <a href={nearbySearch} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2" style="color: var(--accent);">{placeConfig.nearbyLandmark2} ↗</a>
+              <a href={`/${lang}/kanchanaburi-war-cemetery/`} class="underline underline-offset-2" style="color: var(--accent);">{placeConfig.nearbyLandmark1}</a>
+              <a href={`/${lang}/hellfire-pass/`} class="underline underline-offset-2" style="color: var(--accent);">{placeConfig.nearbyLandmark2} →</a>
             </p>
           </div>
         )}

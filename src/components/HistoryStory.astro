@@ -1,7 +1,9 @@
 ---
+import PlaceMentions from './PlaceMentions.astro';
 import { getI18n } from '../i18n/ui';
 import HistoryMyths from './HistoryMyths.astro';
 const { messages } = getI18n(Astro.url);
+const linkLang = getI18n(Astro.url).lang as 'en' | 'th' | 'zh';
 const t = messages.historyStory;
 const sections = t.sections;
 const dyk = t.didYouKnow;
@@ -10,7 +12,7 @@ const dyk = t.didYouKnow;
 <div>
   {t.intro && (
     <p class="text-base sm:text-lg leading-relaxed mb-12 max-w-3xl mx-auto text-center" style="color: var(--text-secondary);">
-      {t.intro}
+      <PlaceMentions text={t.intro} lang={linkLang} />
     </p>
   )}
 
@@ -24,7 +26,7 @@ const dyk = t.didYouKnow;
 
         <div class="flex-1 w-full bg-white/5 p-6 md:p-8 rounded-2xl border border-white/10 shadow-sm">
           <h3 class="font-display text-2xl font-semibold mb-3" style="color: var(--text-primary);">{section.title}</h3>
-          <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary);">{section.content}</p>
+          <p class="text-base sm:text-lg leading-relaxed" style="color: var(--text-secondary);"><PlaceMentions text={section.content} lang={linkLang} /></p>
         </div>
         <div class="hidden md:block flex-1 w-full"></div>
       </div>
@@ -41,7 +43,7 @@ const dyk = t.didYouKnow;
       </div>
       <div>
         <h3 class="font-semibold text-xl mb-3" style="color: var(--text-primary);">{dyk.title}</h3>
-        <p class="text-base leading-relaxed" style="color: var(--text-secondary);">{dyk.text}</p>
+        <p class="text-base leading-relaxed" style="color: var(--text-secondary);"><PlaceMentions text={dyk.text} lang={linkLang} /></p>
       </div>
     </div>
   )}

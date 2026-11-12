@@ -1,6 +1,8 @@
 ---
+import PlaceMentions from './PlaceMentions.astro';
 import { getI18n } from '../i18n/ui';
 const { messages } = getI18n(Astro.url);
+const linkLang = getI18n(Astro.url).lang as 'en' | 'th' | 'zh';
 const r = messages.insiderTips;
 const highlights = r.highlights ?? [];
 const panels = r.panels ?? [];
@@ -22,7 +24,7 @@ import TrainCrossings from './TrainCrossings.astro';
             <div>
               <p class="text-xs uppercase tracking-[0.18em] mb-1" style="color: var(--text-muted);">{h.label}</p>
               <p class="text-base font-semibold" style="color: var(--text-primary);">{h.value}</p>
-              {h.note && <p class="text-sm leading-relaxed mt-2" style="color: var(--text-secondary);">{h.note}</p>}
+              {h.note && <p class="text-sm leading-relaxed mt-2" style="color: var(--text-secondary);"><PlaceMentions text={h.note} lang={linkLang} /></p>}
             </div>
           </div>
         </div>
@@ -37,11 +39,11 @@ import TrainCrossings from './TrainCrossings.astro';
             <span class="shrink-0 text-xl transition-transform group-open:rotate-180" style="color: var(--accent);" aria-hidden="true">⌄</span>
           </summary>
           <div class="px-5 pb-5">
-            {p.a && <p class="text-base leading-relaxed" style="color: var(--text-secondary);">{p.a}</p>}
+            {p.a && <p class="text-base leading-relaxed" style="color: var(--text-secondary);"><PlaceMentions text={p.a} lang={linkLang} /></p>}
             {p.items && (
               <ul class="mt-4 space-y-3 text-sm" style="color: var(--text-secondary);">
                 {p.items.map((it) => (
-                  <li class="flex gap-3"><span style="color: var(--accent);">•</span><span>{it}</span></li>
+                  <li class="flex gap-3"><span style="color: var(--accent);">•</span><span><PlaceMentions text={it} lang={linkLang} /></span></li>
                 ))}
               </ul>
             )}

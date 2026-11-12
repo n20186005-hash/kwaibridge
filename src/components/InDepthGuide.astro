@@ -1,4 +1,5 @@
 ---
+import PlaceMentions from './PlaceMentions.astro';
 /**
  * 深度长文板块
  * ---------------------------------------------------------------
@@ -20,6 +21,7 @@
 import { getI18n } from '../i18n/ui';
 
 const { messages } = getI18n(Astro.url);
+const linkLang = getI18n(Astro.url).lang as 'en' | 'th' | 'zh';
 const g = messages.deepGuide ?? {};
 const sections = g.sections ?? [];
 
@@ -62,14 +64,14 @@ const anchor = (id: string) => `deep-${id}`;
               class="text-base sm:text-lg leading-relaxed mb-6 pl-4 border-l-2 font-medium"
               style="color: var(--text-primary); border-color: var(--accent);"
             >
-              {s.lead}
+              <PlaceMentions text={s.lead} lang={linkLang} />
             </p>
           )}
 
           {s.blocks.map((b) => (
             <>
               {b.type === 'text' && (
-                <p class="text-base leading-[1.85] mb-5" style="color: var(--text-secondary);">{b.text}</p>
+                <p class="text-base leading-[1.85] mb-5" style="color: var(--text-secondary);"><PlaceMentions text={b.text} lang={linkLang} /></p>
               )}
 
               {b.type === 'callout' && (
@@ -78,7 +80,7 @@ const anchor = (id: string) => `deep-${id}`;
                   style="background: var(--bg-secondary); border-color: var(--accent); border-top-color: var(--border-color); border-right-color: var(--border-color); border-bottom-color: var(--border-color);"
                 >
                   <p class="font-semibold text-base mb-2" style="color: var(--text-primary);">{b.title}</p>
-                  <p class="text-sm sm:text-base leading-relaxed" style="color: var(--text-secondary);">{b.text}</p>
+                  <p class="text-sm sm:text-base leading-relaxed" style="color: var(--text-secondary);"><PlaceMentions text={b.text} lang={linkLang} /></p>
                 </div>
               )}
 
@@ -95,7 +97,7 @@ const anchor = (id: string) => `deep-${id}`;
                           {it.year}
                         </span>
                         <span class="shrink-0 w-px self-stretch" style="background: var(--border-color);" aria-hidden="true"></span>
-                        <span class="text-sm sm:text-base leading-relaxed" style="color: var(--text-secondary);">{it.text}</span>
+                        <span class="text-sm sm:text-base leading-relaxed" style="color: var(--text-secondary);"><PlaceMentions text={it.text} lang={linkLang} /></span>
                       </li>
                     ))}
                   </ol>
@@ -127,7 +129,7 @@ const anchor = (id: string) => `deep-${id}`;
                                 class="px-4 py-3 align-top"
                                 style={`color: var(--text-${i === 0 ? 'primary' : 'secondary'}); border-bottom: 1px solid var(--border-color); ${i === 0 ? 'font-medium;' : ''}`}
                               >
-                                {cell}
+                                <PlaceMentions text={cell} lang={linkLang} />
                               </td>
                             ))}
                           </tr>
@@ -147,15 +149,15 @@ const anchor = (id: string) => `deep-${id}`;
                         class="rounded-2xl p-5 border h-full flex flex-col"
                         style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);"
                       >
-                        <p class="font-semibold text-base mb-1" style="color: var(--text-primary);">{it.name}</p>
+                        <p class="font-semibold text-base mb-1" style="color: var(--text-primary);"><PlaceMentions text={it.name} lang={linkLang} /></p>
                         <p class="text-xs uppercase tracking-[0.12em] mb-3" style="color: var(--accent);">{it.meta}</p>
-                        <p class="text-sm leading-relaxed flex-1" style="color: var(--text-secondary);">{it.text}</p>
+                        <p class="text-sm leading-relaxed flex-1" style="color: var(--text-secondary);"><PlaceMentions text={it.text} lang={linkLang} /></p>
                         {it.tip && (
                           <p
                             class="text-xs leading-relaxed mt-3 pt-3 border-t"
                             style="color: var(--text-muted); border-color: var(--border-color);"
                           >
-                            💡 {it.tip}
+                            💡 <PlaceMentions text={it.tip} lang={linkLang} />
                           </p>
                         )}
                       </div>
@@ -175,7 +177,7 @@ const anchor = (id: string) => `deep-${id}`;
                       >
                         <dt class="text-xs uppercase tracking-[0.14em] mb-1.5" style="color: var(--text-muted);">{it.label}</dt>
                         <dd class="text-lg font-semibold mb-1" style="color: var(--text-primary);">{it.value}</dd>
-                        <dd class="text-xs leading-relaxed" style="color: var(--text-secondary);">{it.note}</dd>
+                        <dd class="text-xs leading-relaxed" style="color: var(--text-secondary);"><PlaceMentions text={it.note} lang={linkLang} /></dd>
                       </div>
                     ))}
                   </dl>

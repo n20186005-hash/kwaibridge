@@ -1,6 +1,8 @@
 ---
+import PlaceMentions from './PlaceMentions.astro';
 import { getI18n } from '../i18n/ui';
 const { messages } = getI18n(Astro.url);
+const linkLang = getI18n(Astro.url).lang as 'en' | 'th' | 'zh';
 const m = messages.photoSpots;
 const items = m.items ?? [];
 ---
@@ -33,11 +35,11 @@ const items = m.items ?? [];
             </div>
           </div>
 
-          <p class="text-base leading-relaxed mb-4" style="color: var(--text-secondary);">{item.background}</p>
+          <p class="text-base leading-relaxed mb-4" style="color: var(--text-secondary);"><PlaceMentions text={item.background} lang={linkLang} /></p>
 
           <ul class="space-y-2.5 text-sm mt-auto" style="color: var(--text-secondary);">
             {item.points.map((point) => (
-              <li class="flex gap-3"><span style="color: var(--accent);">•</span><span>{point}</span></li>
+              <li class="flex gap-3"><span style="color: var(--accent);">•</span><span><PlaceMentions text={point} lang={linkLang} /></span></li>
             ))}
           </ul>
         </article>
