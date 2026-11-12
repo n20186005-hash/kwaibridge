@@ -218,6 +218,27 @@ const places: Place[] = [
   },
 ];
 
+const nearbyAttractionLinks: Record<string, string[]> = {
+  'thailand-burma-railway-centre': ['kanchanaburi-war-cemetery','chungkai-war-cemetery','pak-phraek-heritage-street'],
+  'kanchanaburi-war-cemetery': ['thailand-burma-railway-centre','chungkai-war-cemetery','jeath-war-museum'],
+  'jeath-war-museum': ['thailand-burma-railway-centre','kanchanaburi-war-cemetery','kanchanaburi-skywalk'],
+  'hellfire-pass': ['nam-tok-station','sai-yok-noi-waterfall','tham-krasae-railway'],
+  'tham-krasae-railway': ['nam-tok-station','hellfire-pass','sai-yok-noi-waterfall'],
+  'nam-tok-station': ['tham-krasae-railway','sai-yok-noi-waterfall','hellfire-pass'],
+  'chungkai-war-cemetery': ['kanchanaburi-war-cemetery','thailand-burma-railway-centre','jeath-war-museum'],
+  'erawan-waterfall': ['erawan-national-park','sai-yok-noi-waterfall','sai-yok-national-park'],
+  'erawan-national-park': ['erawan-waterfall','sai-yok-national-park','mueang-sing-historical-park'],
+  'sai-yok-noi-waterfall': ['nam-tok-station','sai-yok-national-park','tham-krasae-railway'],
+  'sai-yok-national-park': ['sai-yok-noi-waterfall','hellfire-pass','erawan-national-park'],
+  'mueang-sing-historical-park': ['tham-krasae-railway','wat-tham-suea','wat-ban-tham'],
+  'wat-tham-suea': ['wat-ban-tham','mueang-sing-historical-park','kanchanaburi-skywalk'],
+  'wat-ban-tham': ['wat-tham-suea','mueang-sing-historical-park','kanchanaburi-skywalk'],
+  'kanchanaburi-skywalk': ['pak-phraek-heritage-street','kanchanaburi-railway-station','jeath-war-museum'],
+  'pak-phraek-heritage-street': ['kanchanaburi-skywalk','kanchanaburi-railway-station','thailand-burma-railway-centre'],
+  'river-kwai-bridge-station': ['kanchanaburi-railway-station','thailand-burma-railway-centre','tham-krasae-railway'],
+  'kanchanaburi-railway-station': ['river-kwai-bridge-station','kanchanaburi-skywalk','kanchanaburi-war-cemetery'],
+};
+
 const langs: TopicLang[] = ['en', 'th', 'zh'];
 export const attractionSlugs = new Set(places.filter((place) => Boolean(place.map)).map((place) => place.slug));
 const localeIndex = (lang: TopicLang) => langs.indexOf(lang);
@@ -271,6 +292,6 @@ export const expansionTopics: TopicContent[] = places.map((p, index) => {
         a: route[lang],
       },
     ]),
-    related: index < 18 ? ['history', 'location-map', 'visiting-guide', 'train-guide'] : ['location-map', 'visiting-guide', 'bangkok-to-river-kwai-bridge', 'history'],
+    related: index < 18 ? [...(nearbyAttractionLinks[p.slug] ?? []), 'history', 'location-map', 'visiting-guide', 'train-guide'] : ['location-map', 'visiting-guide', 'bangkok-to-river-kwai-bridge', 'history'],
   };
 });
