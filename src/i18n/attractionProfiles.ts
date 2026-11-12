@@ -32,6 +32,18 @@ const templeHours = tri('Visit during the temple’s permitted hours and avoid i
 const templeFees = tri('Check on site whether any specific facility has a charge or suggested donation.', 'สอบถามที่วัดว่าพื้นที่ใดมีค่าบริการหรือรับบริจาค', '现场询问特定设施是否收费或接受自愿捐献。');
 
 export const attractionProfiles: Record<string, AttractionProfile> = {
+  'erawan-national-park': {
+    kind: park,
+    area: tri('Si Sawat District, Kanchanaburi Province', 'อำเภอศรีสวัสดิ์ จังหวัดกาญจนบุรี', '北碧府 Si Sawat 县'),
+    arrival: tri(
+      'Travel by road from Kanchanaburi town or the River Kwai Bridge to the national-park entrance. This is a separate out-of-town trip, not a walk from the bridge.',
+      'เดินทางทางถนนจากตัวเมืองกาญจนบุรีหรือสะพานข้ามแม่น้ำแควไปยังทางเข้าอุทยาน เป็นทริปนอกเมือง ไม่สามารถเดินจากสะพานได้',
+      '从北碧府市区或桂河大桥乘公路交通前往国家公园入口，属于郊外独立行程，不能从大桥步行抵达。',
+    ),
+    visitTime: tri('Allow at least half a day including transport, entry and waterfall trails.', 'ควรเผื่ออย่างน้อยครึ่งวันรวมการเดินทางและเส้นทางน้ำตก', '连同交通、入园及瀑布步道，至少预留半天。'),
+    opening: parkHours,
+    admission: parkFees,
+  },
   'thailand-burma-railway-centre': { kind: museum, area: tri('Central Kanchanaburi, beside Don Rak cemetery', 'ตัวเมืองกาญจนบุรี ติดสุสานดอนรัก', '北碧府市中心，Don Rak 公墓旁'), arrival: tri('From the bridge, take a local taxi or songthaew to the war cemetery district; the centre is across the road.', 'จากสะพานนั่งแท็กซี่หรือสองแถวไปย่านสุสานดอนรัก ศูนย์อยู่ฝั่งตรงข้าม', '从大桥乘出租车或双条车至 Don Rak 公墓一带，展馆在马路对面。'), visitTime: short, opening: currentHours, admission: currentFees },
   'kanchanaburi-war-cemetery': { kind: cemetery, area: tri('Don Rak, central Kanchanaburi', 'ดอนรัก กลางเมืองกาญจนบุรี', '北碧府市中心 Don Rak'), arrival: tri('Use a local taxi or songthaew from the bridge; pair the stop with the railway centre opposite.', 'จากสะพานนั่งแท็กซี่หรือสองแถว และชมร่วมกับศูนย์รถไฟฝั่งตรงข้าม', '从大桥搭乘出租车或双条车，可与对面的泰缅铁路中心同行。'), visitTime: tri('About 30–60 quiet minutes, longer if studying the inscriptions.', 'ประมาณ 30–60 นาทีอย่างสงบ และเพิ่มเวลาหากอ่านจารึก', '安静参观约 30–60 分钟，细读墓志需更久。'), opening: publicGround, admission: tri('The commemorative grounds are generally visited without an admission ticket; observe on-site regulations.', 'โดยทั่วไปเข้าชมบริเวณสุสานโดยไม่ต้องซื้อตั๋ว แต่ต้องทำตามกฎพื้นที่', '公墓纪念区域通常无需购票，仍应遵守现场规定。') },
   'jeath-war-museum': { kind: museum, area: tri('Near Wat Chai Chumphon, Kanchanaburi town', 'ใกล้วัดไชยชุมพล ตัวเมืองกาญจนบุรี', '北碧府市区，柴春蓬寺附近'), arrival: tri('Travel to the original museum by Wat Tai; check the map pin because another WWII museum stands near the bridge.', 'ไปพิพิธภัณฑ์เดิมใกล้วัดใต้ ตรวจหมุดแผนที่เพราะมีพิพิธภัณฑ์สงครามอีกแห่งใกล้สะพาน', '前往 Wat Tai 旁的原馆，注意桥边另有一座二战展馆，务必核对地图点。'), visitTime: short, opening: currentHours, admission: currentFees },

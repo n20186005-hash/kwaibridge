@@ -27,6 +27,26 @@ const sections = g.sections ?? [];
 
 /** 章节锚点加前缀，避免与既有 #history / #transport 等冲突 */
 const anchor = (id: string) => `deep-${id}`;
+const namedNearbyPages: Record<string, string> = {
+  'Kanchanaburi War Cemetery (Don Rak)': 'kanchanaburi-war-cemetery',
+  'Thailand–Burma Railway Centre': 'thailand-burma-railway-centre',
+  'JEATH War Museum': 'jeath-war-museum',
+  'Wampo Viaduct (Tham Krasae)': 'tham-krasae-railway',
+  'Hellfire Pass Memorial Museum': 'hellfire-pass',
+  'Erawan National Park': 'erawan-national-park',
+  '北碧战争公墓（Don Rak）': 'kanchanaburi-war-cemetery',
+  '泰缅铁路中心': 'thailand-burma-railway-centre',
+  'JEATH 战争博物馆': 'jeath-war-museum',
+  '旺坡高架桥（Tham Krasae）': 'tham-krasae-railway',
+  '地狱火通道纪念博物馆': 'hellfire-pass',
+  '爱侣湾国家公园': 'erawan-national-park',
+  'สุสานทหารสัมพันธมิตรดอนรัก': 'kanchanaburi-war-cemetery',
+  'ศูนย์ทางรถไฟไทย–พม่า': 'thailand-burma-railway-centre',
+  'พิพิธภัณฑ์สงคราม JEATH': 'jeath-war-museum',
+  'สะพานไม้วอมโพ (ถ้ำกระแซ)': 'tham-krasae-railway',
+  'พิพิธภัณฑ์ช่องเขาขาด': 'hellfire-pass',
+  'อุทยานแห่งชาติเอราวัณ': 'erawan-national-park',
+};
 ---
 
 <section id="deep-guide" class="section-padding" style="background: var(--bg-primary);">
@@ -149,7 +169,13 @@ const anchor = (id: string) => `deep-${id}`;
                         class="rounded-2xl p-5 border h-full flex flex-col"
                         style="background: var(--card-bg); border-color: var(--border-color); box-shadow: var(--card-shadow);"
                       >
-                        <p class="font-semibold text-base mb-1" style="color: var(--text-primary);"><PlaceMentions text={it.name} lang={linkLang} /></p>
+                        <p class="font-semibold text-base mb-1" style="color: var(--text-primary);">
+                          {namedNearbyPages[it.name] ? (
+                            <a href={`/${linkLang}/${namedNearbyPages[it.name]}/`} class="underline underline-offset-2 hover:opacity-75" style="color: var(--accent);">{it.name}</a>
+                          ) : (
+                            <PlaceMentions text={it.name} lang={linkLang} />
+                          )}
+                        </p>
                         <p class="text-xs uppercase tracking-[0.12em] mb-3" style="color: var(--accent);">{it.meta}</p>
                         <p class="text-sm leading-relaxed flex-1" style="color: var(--text-secondary);"><PlaceMentions text={it.text} lang={linkLang} /></p>
                         {it.tip && (

@@ -117,6 +117,20 @@ const places: Place[] = [
     map: 'Kanchanaburi Railway Station Thailand',
   },
   {
+    slug: 'erawan-national-park', name: ['Erawan National Park', 'อุทยานแห่งชาติเอราวัณ', '爱侣湾国家公园'],
+    story: [
+      'Erawan National Park in Si Sawat District protects forested limestone hills, streams and the celebrated multi-level Erawan Waterfall. The park is a natural landscape destination, distinct from the wartime railway memorials around the bridge.',
+      'อุทยานแห่งชาติเอราวัณในอำเภอศรีสวัสดิ์ดูแลพื้นที่ป่าภูเขาหินปูน ลำธาร และน้ำตกเอราวัณหลายชั้น เป็นแหล่งธรรมชาติที่ต่างจากอนุสรณ์ประวัติศาสตร์ทางรถไฟใกล้สะพาน',
+      '爱侣湾国家公园位于北碧府 Si Sawat 县，保护石灰岩山地、森林、溪流及著名的多层爱侣湾瀑布。这里是自然保护区，与桂河大桥周边的战时铁路纪念地性质不同。',
+    ],
+    visit: [
+      'Allow at least half a day for the journey, park entrance and waterfall trail. Start early, use suitable footwear, carry water and obey posted limits on swimming and access to upper levels; check park notices during heavy rain.',
+      'ควรเผื่ออย่างน้อยครึ่งวันสำหรับการเดินทาง จุดเข้าอุทยาน และเส้นทางเดินชมน้ำตก เริ่มแต่เช้า สวมรองเท้าที่เหมาะ พกน้ำ และทำตามประกาศเรื่องการเล่นน้ำหรือการขึ้นชั้นสูง โดยเฉพาะช่วงฝนตกหนัก',
+      '建议至少留出半天处理往返交通、入园及瀑布步道。尽量早出发，穿防滑鞋并携带饮水，遵守各层瀑布的游泳及通行告示；大雨期间尤其应核查开放情况。',
+    ],
+    map: 'Erawan National Park Si Sawat Kanchanaburi Thailand',
+  },
+  {
     slug: 'bridge-photography-guide', name: ['Best photo spots at the River Kwai Bridge', 'จุดถ่ายภาพสะพานข้ามแม่น้ำแคว', '桂河大桥摄影机位'],
     story: ['Railway arches, riverside approaches and the slow-moving train offer different compositions. The most meaningful photographs also show how the structure sits in its landscape.', 'โครงเหล็ก ทางเข้าริมน้ำ และขบวนรถไฟที่วิ่งช้าให้ภาพหลายแบบ ภาพที่เห็นสะพานกับภูมิทัศน์ช่วยเล่าเรื่องสถานที่', '钢桁架、河岸入口与缓行列车适合不同构图；把桥与周边河谷一同纳入画面，更能表达历史地景。'],
     visit: ['Photograph from public viewing areas and never step onto tracks for a shot. Morning and late-afternoon light can be gentler; check weather before going.', 'ถ่ายจากจุดชมวิวที่อนุญาต ไม่ลงไปยืนบนราง แสงเช้าหรือบ่ายแก่เหมาะกับภาพและควรดูอากาศก่อนออกเดินทาง', '只在公共安全位置拍摄，绝不为取景站上铁轨；清晨与傍晚光线通常较柔和，出发前看天气。'],
@@ -213,7 +227,7 @@ export const expansionTopics: TopicContent[] = places.map((p, index) => {
   const photoSlugs = new Set([
     'thailand-burma-railway-centre', 'kanchanaburi-war-cemetery', 'jeath-war-museum',
     'hellfire-pass', 'tham-krasae-railway', 'nam-tok-station', 'chungkai-war-cemetery',
-    'erawan-waterfall', 'sai-yok-noi-waterfall', 'sai-yok-national-park',
+    'erawan-waterfall', 'erawan-national-park', 'sai-yok-noi-waterfall', 'sai-yok-national-park',
     'mueang-sing-historical-park', 'wat-tham-suea', 'wat-ban-tham', 'kanchanaburi-skywalk',
     'pak-phraek-heritage-street', 'river-kwai-bridge-station', 'kanchanaburi-railway-station',
   ]);
@@ -234,7 +248,7 @@ export const expansionTopics: TopicContent[] = places.map((p, index) => {
     slug: p.slug,
     mapQuery: p.map,
     steward: detail?.steward,
-    image: photoSlugs.has(p.slug) ? `/nearby/${p.slug}.jpg` : undefined,
+    image: p.slug === 'erawan-national-park' ? '/nearby/erawan-waterfall.jpg' : photoSlugs.has(p.slug) ? `/nearby/${p.slug}.jpg` : undefined,
     title: value((lang, i) => p.name[i] + titleSuffix[lang]),
     h1: value((_, i) => p.name[i]),
     description: value((lang, i) => (p.story[i] + ' ' + p.visit[i]).slice(0, lang === 'en' ? 158 : 145)),
@@ -257,6 +271,6 @@ export const expansionTopics: TopicContent[] = places.map((p, index) => {
         a: route[lang],
       },
     ]),
-    related: index < 17 ? ['history', 'location-map', 'visiting-guide', 'train-guide'] : ['location-map', 'visiting-guide', 'bangkok-to-river-kwai-bridge', 'history'],
+    related: index < 18 ? ['history', 'location-map', 'visiting-guide', 'train-guide'] : ['location-map', 'visiting-guide', 'bangkok-to-river-kwai-bridge', 'history'],
   };
 });

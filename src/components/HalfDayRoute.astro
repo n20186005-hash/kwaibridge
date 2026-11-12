@@ -4,6 +4,18 @@ import { getI18n } from '../i18n/ui';
 const { messages } = getI18n(Astro.url);
 const linkLang = getI18n(Astro.url).lang as 'en' | 'th' | 'zh';
 const rt = messages.visitRoutes;
+const linkedStepPaths: Record<string, Record<number, string>> = {
+  full: {
+    2: 'kanchanaburi-war-cemetery',
+    3: 'death-railway-train-tickets',
+    5: 'hellfire-pass',
+  },
+};
+const pairLabels = {
+  zh: ['战争博物馆', '战争公墓'],
+  en: ['War museum', 'War cemetery'],
+  th: ['พิพิธภัณฑ์สงคราม', 'สุสานสงคราม'],
+}[linkLang];
 const tabs = [
   { id: 'half', label: rt.tabHalf, data: rt.routes.half },
   { id: 'full', label: rt.tabFull, data: rt.routes.full },
@@ -88,7 +100,17 @@ const tabs = [
                 <div class="min-w-0 pt-0.5">
                   <p class="font-semibold text-lg leading-snug" style="color: var(--text-primary);">
                     <span class="text-xs mr-2" style="color: var(--text-muted);">{String(index + 1).padStart(2, '0')}</span>
-                    <PlaceMentions text={step.title} lang={linkLang} />
+                    {tab.id === 'half' && index === 3 ? (
+                      <>
+                        <a href={`/${linkLang}/thailand-burma-railway-centre/`} class="underline underline-offset-2 hover:opacity-75" style="color: var(--accent);">{pairLabels[0]}</a>
+                        <span> {linkLang === 'zh' ? '与' : linkLang === 'en' ? ' and ' : 'และ'} </span>
+                        <a href={`/${linkLang}/kanchanaburi-war-cemetery/`} class="underline underline-offset-2 hover:opacity-75" style="color: var(--accent);">{pairLabels[1]}</a>
+                      </>
+                    ) : linkedStepPaths[tab.id]?.[index] ? (
+                      <a href={`/${linkLang}/${linkedStepPaths[tab.id][index]}/`} class="underline underline-offset-2 hover:opacity-75" style="color: var(--accent);">{step.title}</a>
+                    ) : (
+                      <PlaceMentions text={step.title} lang={linkLang} />
+                    )}
                   </p>
                   <p class="text-base leading-relaxed mt-2" style="color: var(--text-secondary);"><PlaceMentions text={step.text} lang={linkLang} /></p>
                 </div>

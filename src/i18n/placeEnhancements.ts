@@ -4,6 +4,23 @@ type Tri = Record<TopicLang, string>;
 const tri = (en: string, th: string, zh: string): Tri => ({ en, th, zh });
 
 export const attractionNotes: Record<string, { features: Tri; photo: Tri; steward: Tri }> = {
+  'erawan-national-park': {
+    features: tri(
+      'Follow the marked path through the forest towards the waterfall tiers. Look for the limestone stream beds, shaded vegetation and changing water flow. The upper levels require more effort, and trail access can be limited by conditions.',
+      'เดินตามทางที่อุทยานกำหนดผ่านป่าไปยังชั้นน้ำตก สังเกตลำธารบนหินปูน พืชพรรณในร่มเงา และระดับน้ำที่เปลี่ยนตามฤดู ชั้นบนใช้แรงเดินมากขึ้นและอาจมีข้อจำกัดตามสภาพอากาศ',
+      '沿公园标示步道穿过森林，观察多层瀑布、石灰岩溪床、遮荫植被以及随季节变化的水流；较高层步道更耗体力，也可能因天气限制通行。',
+    ),
+    photo: tri(
+      'Photograph the waterfall pools and forest trail only from permitted viewpoints. Keep camera gear dry and avoid stepping into protected or slippery stream edges for a picture.',
+      'ถ่ายภาพแอ่งน้ำตกและทางเดินป่าจากจุดที่อนุญาต ป้องกันอุปกรณ์เปียก และอย่าลงขอบลำธารลื่นหรือพื้นที่หวงห้ามเพื่อถ่ายรูป',
+      '在允许的观景点拍摄瀑布水潭与森林步道，注意设备防水；不要为了取景踏入湿滑溪岸或封闭保护区域。',
+    ),
+    steward: tri(
+      'Erawan National Park is part of Thailand’s national-park system under the Department of National Parks, Wildlife and Plant Conservation (DNP). Park officers manage entry, trails and conservation rules.',
+      'อุทยานแห่งชาติเอราวัณอยู่ภายใต้กรมอุทยานแห่งชาติ สัตว์ป่า และพันธุ์พืช (DNP) เจ้าหน้าที่อุทยานดูแลทางเข้า เส้นทาง และกฎอนุรักษ์',
+      '爱侣湾国家公园属于泰国国家公园体系，由国家公园、野生动植物保护厅（DNP）管理；园方人员负责入口、步道及生态保护规定。',
+    ),
+  },
   'thailand-burma-railway-centre': {
     features: tri('Inside, follow the historical maps and the sequence from railway planning to construction and its aftermath. Models and personal accounts make the scale of the undertaking easier to grasp.', 'ภายในให้ดูแผนที่ลำดับประวัติจากการวางแผน สร้างทางรถไฟ จนถึงผลหลังสงคราม แบบจำลองและคำบอกเล่าช่วยให้เห็นขนาดของโครงการ', '可沿展厅地图依次了解铁路筹划、施工及战后影响；模型与个人叙述有助于理解工程规模。'),
     photo: tri('Photograph the exterior and permitted exhibit areas without flash where prohibited. A wider view showing the museum entrance helps distinguish it from other local war museums.', 'ถ่ายภาพด้านหน้าอาคารและจุดจัดแสดงที่อนุญาต ปิดแฟลชเมื่อมีป้ายห้าม ภาพที่เห็นป้ายทางเข้าช่วยแยกจากพิพิธภัณฑ์อื่น', '可拍建筑外观及允许拍摄的展区，禁闪光处请遵守；包含入口标牌的广角画面便于识别该馆。'),
