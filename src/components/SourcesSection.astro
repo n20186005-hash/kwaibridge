@@ -1,7 +1,8 @@
 ---
 import { getI18n } from '../i18n/ui';
 import { placeConfig } from '../config';
-const { messages } = getI18n(Astro.url);
+const { lang, messages } = getI18n(Astro.url);
+const f = messages.footer;
 const s = messages.sources ?? {};
 const items = s.items ?? [];
 const landmarks = [placeConfig.nearbyLandmark1, placeConfig.nearbyLandmark2];
@@ -9,6 +10,10 @@ const landmarks = [placeConfig.nearbyLandmark1, placeConfig.nearbyLandmark2];
 
 <section id="sources" class="section-padding" style="background: var(--bg-secondary);">
   <div class="max-w-4xl mx-auto px-4">
+    <div id="about-site" class="mb-12 rounded-2xl border p-6 sm:p-8" style="border-color: var(--border-color); background: var(--card-bg);">
+      <h2 class="font-display text-2xl sm:text-3xl font-semibold mb-3" style="color: var(--text-primary);">{f.mission.title}</h2>
+      <p class="text-base leading-relaxed" style="color: var(--text-secondary);">{f.mission.text}</p>
+    </div>
     <h2 class="font-display text-3xl sm:text-4xl font-semibold mb-3 text-center" style="color: var(--text-primary);">{s.title}</h2>
     {s.subtitle && (
       <p class="text-center text-base sm:text-lg mb-4" style="color: var(--text-secondary);">{s.subtitle}</p>
@@ -58,5 +63,29 @@ const landmarks = [placeConfig.nearbyLandmark1, placeConfig.nearbyLandmark2];
     {s.note && (
       <p class="text-xs mt-6 leading-relaxed text-center" style="color: var(--text-muted);">{s.note}</p>
     )}
+    <div class="mt-10 grid sm:grid-cols-2 gap-8 text-sm" style="color: var(--text-secondary);">
+      <section>
+        <h3 class="font-semibold mb-3" style="color: var(--text-primary);">{f.officialResourcesTitle}</h3>
+        <ul class="space-y-2">
+          {f.officialLinksList.map((link) => (
+            <li><a href={link.url} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2" style="color: var(--accent);">{link.name} ↗</a></li>
+          ))}
+          <li><a href={f.mapsUrl} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2" style="color: var(--accent);">{f.mapsLabel}</a></li>
+          <li><a href={f.govtUrl ?? placeConfig.govtTourismUrl} target="_blank" rel="noopener noreferrer" class="underline underline-offset-2" style="color: var(--accent);">{f.govtLinkLabel} ↗</a></li>
+        </ul>
+      </section>
+      <section>
+        <h3 class="font-semibold mb-3" style="color: var(--text-primary);">{f.legalLinksTitle}</h3>
+        <ul class="space-y-2">
+          <li><a href={`/${lang}/privacy-policy/`} class="underline underline-offset-2" style="color: var(--accent);">{f.privacy}</a></li>
+          <li><a href={`/${lang}/terms-of-service/`} class="underline underline-offset-2" style="color: var(--accent);">{f.terms}</a></li>
+          <li><a href={`/${lang}/cookie-settings/`} class="underline underline-offset-2" style="color: var(--accent);">{f.cookies}</a></li>
+        </ul>
+      </section>
+    </div>
+    <div class="mt-8 text-xs leading-relaxed space-y-3" style="color: var(--text-muted);">
+      <p>{f.imageCopyright}</p>
+      <p><span class="font-semibold">{f.dataSourceLabel}{lang === 'zh' ? '：' : ':'}</span> <span set:html={f.dataSource}></span></p>
+    </div>
   </div>
 </section>
