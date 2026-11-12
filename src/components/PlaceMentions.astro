@@ -6,7 +6,7 @@ interface Props { text: string; lang: TopicLang; currentSlug?: string; }
 const { text, lang, currentSlug } = Astro.props;
 const sourceText = String(text ?? '');
 const synonyms: Record<string, Record<TopicLang, string[]>> = {
-  'thailand-burma-railway-centre': { en: ['Death Railway Museum', 'Thailand-Burma Railway Centre', 'Thailand–Burma Railway Centre'], th: ['ศูนย์รถไฟไทย-พม่า', 'ศูนย์รถไฟไทย–พม่า'], zh: ['泰缅铁路中心'] },
+  'thailand-burma-railway-centre': { en: ['Death Railway Museum', 'Thailand-Burma Railway Centre', 'Thailand–Burma Railway Centre'], th: ['ศูนย์รถไฟไทย-พม่า', 'ศูนย์รถไฟไทย–พม่า', 'ศูนย์ทางรถไฟไทย–พม่า'], zh: ['泰缅铁路中心', '死亡铁路博物馆'] },
   'kanchanaburi-war-cemetery': { en: ['Kanchanaburi War Cemetery', 'Don Rak War Cemetery', 'Don Rak cemetery'], th: ['สุสานทหารดอนรัก', 'สุสานทหารกาญจนบุรี', 'สุสานดอนรัก'], zh: ['北碧战争公墓', '北碧府战争公墓', 'Don Rak 公墓', '唐拉克盟军公墓'] },
   'jeath-war-museum': { en: ['JEATH War Museum'], th: ['พิพิธภัณฑ์ JEATH'], zh: ['JEATH 战争博物馆', 'JEATH 博物馆'] },
   'hellfire-pass': { en: ['Hellfire Pass', 'Hellfire Pass Memorial'], th: ['ช่องเขาขาด', 'อนุสรณ์สถานช่องเขาขาด'], zh: ['地狱火隘口', '地狱火通道', '地狱火通道纪念馆', 'Hellfire Pass 纪念地'] },
