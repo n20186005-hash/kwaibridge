@@ -6,9 +6,9 @@ const { lang } = getI18n(Astro.url);
 const safeLang = lang as TopicLang;
 
 const labels: Record<TopicLang, { heading: string; sub: string }> = {
-  en: { heading: 'Guides & deeper reads', sub: 'Focused pages on the bridge’s location, history and how to get there.' },
-  th: { heading: 'คู่มือและบทความเพิ่มเติม', sub: 'หน้าเจาะจงเรื่องที่ตั้ง ประวัติศาสตร์ และวิธีเดินทาง' },
-  zh: { heading: '专题与延伸阅读', sub: '关于大桥位置、历史与交通方式的专门页面。' },
+  en: { heading: 'Guides & deeper reads', sub: 'Plan your River Kwai Bridge visit with practical routes, the stories behind the railway and tips for exploring Kanchanaburi.' },
+  th: { heading: 'คู่มือและบทความเพิ่มเติม', sub: 'วางแผนเที่ยวสะพานข้ามแม่น้ำแควให้ครบ ทั้งเส้นทางเดินทาง เรื่องราวทางรถไฟ และจุดน่าแวะในกาญจนบุรี' },
+  zh: { heading: '专题与延伸阅读', sub: '从桂河大桥的战争历史，到曼谷出发的交通路线与北碧府周边玩法，找到适合你的下一站。' },
 };
 
 const cards = topics.map((t) => ({
